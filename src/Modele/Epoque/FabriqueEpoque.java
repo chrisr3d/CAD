@@ -1,17 +1,21 @@
 package Modele.Epoque;
 
+import java.util.ArrayList;
 
+import Modele.Bateau.Bateau;
 
 public class FabriqueEpoque {
 
-	private static Epoque currentEpoque = new EpoqueModerne();
+	private static Epoque currentEpoque = new EpoqueFutur();
 
-	public static void choisirEpoqueModerne(){
-		currentEpoque = new EpoqueModerne();
+	public static void choisirEpoqueModerne(ArrayList<Bateau> listBateau){
+		currentEpoque = new EpoqueFutur();
+		currentEpoque.setEpoque(listBateau);
 	}
 	
-	public static void ajouterTactiqueAleatoire() {
+	public static void choisirEpoqueRenaissane(ArrayList<Bateau> listBateau) {
 		currentEpoque = new EpoqueRenaissance();
+		currentEpoque.setEpoque(listBateau);
 	}
 
 	public static Epoque getEpoque() {
