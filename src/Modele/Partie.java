@@ -6,6 +6,7 @@ import Modele.Observable;
 
 import Modele.Bateau.Bateau;
 import Modele.Bateau.FabriqueBateau;
+import bataillenavale.game.OptionsJeu;
 
 public class Partie extends Observable{
 
@@ -43,5 +44,7 @@ public class Partie extends Observable{
 		
 	}
 	
-	
+	public Parametre getParametres() {
+		return param;
+	}
 }

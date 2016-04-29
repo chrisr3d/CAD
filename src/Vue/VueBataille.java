@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import Controlleur.ControllerJeu;
 import Modele.Partie;
 
-public class VueBataille implements Observer {
+public class VueBataille extends JPanel implements Observer {
 	private Partie partie;
 	
 	private ControllerJeu cj;

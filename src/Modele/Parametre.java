@@ -7,15 +7,17 @@ public class Parametre {
 
 	TactiqueIAStrategie tactique; // Non definitif
 	
-	int largeurPlateau;
-	
-	int hauteurPlateau;
-	
+	private final String placement;
+	private final int largeurPlateau;
+	private final int hauteurPlateau;
 	boolean automatique;
-	
 	Epoque epoque; // Non definitif
 	
-	public Parametre(Epoque e, int h, int l, TactiqueIAStrategie tactique){
+	public Parametre(){
+		
+	}
+	
+	public Parametre(Epoque epoque, int hauteurPlateau, int largeurPlateau, TactiqueIAStrategie tactique, String placement){
 		
 	}
 	
@@ -23,9 +25,13 @@ public class Parametre {
 		
 	}
 	
+	public String getPlacement() {
+		return placement;
+	}
 	
-	
-	
+	public String getEpoque() {
+		return epoque;
+	}
 	
 	
 }
