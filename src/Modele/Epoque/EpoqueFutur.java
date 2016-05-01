@@ -8,8 +8,23 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 import Modele.Bateau.*;
+import Modele.Tactique.TactiqueAleatoire;
 public class EpoqueFutur implements Epoque{
 
+	//volatile pour autoriser l'initialisation à null !
+	private volatile static EpoqueFutur unique = null;
+	
+	public static EpoqueFutur getInstance(){
+		if(unique == null){
+			synchronized(EpoqueFutur.class){
+				if(unique == null){
+					unique = new EpoqueFutur();
+				}
+			}
+		}
+		return unique;
+	}
+	
 	@Override
 	public ArrayList<Bateau> setEpoque(ArrayList<Bateau> listBateau) {
 		// TODO Auto-generated method stub

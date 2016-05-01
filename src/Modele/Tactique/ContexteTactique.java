@@ -5,11 +5,11 @@ public class ContexteTactique {
 	private static TactiqueIAStrategie currentTactique = new TactiqueCroix();
 
 	public static void choisirTactiqueCroix(){
-		currentTactique = new TactiqueCroix();
+		currentTactique = TactiqueCroix.getInstance();
 	}
 	
 	public static void choisirTactiqueAleatoire() {
-		currentTactique = new TactiqueAleatoire();
+		currentTactique = TactiqueAleatoire.getInstance();
 	}
 
 	public static TactiqueIAStrategie getTactique() {

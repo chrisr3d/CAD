@@ -16,20 +16,21 @@ public class Plateau{
 	public Plateau(int l, int h){
 		this.largeur = l;
 		this.hauteur = h;
+	}
 	
-	public void placerBateau(Bateau, Case){
+	public void placerBateau(Bateau b, Case c){
 		
 	}
 
-	public void tirer(Case){
+	public void tirer(Case c){
 		
 	}
 	
-	public void placerAleatoireBateau(Bateau){
+	public void placerAleatoireBateau(Bateau b){
 		
 	}
 	
-	public void ajouterBateau(Bateau) {
+	public void ajouterBateau(Bateau b) {
 		
 	}
 

@@ -8,13 +8,13 @@ public class FabriqueEpoque {
 
 	private static Epoque currentEpoque = new EpoqueFutur();
 
-	public static void choisirEpoqueModerne(ArrayList<Bateau> listBateau){
-		currentEpoque = new EpoqueFutur();
+	public static void choisirEpoqueFutur(ArrayList<Bateau> listBateau){
+		currentEpoque = EpoqueFutur.getInstance();
 		currentEpoque.setEpoque(listBateau);
 	}
 	
-	public static void choisirEpoqueRenaissane(ArrayList<Bateau> listBateau) {
-		currentEpoque = new EpoqueRenaissance();
+	public static void choisirEpoqueActuelle(ArrayList<Bateau> listBateau) {
+		currentEpoque = EpoqueActuelle.getInstance();
 		currentEpoque.setEpoque(listBateau);
 	}
 

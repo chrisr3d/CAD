@@ -11,6 +11,20 @@ import Modele.Bateau.*;
 
 public class EpoqueActuelle implements Epoque{
 
+	//volatile pour autoriser l'initialisation à null !
+	private volatile static EpoqueActuelle unique = null;
+		
+	public static EpoqueActuelle getInstance(){
+		if(unique == null){
+			synchronized(EpoqueActuelle.class){
+				if(unique == null){
+					unique = new EpoqueActuelle();
+				}
+			}
+		}
+		return unique;
+	}
+	
 	@Override
 	public ArrayList<Bateau> setEpoque(ArrayList<Bateau> listBateau) {
 		// TODO Auto-generated method stub
