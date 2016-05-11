@@ -3,6 +3,7 @@ package Modele.Bateau;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import Modele.Case;
 import Modele.CaseBateau;
 
 public class Bateau {
@@ -19,6 +20,16 @@ public class Bateau {
 	
 	boolean horizontal;
 
+	public boolean contientCase(Case c){
+		boolean present = false;
+		for (CaseBateau cb : emplacement) {
+			if((cb.getX()== c.getX())&&(cb.getY()==c.getY())){
+				present = true;
+			}
+		}
+		return present;
+	}
+	
 	public int getTaille() {
 		// TODO Auto-generated method stub
 		return this.taille;
