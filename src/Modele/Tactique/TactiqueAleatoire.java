@@ -23,7 +23,7 @@ public class TactiqueAleatoire implements TactiqueIAStrategie{
 	}
 
 	@Override
-	public Case appliquerTactique() {
+	public Case appliquerTactique(Plateau plat) {
 		// TODO Auto-generated method stub
 		return null;
 	}
