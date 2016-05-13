@@ -9,11 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Controlleur.ControllerMenu;
+import Controlleur.ControllerFenetre;
 
 public class Menu extends JPanel {
 	
-	private ControllerMenu cm;
+	private ControllerFenetre cm;
 	private FenetreJeu fenetre;
 	
 	public Menu(FenetreJeu fenetre){
