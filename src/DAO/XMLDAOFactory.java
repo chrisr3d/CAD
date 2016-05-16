@@ -1,4 +1,9 @@
 package DAO;
+
+import Modele.Parametre;
+import Modele.Partie;
+import Modele.Epoque.Epoque;
+
 /**
  * 
  * @author Mathieu
@@ -7,11 +12,15 @@ package DAO;
  */
 public class XMLDAOFactory extends AbstractDAOFactory{
 
+	
 	public DAO getPartieDAO() {
-		return new XMLParametreDAO();
+		return XMLPartieDAO.getInstance();
+	}
+	public DAO getParametreDAO() {
+		return XMLParametreDAO.getInstance();
 	}
 	public DAO getEpoqueDAO() {
-		return new XMLEpoqueDAO();
+		return XMLEpoqueDAO.getInstance();
 	}
 	
 }

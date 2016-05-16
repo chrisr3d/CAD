@@ -7,15 +7,29 @@ import Modele.Parametre;
 
 public class XMLParametreDAO extends DAO<Parametre>{
 
+	private volatile static XMLParametreDAO unique = null;
+
+	public static XMLParametreDAO getInstance() {
+		if (unique == null) {
+			synchronized (XMLParametreDAO.class) {
+				if (unique == null) {
+					unique = new XMLParametreDAO();
+				}
+			}
+		}
+		return unique;
+	}
+	
 	@Override
-	public void save(String nomFichier, File fichier) {
+	public Parametre find() {
 		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Parametre find(String nomFichier) {
+	public void save(String contenu) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 }

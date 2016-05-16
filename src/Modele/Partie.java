@@ -6,7 +6,6 @@ import Modele.Observable;
 
 import Modele.Bateau.Bateau;
 import Modele.Bateau.FabriqueBateau;
-import bataillenavale.game.OptionsJeu;
 
 public class Partie extends Observable{
 
@@ -33,11 +32,21 @@ public class Partie extends Observable{
 		
 	}
 	
-	public void SauvegarderPartie(String nom, File f){
-		
+	public void SauvegarderPartie(){
+		try{
+    		
+    		File file = new File("save.xml");
+    		if(file.delete()){
+    			System.out.println(file.getName() + " is deleted!");
+    		}else{
+    			System.out.println("Delete operation is failed.");
+    		}
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
 	}
 	
-	public void changerParametre(String nom, File f){
+	public void changerParametre(){
 		
 	}
 	public void tournerBateau(Bateau b){

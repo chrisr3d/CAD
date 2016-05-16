@@ -22,4 +22,12 @@ public class FabriqueEpoque {
 		return currentEpoque;
 	}
 	
+	/**
+	 * Cette méthode sera appelée lors de l'appel de la méthode find pour le dao
+	 * Elle permet de fixer l'époque que nous aviosn sauvegarder
+	 */
+	public static void setEpoque(Epoque epo){
+		currentEpoque = epo;
+	}
+	
 }

@@ -22,9 +22,9 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 	private Case dernierTir = null;
 
 	// volatile pour autoriser l'initialisation � null !
-	private volatile static TactiqueAleatoire unique = null;
+	private volatile static TactiqueCroix unique = null;
 
-	public static TactiqueAleatoire getInstance() {
+	public static TactiqueCroix getInstance() {
 		/*
 		 * Ici je ne pense pas qu'il soit possible de cr�er deux intances en
 		 * m�me temps car une instance de l'algo seulement au choix de
@@ -32,9 +32,9 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 		 * cf cours M1-S7-CAD
 		 */
 		if (unique == null) {
-			synchronized (TactiqueAleatoire.class) {
+			synchronized (TactiqueCroix.class) {
 				if (unique == null) {
-					unique = new TactiqueAleatoire();
+					unique = new TactiqueCroix();
 				}
 			}
 		}

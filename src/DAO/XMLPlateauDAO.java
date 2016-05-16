@@ -7,15 +7,29 @@ import Modele.Plateau;
 
 public class XMLPlateauDAO extends DAO<Plateau>{
 
+	private volatile static XMLPlateauDAO unique = null;
+
+	public static XMLPlateauDAO getInstance() {
+		if (unique == null) {
+			synchronized (XMLPlateauDAO.class) {
+				if (unique == null) {
+					unique = new XMLPlateauDAO();
+				}
+			}
+		}
+		return unique;
+	}
+	
 	@Override
-	public void save(String nomFichier, File fichier) {
+	public Plateau find() {
 		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Plateau find(String nomFichier) {
+	public void save(String contenu) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 }

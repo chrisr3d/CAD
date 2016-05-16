@@ -5,20 +5,25 @@ import Modele.Tactique.TactiqueIAStrategie;
 
 public class Parametre {
 
-	TactiqueIAStrategie tactique; // Non definitif
-	
 	private final String placement;
 	private final int largeurPlateau;
 	private final int hauteurPlateau;
 	boolean automatique;
-	String epoque; // Non definitif
 	
+	//A faire
 	public Parametre(){
-		
+		this.placement ="";
+		this.largeurPlateau = 0;
+		this.hauteurPlateau = 0;
+		automatique = false;
 	}
 	
+	//A faire
 	public Parametre(String epoque, int hauteurPlateau, int largeurPlateau, String tactique, String placement){
-		
+		this.placement ="";
+		this.largeurPlateau = 0;
+		this.hauteurPlateau = 0;
+		automatique = false;
 	}
 	
 	public void sauvegardeParametre(){
@@ -27,10 +32,6 @@ public class Parametre {
 	
 	public String getPlacement() {
 		return placement;
-	}
-	
-	public String getEpoque() {
-		return epoque;
 	}
 	
 	

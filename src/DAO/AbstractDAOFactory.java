@@ -9,7 +9,8 @@ public abstract class AbstractDAOFactory {
 
 	public abstract DAO getPartieDAO();
 	public abstract DAO getEpoqueDAO();
-
+	public abstract DAO getParametreDAO();
+	
 	/**
 	 * M�thode nous permettant de r�cup�rer une factory de DAO
 	 * @param type
