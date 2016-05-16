@@ -37,16 +37,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="Modele.Epoque.EpoqueRenaissance" project="BatailleNavale" 
-    file="/BatailleNavale/src/Modele/Epoque/EpoqueRenaissance.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="101" width="298" x="1442" y="371"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="Modele.Case" project="BatailleNavale" file="/BatailleNavale/src/Modele/Case.java" 
+  <class id="5" language="java" name="Modele.Case" project="BatailleNavale" file="/BatailleNavale/src/Modele/Case.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1106" y="876"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -55,7 +46,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="Modele.Epoque.FabriqueEpoque" project="BatailleNavale" 
+  <class id="6" language="java" name="Modele.Epoque.FabriqueEpoque" project="BatailleNavale" 
     file="/BatailleNavale/src/Modele/Epoque/FabriqueEpoque.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="137" width="194" x="1780" y="371"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -64,7 +55,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="Modele.Bateau.FabriqueBateau" project="BatailleNavale" 
+  <class id="7" language="java" name="Modele.Bateau.FabriqueBateau" project="BatailleNavale" 
     file="/BatailleNavale/src/Modele/Bateau/FabriqueBateau.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="101" width="145" x="768" y="371"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -73,7 +64,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="Modele.CaseEau" project="BatailleNavale" 
+  <class id="8" language="java" name="Modele.CaseEau" project="BatailleNavale" 
     file="/BatailleNavale/src/Modele/CaseEau.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="983" y="1117"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -82,7 +73,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="Modele.Parametre" project="BatailleNavale" 
+  <class id="9" language="java" name="Modele.Parametre" project="BatailleNavale" 
     file="/BatailleNavale/src/Modele/Parametre.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="119" width="276" x="953" y="371"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -91,8 +82,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="Modele.Epoque.EpoqueModerne" project="BatailleNavale" 
-    file="/BatailleNavale/src/Modele/Epoque/EpoqueModerne.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="Modele.Epoque.EpoqueFutur" project="BatailleNavale" 
+    file="/BatailleNavale/src/Modele/Epoque/EpoqueFutur.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2182" y="456"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -100,7 +91,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="Modele.CaseBateau" project="BatailleNavale" 
+  <class id="11" language="java" name="Modele.CaseBateau" project="BatailleNavale" 
     file="/BatailleNavale/src/Modele/CaseBateau.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1317" y="1115"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -109,7 +100,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="Modele.Plateau" project="BatailleNavale" 
+  <class id="12" language="java" name="Modele.Plateau" project="BatailleNavale" 
     file="/BatailleNavale/src/Modele/Plateau.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1548" y="779"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -118,7 +109,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="Modele.Tactique.ContexteTactique" project="BatailleNavale" 
+  <class id="13" language="java" name="Modele.Tactique.ContexteTactique" project="BatailleNavale" 
     file="/BatailleNavale/src/Modele/Tactique/ContexteTactique.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="137" width="208" x="520" y="371"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -127,7 +118,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="15" language="java" name="Modele.Tactique.TactiqueIAStrategie" project="BatailleNavale" 
+  <interface id="14" language="java" name="Modele.Tactique.TactiqueIAStrategie" project="BatailleNavale" 
     file="/BatailleNavale/src/Modele/Tactique/TactiqueIAStrategie.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="532" y="711"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -136,7 +127,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="16" language="java" name="Modele.Partie" project="BatailleNavale" 
+  <class id="15" language="java" name="Modele.Partie" project="BatailleNavale" 
     file="/BatailleNavale/src/Modele/Partie.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1168" y="134"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -145,7 +136,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="Vue.VueBataille" project="BatailleNavale" 
+  <class id="16" language="java" name="Vue.VueBataille" project="BatailleNavale" 
     file="/BatailleNavale/src/Vue/VueBataille.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1503" y="186"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -154,7 +145,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="Vue.Options" project="BatailleNavale" file="/BatailleNavale/src/Vue/Options.java" 
+  <class id="17" language="java" name="Vue.Options" project="BatailleNavale" file="/BatailleNavale/src/Vue/Options.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1646" y="-45"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -163,7 +154,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="Vue.FenetreJeu" project="BatailleNavale" 
+  <class id="18" language="java" name="Vue.FenetreJeu" project="BatailleNavale" 
     file="/BatailleNavale/src/Vue/FenetreJeu.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1819" y="248"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -172,7 +163,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="Vue.Menu" project="BatailleNavale" file="/BatailleNavale/src/Vue/Menu.java" 
+  <class id="19" language="java" name="Vue.Menu" project="BatailleNavale" file="/BatailleNavale/src/Vue/Menu.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2145" y="29"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -181,7 +172,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="Vue.VueBataille.VueGrille" project="BatailleNavale" 
+  <class id="20" language="java" name="Vue.VueBataille.VueGrille" project="BatailleNavale" 
     file="/BatailleNavale/src/Vue/VueBataille.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1395" y="304"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -190,7 +181,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="Controlleur.ControllerJeu" project="BatailleNavale" 
+  <class id="21" language="java" name="Controlleur.ControllerJeu" project="BatailleNavale" 
     file="/BatailleNavale/src/Controlleur/ControllerJeu.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1399" y="-220"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -199,7 +190,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="Controlleur.ControllerOptions" project="BatailleNavale" 
+  <class id="22" language="java" name="Controlleur.ControllerOptions" project="BatailleNavale" 
     file="/BatailleNavale/src/Controlleur/ControllerOptions.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1891" y="-221"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -208,7 +199,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="Controlleur.ControllerMenu" project="BatailleNavale" 
+  <class id="23" language="java" name="Controlleur.ControllerMenu" project="BatailleNavale" 
     file="/BatailleNavale/src/Controlleur/ControllerMenu.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2215" y="-229"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -217,7 +208,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="DAO.XMLParametreDAO" project="BatailleNavale" 
+  <class id="24" language="java" name="DAO.XMLParametreDAO" project="BatailleNavale" 
     file="/BatailleNavale/src/DAO/XMLParametreDAO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="574" y="46"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -226,7 +217,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="DAO.XMLPlateauDAO" project="BatailleNavale" 
+  <class id="25" language="java" name="DAO.XMLPlateauDAO" project="BatailleNavale" 
     file="/BatailleNavale/src/DAO/XMLPlateauDAO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="761" y="46"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -235,7 +226,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="27" language="java" name="DAO.FactoryTypeDAO" project="BatailleNavale" 
+  <enumeration id="26" language="java" name="DAO.FactoryTypeDAO" project="BatailleNavale" 
     file="/BatailleNavale/src/DAO/FactoryTypeDAO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="199" y="-140"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -244,7 +235,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="28" language="java" name="DAO.AbstractDAOFactory" project="BatailleNavale" 
+  <class id="27" language="java" name="DAO.AbstractDAOFactory" project="BatailleNavale" 
     file="/BatailleNavale/src/DAO/AbstractDAOFactory.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="502" y="-122"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -253,7 +244,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="29" language="java" name="DAO.DAO" project="BatailleNavale" file="/BatailleNavale/src/DAO/DAO.java" 
+  <class id="28" language="java" name="DAO.DAO" project="BatailleNavale" file="/BatailleNavale/src/DAO/DAO.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="761" y="-131"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -262,7 +253,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="30" language="java" name="DAO.XMLEpoqueDAO" project="BatailleNavale" 
+  <class id="29" language="java" name="DAO.XMLEpoqueDAO" project="BatailleNavale" 
     file="/BatailleNavale/src/DAO/XMLEpoqueDAO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="942" y="46"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -271,7 +262,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="31" language="java" name="DAO.XMLDAOFactory" project="BatailleNavale" 
+  <class id="30" language="java" name="DAO.XMLDAOFactory" project="BatailleNavale" 
     file="/BatailleNavale/src/DAO/XMLDAOFactory.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="383" y="46"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -280,7 +271,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="32" language="java" name="Modele.Observable" project="BatailleNavale" 
+  <class id="31" language="java" name="Modele.Observable" project="BatailleNavale" 
     file="/BatailleNavale/src/Modele/Observable.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="83" width="102" x="1143" y="-114"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -289,7 +280,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="33" language="java" name="Vue.Observer" project="BatailleNavale" 
+  <interface id="32" language="java" name="Vue.Observer" project="BatailleNavale" 
     file="/BatailleNavale/src/Vue/Observer.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="65" width="114" x="1843" y="-98"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -298,225 +289,271 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <association id="34">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="35" name="bataille"/>      
-      <multiplicity id="36" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="37">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="15"/>  
-  </realization>  
-  <realization id="38">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="15"/>  
-  </realization>  
-  <association id="39">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="40" name="epoque"/>      
-      <multiplicity id="41" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="42">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <association id="43">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="44" name="emplacement"/>      
-      <multiplicity id="45" minimum="0" maximum="2147483647"/>    
+  <association id="33">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="34" name="IA">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="35" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="46">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="47" name="IA"/>      
-      <multiplicity id="48" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="49">    
-    <end type="SOURCE" refId="31"/>    
+  <generalization id="36">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <generalization id="37">    
+    <end type="SOURCE" refId="29"/>    
     <end type="TARGET" refId="28"/>  
   </generalization>  
-  <association id="50">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="51" name="currentTactique"/>      
-      <multiplicity id="52" minimum="0" maximum="1"/>    
+  <association id="38">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="39" name="param">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="40" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="53">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="54" name="param"/>      
-      <multiplicity id="55" minimum="0" maximum="1"/>    
+  <realization id="41">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <realization id="42">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="32"/>  
+  </realization>  
+  <association id="43">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="44" name="tactique">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="45" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="56">    
-    <bendpoint x="1286" y="518"/>    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="57" name="joueur"/>      
-      <multiplicity id="58" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="59">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <generalization id="60">    
-    <end type="SOURCE" refId="30"/>    
-    <end type="TARGET" refId="29"/>  
-  </generalization>  
-  <association id="61">    
-    <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="62" name="cm"/>      
-      <multiplicity id="63" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="24" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="64">    
-    <end type="SOURCE" refId="26"/>    
-    <end type="TARGET" refId="29"/>  
-  </generalization>  
-  <generalization id="65">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <association id="66">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="67" name="tactique"/>      
-      <multiplicity id="68" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="69">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="70" name="partie"/>      
-      <multiplicity id="71" minimum="0" maximum="1"/>    
+  <association id="46">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="47" name="bataille">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="48" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="72">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="33"/>  
-  </realization>  
-  <generalization id="73">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="32"/>  
-  </generalization>  
-  <association id="74">    
+  <association id="49">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="75" name="cj"/>      
-      <multiplicity id="76" minimum="0" maximum="1"/>    
+      <attribute id="50" name="co">        
+        <position height="19" width="21" x="1774" y="-166"/>      
+      </attribute>      
+      <multiplicity id="51" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="22" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="77">    
-    <end type="SOURCE" refId="5"/>    
+  <association id="52">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="53" name="fenetre">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="54" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="55">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="56">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="57" name="partie">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="58" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="59">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="28"/>  
+  </generalization>  
+  <association id="60">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="61" name="currentTactique">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="62" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="63">    
+    <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="3"/>  
   </realization>  
-  <association id="78">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="79" name="bateauJoueur"/>      
-      <multiplicity id="80" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="81">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="82" name="partie"/>      
-      <multiplicity id="83" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="84">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="21"/>  
-  </nesting>  
-  <realization id="85">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="33"/>  
+  <realization id="64">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="32"/>  
   </realization>  
-  <association id="86">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="87" name="currentEpoque"/>      
-      <multiplicity id="88" minimum="0" maximum="1"/>    
+  <association id="65">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="66" name="epoque">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="67" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="89">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="90" name="menu"/>      
-      <multiplicity id="91" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="92">    
-    <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="93" name="fenetre"/>      
-      <multiplicity id="94" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="95">    
+  <association id="68">    
     <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="96" name="fabrique"/>      
-      <multiplicity id="97" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="98">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="29"/>  
-  </generalization>  
-  <realization id="99">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="33"/>  
-  </realization>  
-  <realization id="100">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="33"/>  
-  </realization>  
-  <association id="101">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="102" name="fenetre"/>      
-      <multiplicity id="103" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="104">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="105" name="co">        
-        <position height="19" width="21" x="1774" y="-166"/>      
+      <attribute id="69" name="cj">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="106" minimum="0" maximum="1"/>    
+      <multiplicity id="70" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="71">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="72" name="fenetre">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="73" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="74">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="75" name="cm">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="76" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="23" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="77">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <realization id="78">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="32"/>  
+  </realization>  
+  <association id="79">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="80" name="partie">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="81" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="82">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="32"/>  
+  </realization>  
+  <association id="83">    
+    <bendpoint x="1286" y="518"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="84" name="joueur">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="85" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="86">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="87" name="fabrique">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="88" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="89">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="28"/>  
+  </generalization>  
+  <association id="90">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="91" name="menu">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="92" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="93">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <generalization id="94">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="95">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="96" name="currentEpoque">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="97" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="98">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="20"/>  
+  </nesting>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

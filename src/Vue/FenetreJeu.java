@@ -5,7 +5,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import Controlleur.ControllerMenu;
+import Controlleur.ControllerFenetre;
 import DAO.AbstractDAOFactory;
 import DAO.DAO;
 import Modele.Parametre;
@@ -24,7 +24,7 @@ public class FenetreJeu implements Observer {
 		window.setResizable(false);
 		window.pack();
 		window.setVisible(true);
-		ControllerMenu controller = new ControllerMenu();
+		ControllerFenetre controller = new ControllerFenetre();
 		
 		JMenuBar menuBar = new JMenuBar();
 		JMenu jmenu = new JMenu("Jeu");

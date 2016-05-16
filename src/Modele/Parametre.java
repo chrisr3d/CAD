@@ -11,13 +11,13 @@ public class Parametre {
 	private final int largeurPlateau;
 	private final int hauteurPlateau;
 	boolean automatique;
-	Epoque epoque; // Non definitif
+	String epoque; // Non definitif
 	
 	public Parametre(){
 		
 	}
 	
-	public Parametre(Epoque epoque, int hauteurPlateau, int largeurPlateau, TactiqueIAStrategie tactique, String placement){
+	public Parametre(String epoque, int hauteurPlateau, int largeurPlateau, String tactique, String placement){
 		
 	}
 	
