@@ -25,7 +25,6 @@ public class EpoqueActuelle implements Epoque{
 		return unique;
 	}
 	
-	@Override
 	public ArrayList<Bateau> setEpoque(ArrayList<Bateau> listBateau) {
 		// TODO Auto-generated method stub
 		for (Bateau bateau : listBateau) {
