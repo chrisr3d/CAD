@@ -19,11 +19,10 @@ public class Partie extends Observable{
 	
 	Plateau IA;
 	
-	FabriqueBateau fabrique; // Permet la crÃ©ation des bateau
-	
 	public Partie(Parametre param){
 		
 	}
+	
 	public void Jouer(){
 		
 	}
@@ -36,9 +35,7 @@ public class Partie extends Observable{
 		try{
     		
     		File file = new File("save.xml");
-    		if(!file.delete()){
-    			System.out.println("on a pas réussi a supprimer le fichier");
-    		}
+    		file.delete();
     	}catch(Exception e){
     		e.printStackTrace();
     	}

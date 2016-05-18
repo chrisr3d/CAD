@@ -1,20 +1,19 @@
-import DAO.XMLEpoqueDAO;
-import DAO.XMLStrategieDAO;
+import DAO.XMLParametreDAO;
+import Modele.Parametre;
 import Modele.Partie;
-import Modele.Epoque.Epoque;
-import Modele.Tactique.TactiqueCroix;
-import Modele.Tactique.TactiqueIAStrategie;
 
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	
-		XMLStrategieDAO s = XMLStrategieDAO.getInstance();
-		XMLEpoqueDAO e = XMLEpoqueDAO.getInstance();
-		Partie pp = new Partie(null);
+		XMLParametreDAO para = XMLParametreDAO.getInstance();
+		Parametre p = new Parametre(6, 6, true);
+		Partie pp = new Partie(p);
 		pp.SauvegarderPartie();
-		s.save(new TactiqueCroix());
+		para.save(p);
+		Parametre p2 = para.find();
+		System.out.println(p2.getHauteurPlateau() + p2.getLargeurPlateau() );
 		//e.save("Futur");
 		//Epoque ep = e.find();
 		//TactiqueIAStrategie p = s.find();

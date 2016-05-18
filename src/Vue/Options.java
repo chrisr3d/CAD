@@ -80,7 +80,7 @@ public class Options  {
 		 		Double d = (Double)spinner.getValue();
 		 		Integer i = d.intValue();
 		 		System.out.println(spinner.getValue());
-		 		Parametre p = new Parametre((int)i,(int) i, true, "");
+		 		Parametre p = new Parametre((int)i,(int) i, true);
 		 		frame.setVisible(false);
 				frame.setEnabled(false);
 				VueJeu vj = new VueJeu(p);

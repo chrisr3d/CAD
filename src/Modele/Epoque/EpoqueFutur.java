@@ -79,22 +79,22 @@ public class EpoqueFutur implements Epoque{
 			}
 		}else{
 			switch (b.getTaille()) {
-			case 1:
+			case 2:
 				img = new File("/images/futur/Chas-V.png");
 				in =  ImageIO.read(img);
 				b.setTexture(in);
 				break;
-			case 2:
+			case 3:
 				img = new File("/images/futur/Croi-V.png");
 				in =  ImageIO.read(img);
 				b.setTexture(in);
 				break;
-			case 3:
+			case 4:
 				img = new File("/images/futur/Cuir-V.png");
 				in =  ImageIO.read(img);
 				b.setTexture(in);
 				break;
-			case 4:
+			case 5:
 				img = new File("/images/futur/Mere-V.png");
 				in =  ImageIO.read(img);
 				b.setTexture(in);
@@ -115,16 +115,16 @@ public class EpoqueFutur implements Epoque{
 	private void ajoutPuissanceEpoque(Bateau b) {
 		// TODO Auto-generated method stub
 		switch (b.getTaille()) {
-		case 1:
+		case 2:
 			b.setPuissance(6);
 			break;
-		case 2:
+		case 3:
 			b.setPuissance(8);
 			break;
-		case 3:
+		case 4:
 			b.setPuissance(10);
 			break;
-		case 4:
+		case 5:
 			b.setPuissance(12);
 			break;
 		default:
@@ -140,16 +140,16 @@ public class EpoqueFutur implements Epoque{
 	 */
 	private void ajoutNomEpoque(Bateau b) {
 		switch (b.getTaille()) {
-		case 1:
+		case 2:
 			b.setNom("Chasseur");
 			break;
-		case 2:
+		case 3:
 			b.setNom("Croiseur");
 			break;
-		case 3:
+		case 4:
 			b.setNom("Cuirassé");
 			break;
-		case 4:
+		case 5:
 			b.setNom("Vaisseau-mère");
 			break;
 		default:
