@@ -58,9 +58,9 @@ public class VueJeu extends JFrame implements Observer{
 		getContentPane().add(contentPane);
 		//informations.setBounds(informations.getX(), informations.getY(), 100, 100);
 		//informations.setMaximumSize(new Dimension(1100, 100));
-		getContentPane().add(contentPane2);
-		getContentPane().add(informations);
 		
+		getContentPane().add(informations);
+		getContentPane().add(contentPane2);
 		Grille = new JTextField[p.getHauteurPlateau()+1][p.getLargeurPlateau()+1];
 		Grille2 = new JTextField[p.getLargeurPlateau()+1][p.getLargeurPlateau()+1];
 		
