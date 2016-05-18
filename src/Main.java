@@ -1,4 +1,5 @@
 import DAO.XMLParametreDAO;
+import Modele.Modes;
 import Modele.Parametre;
 import Modele.Partie;
 
@@ -8,7 +9,7 @@ public class Main {
 		// TODO Auto-generated method stub
 	
 		XMLParametreDAO para = XMLParametreDAO.getInstance();
-		Parametre p = new Parametre(6, 6, true);
+		Parametre p = new Parametre(6, 6, true,Modes.Mosaique);
 		Partie pp = new Partie(p);
 		pp.SauvegarderPartie();
 		para.save(p);

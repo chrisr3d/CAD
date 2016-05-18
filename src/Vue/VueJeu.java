@@ -3,10 +3,14 @@ package Vue;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 
+import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SpringLayout;
 import javax.swing.border.EmptyBorder;
 
 import Modele.Parametre;
@@ -35,26 +39,28 @@ public class VueJeu extends JFrame implements Observer{
 	 */
 	public VueJeu(Parametre p) {
 		
-		setLayout(new BorderLayout());
+		getContentPane().setLayout(new GridLayout(3,1));
+		
 		contentPane = new JPanel();
 		contentPane2 = new JPanel();
 		//panelInfo = new JPanel();
 		informations = new JTextField();
-		informations.setEditable(false);
 		informations.setText("J'affiche les informations bitches");
 		
 		contentPane.setLayout(new GridLayout(p.getHauteurPlateau()+1,p.getHauteurPlateau()+1));
 		contentPane2.setLayout(new GridLayout(p.getHauteurPlateau()+1,p.getHauteurPlateau()+1));
 		//panelInfo.add(informations);
 		
-		
+		this.setTitle("Jeu");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, (p.getHauteurPlateau()+1)*100, (p.getHauteurPlateau()+1)*100);
-		this.add(contentPane, BorderLayout.NORTH);
-		informations.setBounds(informations.getX(), informations.getY(), 100, 100);
-		this.add(informations, BorderLayout.CENTER);
-		this.add(contentPane2, BorderLayout.SOUTH);
+		getContentPane().add(contentPane);
+		//informations.setBounds(informations.getX(), informations.getY(), 100, 100);
+		//informations.setMaximumSize(new Dimension(1100, 100));
+		getContentPane().add(contentPane2);
+		getContentPane().add(informations);
+		
 		Grille = new JTextField[p.getHauteurPlateau()+1][p.getLargeurPlateau()+1];
 		Grille2 = new JTextField[p.getLargeurPlateau()+1][p.getLargeurPlateau()+1];
 		

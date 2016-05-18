@@ -39,7 +39,7 @@ public class Plateau {
 	public void placerAleatoireBateau(Bateau b) {
 
 	}
-
+	
 	public void ajouterBateau(Bateau b) {
 
 	}
