@@ -1,72 +1,83 @@
 package Vue;
 
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.EventQueue;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JEditorPane;
+import javax.swing.JTextField;
 
-import Controlleur.ControllerFenetre;
+public class Menu {
 
-public class Menu extends JPanel {
-	
-	private ControllerFenetre cm;
-	private FenetreJeu fenetre;
-	
-	public Menu(FenetreJeu fenetre){
-		this.fenetre = fenetre;
-		construireMenu();
-	}
-	
-	private void construireMenu(){
-		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.gridx = constraints.gridy = 0;
-		constraints.insets = new Insets(25, 25, 25, 25);
-		constraints.fill = GridBagConstraints.BOTH;
+	private JFrame frame;
 
-		JLabel jl1 = new JLabel("Menu principal");
-		jl1.setHorizontalAlignment(JLabel.CENTER);
-		add(jl1, constraints);
-
-		JLabel jl2 = new JLabel("Bataille navale");
-		jl2.setHorizontalAlignment(JLabel.CENTER);
-		constraints.gridy++;
-		add(jl2, constraints);
-
-		JButton nvo = new JButton("Nouvelle partie");
-		nvo.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				fenetre.creerNouvellePartie();
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Menu window = new Menu();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
-		constraints.gridy++;
-		add(nvo, constraints);
-
-		JButton charger = new JButton("Charger une partie");
-		charger.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-                            fenetre.chargerPartie();
-                        }
-		});
-		constraints.gridy++;
-		add(charger, constraints);
-
-		JButton quitter = new JButton("Quitter");
-		quitter.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				fenetre.quitter();
-			}
-		});
-		constraints.gridy++;
-		add(quitter, constraints);
 	}
 
+	/**
+	 * Create the application.
+	 */
+	public Menu() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		
+		JButton btnNouvellePartie = new JButton("Nouvelle Partie");
+		btnNouvellePartie.setBounds(141, 6, 183, 62);
+		btnNouvellePartie.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frame.setVisible(false);
+				frame.setEnabled(false);
+				Option j = new Option();
+				j.getFrame().setVisible(true);
+				
+			}
+		});
+		panel.setLayout(null);
+		panel.add(btnNouvellePartie);
+		
+		JButton btnChargerPartie = new JButton("Charger Partie");
+		btnChargerPartie.setBounds(141, 100, 183, 62);
+		panel.add(btnChargerPartie);
+		
+		JButton btnQuitter = new JButton("Quitter");
+		btnQuitter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		btnQuitter.setBounds(141, 193, 183, 62);
+		panel.add(btnQuitter);
+	}
 }

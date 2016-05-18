@@ -19,6 +19,10 @@ public class Bateau {
 	protected BufferedImage texture;
 	
 	boolean horizontal;
+	
+	public Bateau(){
+		
+	}
 
 	public boolean contientCase(Case c){
 		boolean present = false;

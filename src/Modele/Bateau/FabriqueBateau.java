@@ -8,7 +8,7 @@ public class FabriqueBateau {
 	
 	public Bateau getBateau(int taille){
 		// Création des bateau avec le decorateur
-		return null;
+		Bateau b = new Bateau();
 		
 			
 		}
