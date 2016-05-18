@@ -10,4 +10,6 @@ public interface Epoque {
 
 	public ArrayList<Bateau> setEpoque(ArrayList<Bateau> listBateau);
 	
+	public String getNomEpoque();
+	
 }

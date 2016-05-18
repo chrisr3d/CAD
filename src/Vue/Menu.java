@@ -5,14 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JEditorPane;
-import javax.swing.JTextField;
 
 public class Menu {
 
@@ -59,7 +54,7 @@ public class Menu {
 				
 				frame.setVisible(false);
 				frame.setEnabled(false);
-				Option j = new Option();
+				Options j = new Options();
 				j.getFrame().setVisible(true);
 				
 			}

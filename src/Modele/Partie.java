@@ -36,10 +36,8 @@ public class Partie extends Observable{
 		try{
     		
     		File file = new File("save.xml");
-    		if(file.delete()){
-    			System.out.println(file.getName() + " is deleted!");
-    		}else{
-    			System.out.println("Delete operation is failed.");
+    		if(!file.delete()){
+    			System.out.println("on a pas réussi a supprimer le fichier");
     		}
     	}catch(Exception e){
     		e.printStackTrace();

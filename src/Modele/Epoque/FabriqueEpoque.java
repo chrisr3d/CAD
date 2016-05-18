@@ -6,15 +6,13 @@ import Modele.Bateau.Bateau;
 
 public class FabriqueEpoque {
 
-	private static Epoque currentEpoque = new EpoqueFutur();
+	private static Epoque currentEpoque=EpoqueFutur.getInstance();
 
 	public static void choisirEpoqueFutur(ArrayList<Bateau> listBateau){
-		currentEpoque = EpoqueFutur.getInstance();
 		currentEpoque.setEpoque(listBateau);
 	}
 	
 	public static void choisirEpoqueActuelle(ArrayList<Bateau> listBateau) {
-		currentEpoque = EpoqueActuelle.getInstance();
 		currentEpoque.setEpoque(listBateau);
 	}
 
@@ -26,8 +24,13 @@ public class FabriqueEpoque {
 	 * Cette méthode sera appelée lors de l'appel de la méthode find pour le dao
 	 * Elle permet de fixer l'époque que nous aviosn sauvegarder
 	 */
-	public static void setEpoque(Epoque epo){
-		currentEpoque = epo;
+	
+	public static void setEpoqueActuelle(){
+		currentEpoque = EpoqueActuelle.getInstance();
+	}
+	
+	public static void setEpoqueFutur(){
+		currentEpoque = EpoqueFutur.getInstance();
 	}
 	
 }

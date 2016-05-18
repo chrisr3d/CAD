@@ -1,10 +1,8 @@
 package DAO;
 
-import java.io.File;
+import Modele.Partie;
 
-import Modele.Parametre;
-
-public class XMLPartieDAO extends DAO<Modele.Parametre> {
+public class XMLPartieDAO extends DAO<Partie> {
 
 	private volatile static XMLPartieDAO unique = null;
 
@@ -20,13 +18,13 @@ public class XMLPartieDAO extends DAO<Modele.Parametre> {
 	}
 	
 	@Override
-	public Parametre find() {
+	public Partie find() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void save(String contenu) {
+	public void save(Partie contenu) {
 		// TODO Auto-generated method stub
 		
 	}

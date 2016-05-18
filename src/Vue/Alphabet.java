@@ -1,4 +1,4 @@
-package testVue;
+package Vue;
 
 public class Alphabet {
 	

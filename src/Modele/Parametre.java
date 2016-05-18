@@ -1,38 +1,38 @@
 package Modele;
 
-import Modele.Epoque.Epoque;
-import Modele.Tactique.TactiqueIAStrategie;
-
 public class Parametre {
 
-	private final String placement;
-	private final int largeurPlateau;
-	private final int hauteurPlateau;
-	boolean automatique;
+	private static int largeurPlateau;
+	private static int hauteurPlateau;
+	private boolean automatique;
 	
-	//A faire
-	public Parametre(){
-		this.placement ="";
-		this.largeurPlateau = 0;
-		this.hauteurPlateau = 0;
-		automatique = false;
+	public Parametre(int i, int i2, boolean b, String string) {
+		// TODO Auto-generated constructor stub
+	}
+	public static int getLargeurPlateau() {
+		return largeurPlateau;
+	}
+	public void setLargeurPlateau(int largeurPlateau) {
+		this.largeurPlateau = largeurPlateau;
+	}
+	public static int getHauteurPlateau() {
+		return hauteurPlateau;
+	}
+	public void setHauteurPlateau(int hauteurPlateau) {
+		this.hauteurPlateau = hauteurPlateau;
 	}
 	
-	//A faire
-	public Parametre(String epoque, int hauteurPlateau, int largeurPlateau, String tactique, String placement){
-		this.placement ="";
-		this.largeurPlateau = 0;
-		this.hauteurPlateau = 0;
-		automatique = false;
+	public boolean isAutomatique() {
+		return automatique;
 	}
-	
-	public void sauvegardeParametre(){
+	public void setAutomatique(boolean automatique) {
+		this.automatique = automatique;
+	}
+	public void sauvegardeParametre() {
+		// TODO Auto-generated method stub
 		
 	}
 	
-	public String getPlacement() {
-		return placement;
-	}
 	
 	
 }

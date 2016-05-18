@@ -158,4 +158,9 @@ public class EpoqueActuelle implements Epoque{
 		}
 	}
 
+	public String getNomEpoque() {
+		// TODO Auto-generated method stub
+		return "Actuelle";
+	}
+
 }

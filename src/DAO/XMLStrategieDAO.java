@@ -52,14 +52,14 @@ public class XMLStrategieDAO extends DAO<TactiqueIAStrategie>{
 	}
 
 	@Override
-	public void save(String contenu) {
+	public void save(TactiqueIAStrategie contenu) {
 		// TODO Auto-generated method stub
 		BufferedWriter fichier;
 		try {
 			fichier = new BufferedWriter(new FileWriter("save.xml",true));
 			fichier.write("<Strategie>");
 			fichier.newLine();
-			fichier.write(contenu);
+			fichier.write(contenu.getNom());
 			fichier.newLine();
 			fichier.write("</Strategie>");
 			fichier.newLine();

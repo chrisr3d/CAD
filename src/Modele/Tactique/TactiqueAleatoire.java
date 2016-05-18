@@ -4,12 +4,13 @@ import java.util.ArrayList;
 
 import Modele.Case;
 import Modele.CaseBateau;
+import Modele.Parametre;
 import Modele.Plateau;
 import Modele.Bateau.Bateau;
 
 public class TactiqueAleatoire implements TactiqueIAStrategie {
 
-	public static String nom = "Aleatoire";
+	private static String nom = "Aleatoire";
 	// volatile pour autoriser l'initialisation � null !
 	private volatile static TactiqueAleatoire unique = null;
 
@@ -43,8 +44,8 @@ public class TactiqueAleatoire implements TactiqueIAStrategie {
 		// port�e
 		for (Bateau bat : plat.getBateauIA()) {
 			for (CaseBateau cb : bat.getEmplacement()) {
-				for (int i = plat.getLargeur() / 2; i < plat.getLargeur(); i++) {
-					for (int j = plat.getHauteur() / 2; j < plat.getHauteur(); j++) {
+				for (int i = Parametre.getLargeurPlateau() / 2; i < Parametre.getLargeurPlateau(); i++) {
+					for (int j = Parametre.getHauteurPlateau() / 2; j < Parametre.getHauteurPlateau(); j++) {
 						if (Math.abs(cb.getX() - plat.getCarte()[i][j].getX())
 								+ Math.abs(cb.getY()
 										- plat.getCarte()[i][j].getY()) <= bat
@@ -64,6 +65,11 @@ public class TactiqueAleatoire implements TactiqueIAStrategie {
 		tir = portee.get(indiceAuHasard);
 
 		return tir;
+	}
+	
+	public String getNom() {
+		// TODO Auto-generated method stub
+		return this.nom;
 	}
 
 }

@@ -158,6 +158,11 @@ public class EpoqueFutur implements Epoque{
 		}
 	}
 
+	public String getNomEpoque() {
+		// TODO Auto-generated method stub
+		return "Futur";
+	}
+
 	
 	
 }

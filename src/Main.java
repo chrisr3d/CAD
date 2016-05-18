@@ -14,10 +14,10 @@ public class Main {
 		XMLEpoqueDAO e = XMLEpoqueDAO.getInstance();
 		Partie pp = new Partie(null);
 		pp.SauvegarderPartie();
-		s.save("Croix");
-		e.save("Futur");
-		Epoque ep = e.find();
-		TactiqueIAStrategie p = s.find();
+		s.save(new TactiqueCroix());
+		//e.save("Futur");
+		//Epoque ep = e.find();
+		//TactiqueIAStrategie p = s.find();
 		
 	}
 

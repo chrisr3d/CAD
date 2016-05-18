@@ -5,6 +5,7 @@ import Modele.Plateau;
 
 public interface TactiqueIAStrategie {
 
+	public String getNom();
 	public Case appliquerTactique(Plateau plat);
 	
 }

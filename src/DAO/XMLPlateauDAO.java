@@ -27,7 +27,7 @@ public class XMLPlateauDAO extends DAO<Plateau>{
 	}
 
 	@Override
-	public void save(String contenu) {
+	public void save(Plateau contenu) {
 		// TODO Auto-generated method stub
 		
 	}

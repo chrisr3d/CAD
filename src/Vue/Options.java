@@ -1,100 +1,116 @@
 package Vue;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
-import Controlleur.ControllerOptions;
 import Modele.Parametre;
-import Modele.Partie;
-import Modele.Epoque.FabriqueEpoque;
 
+import javax.swing.JRadioButton;
+import javax.swing.JLabel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
+public class Options  {
+	private JFrame frame;
 
-public class Options extends JPanel implements Observer{
-	private FenetreJeu fenetre;
-	private Partie partie;
-	private JFrame frame = new JFrame("Options");
-	private JRadioButton placementAlea, placementManu;
-	private JSpinner largeurGrille, hauteurGrille;
-	private JButton valider;
-	private JComboBox<String> epoque, strategie;
-	private Parametre p;
-	private ControllerOptions co;
+	private JPanel contentPane;
+
+	JRadioButton rdbtnManuel;
+	JRadioButton rdbtnAutomatique;
+	JLabel lblModeDePlacement;
+	JSpinner spinner;
+	JLabel lblTailleDeLa;
+	JButton btnValider;
+	JComboBox comboBox;
+	JComboBox comboBox_1;
+	JLabel lblEpoque;
+	JLabel lblStrategie;
+	/**
+	 * Create the frame.
+	 */
 	
-	public Options(FenetreJeu fenetre, ControllerOptions co) {
-		this.fenetre=fenetre;
-		this.co=co;
-		construireOptions();
-		MaJOptions(new Parametre());
-	}
 	
-	public Options(FenetreJeu fenetre, Partie partie, ControllerOptions co){
-		this.fenetre=fenetre;
-		this.partie=partie;
-		this.co=co;
-		construireOptions();
-		MaJOptions(partie.getParametres());
-	}
-	
-	private void construireOptions(){
-		boolean protect = (partie == null);
+	public Options() {
+		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JPanel contentPane = (JPanel) frame.getContentPane();
-        
-        JLabel tailleLabel = new JLabel("Taille de la Grille", SwingConstants.CENTER);
-        contentPane.add(tailleLabel);
-        largeurGrille = new JSpinner(new SpinnerNumberModel(10,6,20,1));
-        largeurGrille.setEnabled(protect);
-        contentPane.add(largeurGrille);
-        JLabel x = new JLabel("X", SwingConstants.CENTER);
-        contentPane.add(x);
-        hauteurGrille = new JSpinner(new SpinnerNumberModel(10,6,20,1));
-        hauteurGrille.setEnabled(protect);
-        contentPane.add(hauteurGrille);
-        
-        JLabel stratLabel = new JLabel("Stratégie de l'ordinateur",SwingConstants.CENTER);
-        contentPane.add(stratLabel);
-		strategie = new JComboBox<>();
-		//Il faut importer les stratégies pour les ajouter dans la ComboBox
-		contentPane.add(strategie);
+		frame.setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		frame.setContentPane(contentPane);
+		contentPane.setLayout(null);
+		ButtonGroup bg = new ButtonGroup();
+		 rdbtnManuel = new JRadioButton("Manuel");
+		rdbtnManuel.setBounds(172, 34, 77, 23);
+		contentPane.add(rdbtnManuel);
 		
-		JLabel epoqueLabel = new JLabel("Époque", SwingConstants.CENTER);
-		contentPane.add(epoqueLabel);
-		epoque = new JComboBox<>();
-		//Pareil que pour les stratégies
-		epoque.setEnabled(protect);
-		contentPane.add(epoque);
+		 rdbtnAutomatique = new JRadioButton("Automatique");
+		rdbtnAutomatique.setBounds(261, 34, 113, 23);
+		contentPane.add(rdbtnAutomatique);
+		bg.add(rdbtnAutomatique);
+		bg.add(rdbtnManuel);
 		
-		JLabel placementLabel = new JLabel("Placement des bateaux", SwingConstants.CENTER);
-		contentPane.add(placementLabel);
-		placementAlea = new JRadioButton("Aléatoire");
-		placementAlea.setEnabled(protect);
-		contentPane.add(placementAlea);
-		placementManu = new JRadioButton("Manuel");
-		placementManu.setEnabled(protect);
-		contentPane.add(placementManu);
 		
-		valider = new JButton("Valider");
-		contentPane.add(valider);
-		valider.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				co.pressBoutonValider(largeurGrille, hauteurGrille, strategie,epoque,placementAlea,placementManu);
-			}
-		});
+		 lblModeDePlacement = new JLabel("Mode de placement :");
+		lblModeDePlacement.setBounds(17, 38, 143, 16);
+		contentPane.add(lblModeDePlacement);
+		SpinnerNumberModel model1 = new SpinnerNumberModel(5.0, 5.0, 10.0, 1.0);
+		 spinner = new JSpinner(model1);
+		spinner.setBounds(231, 84, 58, 26);
+		
+		
+		contentPane.add(spinner);
+		
+		 lblTailleDeLa = new JLabel("Taille de la grille :");
+		lblTailleDeLa.setBounds(17, 89, 129, 16);
+		contentPane.add(lblTailleDeLa);
+		
+		 btnValider = new JButton("Valider");
+		 btnValider.addActionListener(new ActionListener() {
+		 	public void actionPerformed(ActionEvent e) {
+		 		Double d = (Double)spinner.getValue();
+		 		Integer i = d.intValue();
+		 		System.out.println(spinner.getValue());
+		 		Parametre p = new Parametre((int)i,(int) i, true, "");
+		 		frame.setVisible(false);
+				frame.setEnabled(false);
+				VueJeu vj = new VueJeu(p);
+				vj.setVisible(true);
+		 		
+		 	}
+		 });
+		btnValider.setBounds(172, 228, 117, 29);
+		contentPane.add(btnValider);
+		
+		 comboBox = new JComboBox();
+		comboBox.setBounds(237, 129, 52, 27);
+		contentPane.add(comboBox);
+		
+		 comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(237, 176, 52, 27);
+		contentPane.add(comboBox_1);
+		
+		 lblEpoque = new JLabel("Epoque :");
+		lblEpoque.setBounds(17, 140, 77, 16);
+		contentPane.add(lblEpoque);
+		
+		 lblStrategie = new JLabel("Strategie :");
+		lblStrategie.setBounds(17, 187, 96, 16);
+		contentPane.add(lblStrategie);
 	}
-	
-	public void MaJOptions(Parametre parametre){
-		if(parametre.getPlacement().equalsIgnoreCase("random"))
-			placementAlea.setSelected(true);
-		else
-			placementManu.setSelected(true);
-		/*epoque.setSelectedItem(FabriqueEpoque.getEpoque(parametre.getEpoque()).getNom());
-		strategie.setSelectedItem(TactiqueIAStrategie.getStrategie(parametre.getTactique()).getNom());
-		largeurGrille.setValue(parametre.getLargeurGrille());
-		hauteurGrille.setValue(parametre.getHauteurGrille());*/
+	public JFrame getFrame() {
+		return frame;
 	}
-	
-	
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
 }

@@ -43,20 +43,20 @@ public class VueJeu extends JFrame implements Observer{
 		informations.setEditable(false);
 		informations.setText("J'affiche les informations bitches");
 		
-		contentPane.setLayout(new GridLayout(p.getHauteur()+1,p.getHauteur()+1));
-		contentPane2.setLayout(new GridLayout(p.getHauteur()+1,p.getHauteur()+1));
+		contentPane.setLayout(new GridLayout(p.getHauteurPlateau()+1,p.getHauteurPlateau()+1));
+		contentPane2.setLayout(new GridLayout(p.getHauteurPlateau()+1,p.getHauteurPlateau()+1));
 		//panelInfo.add(informations);
 		
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, (p.getHauteur()+1)*100, (p.getHauteur()+1)*100);
+		setBounds(100, 100, (p.getHauteurPlateau()+1)*100, (p.getHauteurPlateau()+1)*100);
 		this.add(contentPane, BorderLayout.NORTH);
 		informations.setBounds(informations.getX(), informations.getY(), 100, 100);
 		this.add(informations, BorderLayout.CENTER);
 		this.add(contentPane2, BorderLayout.SOUTH);
-		Grille = new JTextField[p.getHauteur()+1][p.getLargeur()+1];
-		Grille2 = new JTextField[p.getLargeur()+1][p.getLargeur()+1];
+		Grille = new JTextField[p.getHauteurPlateau()+1][p.getLargeurPlateau()+1];
+		Grille2 = new JTextField[p.getLargeurPlateau()+1][p.getLargeurPlateau()+1];
 		
 		//Création de la grille de jeu
 		
@@ -119,7 +119,6 @@ public class VueJeu extends JFrame implements Observer{
 	}
 
 
-	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		

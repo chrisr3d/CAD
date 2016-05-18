@@ -10,6 +10,7 @@ import java.io.IOException;
 import Modele.Epoque.Epoque;
 import Modele.Epoque.EpoqueActuelle;
 import Modele.Epoque.EpoqueFutur;
+import Modele.Epoque.FabriqueEpoque;
 
 public class XMLEpoqueDAO extends DAO<Epoque>{
 
@@ -57,14 +58,14 @@ public class XMLEpoqueDAO extends DAO<Epoque>{
 	}
 
 	@Override
-	public void save(String contenu) {
+	public void save(Epoque contenu) {
 		// TODO Auto-generated method stub
 		BufferedWriter fichier;
 		try {
 			fichier = new BufferedWriter(new FileWriter("save.xml",true));
 			fichier.write("<Epoque>");
 			fichier.newLine();
-			fichier.write(contenu);
+			fichier.write(contenu.getNomEpoque());
 			fichier.newLine();
 			fichier.write("</Epoque>");
 			fichier.newLine();

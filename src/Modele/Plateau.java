@@ -6,27 +6,15 @@ import Modele.Bateau.Bateau;
 
 public class Plateau{
 	
-	private int largeur;
-	private int hauteur;
 	private Case[][] carte; 
 	ArrayList<Bateau> bateauJoueur;
 	ArrayList<Bateau> bateauIA;
 	
 	public Plateau(int l, int h){
-		this.largeur = l;
-		this.hauteur = h;
 	}
 	
 	public void placerBateau(Bateau b, Case c){
 		
-	}
-
-	public int getLargeur() {
-		return largeur;
-	}
-
-	public void setLargeur(int largeur) {
-		this.largeur = largeur;
 	}
 
 	public Case[][] getCarte() {
@@ -35,14 +23,6 @@ public class Plateau{
 
 	public void setCarte(Case[][] carte) {
 		this.carte = carte;
-	}
-
-	public int getHauteur() {
-		return hauteur;
-	}
-
-	public void setHauteur(int hauteur) {
-		this.hauteur = hauteur;
 	}
 
 	public ArrayList<Bateau> getBateauJoueur() {
