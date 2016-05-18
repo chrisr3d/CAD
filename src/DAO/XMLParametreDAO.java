@@ -28,13 +28,13 @@ public class XMLParametreDAO extends DAO<Parametre>{
 	}
 	
 	/**
-	 * Cette méthode peut retourner null 
-	 * Elle peut également déclencher une EXCEPTION si parametre ne contient pas tout les paramètres nécessaires.
+	 * Cette méthode peut déclencher une EXCEPTION si parametre ne contient pas tout les paramètres nécessaires.
+	 * @throws  
 	 */
 	public Parametre find() {
 		// TODO Auto-generated method stub
 		BufferedReader fichier;
-		Parametre p = null;
+		Parametre p = new Parametre();
 		//Booléen qui va passer a TRUE si le fichier est mal formé et que le parametre ne contient pas tout les attributs nécessaires
 		boolean caMarchePas = false;
 		try {
@@ -42,7 +42,6 @@ public class XMLParametreDAO extends DAO<Parametre>{
 			String ligne;
 			while ((ligne=fichier.readLine())!=null){
 				if(ligne.equals("<Parametre>")){
-					
 					
 					//Largeur
 					ligne=fichier.readLine();
@@ -57,13 +56,32 @@ public class XMLParametreDAO extends DAO<Parametre>{
 					//Hauteur
 					ligne=fichier.readLine();
 					if(ligne.equals("<Hauteur>")){
+						ligne=fichier.readLine();
+						p.setHauteurPlateau(Integer.parseInt(ligne));
+						ligne=fichier.readLine();
+					}else{
+						caMarchePas = true;
+					}
+					
+					//Auto
+					ligne=fichier.readLine();
+					if(ligne.equals("<Auto>")){
+						ligne=fichier.readLine();
+						p.setAutomatique( (ligne=="True") ? true : false);
+						ligne=fichier.readLine();
 					}else{
 						caMarchePas = true;
 					}
 				}
 			}
 			fichier.close();
+			if(caMarchePas){
+				throw( new Exception("La sauvegarde n'est pas récupérable !"));
+			}
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -81,19 +99,21 @@ public class XMLParametreDAO extends DAO<Parametre>{
 			
 				fichier.write("<Largeur>");
 				fichier.newLine();
-				fichier.write(contenu.getLargeurPlateau());
+				fichier.write(Parametre.getLargeurPlateau()+"");
 				fichier.newLine();
 				fichier.write("</Largeur>");
+				fichier.newLine();
 				
 				fichier.write("<Hauteur>");
 				fichier.newLine();
-				fichier.write(contenu.getHauteurPlateau());
+				fichier.write(Parametre.getHauteurPlateau()+"");
 				fichier.newLine();
 				fichier.write("</Hauteur>");
+				fichier.newLine();
 				
 				fichier.write("<Auto>");
 				fichier.newLine();
-				fichier.write(contenu.isAutomatique() ? "true" : "false");
+				fichier.write(contenu.isAutomatique() ? "True" : "False");
 				fichier.newLine();
 				fichier.write("</Auto>");
 				

@@ -6,24 +6,28 @@ public class Parametre {
 	private static int hauteurPlateau;
 	private boolean automatique;
 	private Modes mode;
-	
+
 	public Parametre(int i, int i2, boolean b, Modes m) {
 		this.hauteurPlateau = i;
 		this.largeurPlateau = i2;
 		this.mode = m;
-		
 	}
+	
+	public Parametre() {
+	// TODO Auto-generated constructor stub
+	}
+	
 	public static int getLargeurPlateau() {
 		return largeurPlateau;
 	}
 	public void setLargeurPlateau(int largeurPlateau) {
-		this.largeurPlateau = largeurPlateau;
+		Parametre.largeurPlateau = largeurPlateau;
 	}
 	public static int getHauteurPlateau() {
 		return hauteurPlateau;
 	}
 	public void setHauteurPlateau(int hauteurPlateau) {
-		this.hauteurPlateau = hauteurPlateau;
+		Parametre.hauteurPlateau = hauteurPlateau;
 	}
 	
 	public boolean isAutomatique() {

@@ -31,7 +31,7 @@ public class TactiqueAleatoire implements TactiqueIAStrategie {
 		return unique;
 	}
 
-	public Case appliquerTactique(Plateau plat) {
+	public Case appliquerTactique(Plateau platIA, Plateau joueur) {
 		// TODO Auto-generated method stub
 		// (vï¿½rifier que nous n'avons pas perdu)
 		// vï¿½rifier qu'il reste des bateaux adverse et pour soit
@@ -40,20 +40,17 @@ public class TactiqueAleatoire implements TactiqueIAStrategie {
 		// la case que l'on va retourner
 		Case tir = null;
 		ArrayList<Case> portee = new ArrayList<Case>();
-		// pour chaque bateau, on rï¿½cupï¿½re les cases bateaux pour vï¿½rifier la
+		// pour chaque bateau, on récupére les cases bateaux pour vï¿½rifier la
 		// portï¿½e
-		for (Bateau bat : plat.getBateauIA()) {
+		for (Bateau bat : platIA.getBateau()) {
 			for (CaseBateau cb : bat.getEmplacement()) {
-				for (int i = Parametre.getLargeurPlateau() / 2; i < Parametre.getLargeurPlateau(); i++) {
-					for (int j = Parametre.getHauteurPlateau() / 2; j < Parametre.getHauteurPlateau(); j++) {
-						if (Math.abs(cb.getX() - plat.getCarte()[i][j].getX())
-								+ Math.abs(cb.getY()
-										- plat.getCarte()[i][j].getY()) <= bat
-									.getPuissance()) {
+				for (int i = 0; i < Parametre.getLargeurPlateau()-1; i++) {
+					for (int j = 0; j < Parametre.getHauteurPlateau()-1; j++) {
+						if (Math.abs(cb.getX() - joueur.getCarte()[i][j].getX()) + Math.abs(cb.getY() - joueur.getCarte()[i][j].getY()) + ((Parametre.getHauteurPlateau()-1)-cb.getY())  <= bat.getPuissance()) {
 							// vï¿½rifier qu'on ne les a pas dï¿½jï¿½ ajoutï¿½
-							if (!portee.contains(plat.getCarte()[i][j])
-									&& !plat.getCarte()[i][j].isCibler()) {
-								portee.add(plat.getCarte()[i][j]);
+							if (!portee.contains(joueur.getCarte()[i][j])
+									&& !joueur.getCarte()[i][j].isCibler()) {
+								portee.add(joueur.getCarte()[i][j]);
 							}
 						}
 					}

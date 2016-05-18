@@ -42,7 +42,13 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 		return unique;
 	}
 
-	public Case appliquerTactique(Plateau plat) {
+	public String getNom() {
+		// TODO Auto-generated method stub
+		return this.nom;
+	}
+
+	public Case appliquerTactique(Plateau platIA, Plateau joueur) {
+		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		// (v�rifier que nous n'avons pas perdu)
 		// v�rifier qu'il reste des bateaux adverse et pour soit
@@ -53,18 +59,15 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 		ArrayList<Case> portee = new ArrayList<Case>();
 		// pour chaque bateau, on r�cup�re les cases bateaux pour v�rifier la
 		// port�e
-		for (Bateau bat : plat.getBateauIA()) {
+		for (Bateau bat : platIA.getBateau()) {
 			for (CaseBateau cb : bat.getEmplacement()) {
-				for (int i = Parametre.getLargeurPlateau() / 2; i < Parametre.getLargeurPlateau(); i++) {
-					for (int j = Parametre.getHauteurPlateau() / 2; j < Parametre.getHauteurPlateau(); j++) {
-						if (Math.abs(cb.getX() - plat.getCarte()[i][j].getX())
-								+ Math.abs(cb.getY()
-										- plat.getCarte()[i][j].getY()) <= bat
-									.getPuissance()) {
+				for (int i = 0; i < Parametre.getLargeurPlateau(); i++) {
+					for (int j = 0; j < Parametre.getHauteurPlateau(); j++) {
+						if (Math.abs(cb.getX() - joueur.getCarte()[i][j].getX()) + Math.abs(cb.getY() - joueur.getCarte()[i][j].getY()) + ((Parametre.getHauteurPlateau()-1)-cb.getY())  <= bat.getPuissance()) {
 							// v�rifier qu'on ne les a pas d�j� ajout�
-							if (!portee.contains(plat.getCarte()[i][j])
-									&& !plat.getCarte()[i][j].isCibler()) {
-								portee.add(plat.getCarte()[i][j]);
+							if (!portee.contains(joueur.getCarte()[i][j])
+									&& !joueur.getCarte()[i][j].isCibler()) {
+								portee.add(joueur.getCarte()[i][j]);
 							}
 						}
 					}
@@ -75,27 +78,20 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 		if (this.toucher && this.dernierTir != null) {
 			// On tir a gauche en premier
 			if (this.dernierTir.getX() - 1 >= 0) {
-				tir = new Case(this.dernierTir.getX() - 1,
-						this.dernierTir.getY());
-			} else if (this.dernierTir.getY() - 1 >= Parametre.getHauteurPlateau() / 2) {// en
-																				// haut
-				tir = new Case(this.dernierTir.getX(),
-						this.dernierTir.getY() - 1);
-			} else if (this.dernierTir.getX() + 1 < Parametre.getLargeurPlateau()) {// a
-																		// droite
-				tir = new Case(this.dernierTir.getX() + 1,
-						this.dernierTir.getY());
-			} else if (this.dernierTir.getY() + 1 < Parametre.getHauteurPlateau()) {// en
-																		// bas
-				tir = new Case(this.dernierTir.getX(),
-						this.dernierTir.getY() + 1);
+				tir = new Case(this.dernierTir.getX() - 1,this.dernierTir.getY());
+			} else if (this.dernierTir.getY() - 1 >= 0) {// en haut
+				tir = new Case(this.dernierTir.getX(),this.dernierTir.getY() - 1);
+			} else if (this.dernierTir.getX() + 1 < Parametre.getLargeurPlateau()) {// a droite
+				tir = new Case(this.dernierTir.getX() + 1,this.dernierTir.getY());
+			} else if (this.dernierTir.getY() + 1 < Parametre.getHauteurPlateau()) {// en bas
+				tir = new Case(this.dernierTir.getX(),this.dernierTir.getY() + 1);
 			}
 		} else {// sinon on tir de manière aléatoire
 			int indiceAuHasard = (int) (Math.random() * (portee.size() - 1));
 			tir = portee.get(indiceAuHasard);
 		}
 		// vérifier si on a touché
-		for (Bateau bat : plat.getBateauJoueur()) {
+		for (Bateau bat : joueur.getBateau()) {
 			if (bat.contientCase(tir)) {
 				// stocker le dernier tir et passer toucher à vrai
 				this.dernierTir = tir;
@@ -103,11 +99,6 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 			}
 		}
 		return tir;
-	}
-
-	public String getNom() {
-		// TODO Auto-generated method stub
-		return this.nom;
 	}
 
 }

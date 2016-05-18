@@ -4,17 +4,16 @@ import java.util.ArrayList;
 
 import Modele.Bateau.Bateau;
 
-public class Plateau{
-	
-	private Case[][] carte; 
-	ArrayList<Bateau> bateauJoueur;
-	ArrayList<Bateau> bateauIA;
-	
-	public Plateau(int l, int h){
+public class Plateau {
+
+	private Case[][] carte;
+	ArrayList<Bateau> bateau;
+
+	public Plateau(int l, int h) {
 	}
-	
-	public void placerBateau(Bateau b, Case c){
-		
+
+	public void placerBateau(Bateau b, Case c) {
+
 	}
 
 	public Case[][] getCarte() {
@@ -25,33 +24,24 @@ public class Plateau{
 		this.carte = carte;
 	}
 
-	public ArrayList<Bateau> getBateauJoueur() {
-		return bateauJoueur;
+	public ArrayList<Bateau> getBateau() {
+		return bateau;
 	}
 
-	public void setBateauJoueur(ArrayList<Bateau> bateauJoueur) {
-		this.bateauJoueur = bateauJoueur;
+	public void setBateau(ArrayList<Bateau> bateau) {
+		this.bateau = bateau;
 	}
 
-	public ArrayList<Bateau> getBateauIA() {
-		return bateauIA;
+	public void tirer(Case c) {
+
 	}
 
-	public void setBateauIA(ArrayList<Bateau> bateauIA) {
-		this.bateauIA = bateauIA;
-	}
+	public void placerAleatoireBateau(Bateau b) {
 
-	public void tirer(Case c){
-		
-	}
-	
-	public void placerAleatoireBateau(Bateau b){
-		
-		
 	}
 	
 	public void ajouterBateau(Bateau b) {
-		
+
 	}
 
-}	
+}

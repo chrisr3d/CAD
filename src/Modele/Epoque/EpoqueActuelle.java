@@ -51,22 +51,22 @@ public class EpoqueActuelle implements Epoque{
 		File img = null;
 		if(b.isHorizontal()){
 			switch (b.getTaille()) {
-			case 1:
+			case 2:
 				img = new File("/images/actuelle/Torp-H.png");
 				in =  ImageIO.read(img);
 				b.setTexture(in);
 				break;
-			case 2:
+			case 3:
 				img = new File("/images/actuelle/Patr-H.png");
 				in =  ImageIO.read(img);
 				b.setTexture(in);
 				break;
-			case 3:
+			case 4:
 				img = new File("/images/actuelle/Dest-H.png");
 				in =  ImageIO.read(img);
 				b.setTexture(in);
 				break;
-			case 4:
+			case 5:
 				img = new File("/images/actuelle/Port-H.png");
 				in =  ImageIO.read(img);
 				b.setTexture(in);
@@ -79,22 +79,22 @@ public class EpoqueActuelle implements Epoque{
 			}
 		}else{
 			switch (b.getTaille()) {
-			case 1:
+			case 2:
 				img = new File("/images/actuelle/Torp-V.png");
 				in =  ImageIO.read(img);
 				b.setTexture(in);
 				break;
-			case 2:
+			case 3:
 				img = new File("/images/actuelle/Patr-V.png");
 				in =  ImageIO.read(img);
 				b.setTexture(in);
 				break;
-			case 3:
+			case 4:
 				img = new File("/images/actuelle/Dest-V.png");
 				in =  ImageIO.read(img);
 				b.setTexture(in);
 				break;
-			case 4:
+			case 5:
 				img = new File("/images/actuelle/Port-V.png");
 				in =  ImageIO.read(img);
 				b.setTexture(in);
@@ -115,16 +115,16 @@ public class EpoqueActuelle implements Epoque{
 	private void ajoutPuissanceEpoque(Bateau b) {
 		// TODO Auto-generated method stub
 		switch (b.getTaille()) {
-		case 1:
+		case 2:
 			b.setPuissance(5);
 			break;
-		case 2:
+		case 3:
 			b.setPuissance(7);
 			break;
-		case 3:
+		case 4:
 			b.setPuissance(9);
 			break;
-		case 4:
+		case 5:
 			b.setPuissance(11);
 			break;
 		default:
@@ -140,16 +140,16 @@ public class EpoqueActuelle implements Epoque{
 	 */
 	private void ajoutNomEpoque(Bateau b) {
 		switch (b.getTaille()) {
-		case 1:
+		case 2:
 			b.setNom("Torpilleurs");
 			break;
-		case 2:
+		case 3:
 			b.setNom("Patrouilleurs");
 			break;
-		case 3:
+		case 4:
 			b.setNom("Destroyers");
 			break;
-		case 4:
+		case 5:
 			b.setNom("Porte Avion");
 			break;
 		default:

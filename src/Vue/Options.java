@@ -94,6 +94,7 @@ public class Options {
 		lblTailleDeLa.setBounds(17, 89, 129, 16);
 		contentPane.add(lblTailleDeLa);
 
+
 		btnValider = new JButton("Valider");
 		btnValider.addActionListener(co);
 
