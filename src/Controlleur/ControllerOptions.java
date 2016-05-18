@@ -41,6 +41,7 @@ public class ControllerOptions implements ActionListener{
 			
 			
 			
+			
 			//Partie aléatoire
 			
 			VueJeu vj = new VueJeu(p);
