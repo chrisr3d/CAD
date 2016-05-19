@@ -21,6 +21,10 @@ import Vue.Options;
 import Vue.Placement;
 import Vue.VueJeu;
 
+/**
+ * @author Misternutz
+ *
+ */
 public class ControllerOptions implements ActionListener {
 
 	private Parametre p;

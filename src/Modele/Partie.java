@@ -16,6 +16,10 @@ import Modele.Epoque.EpoqueFutur;
 import Modele.Epoque.FabriqueEpoque;
 import Modele.Tactique.ContexteTactique;
 
+/**
+ * @author Misternutz
+ *
+ */
 public class Partie extends Observable {
 
 	private volatile static Partie unique = null;
@@ -49,9 +53,11 @@ public class Partie extends Observable {
 		boolean toucher = false;
 		for(int i = 0; i<IA.getCarte().length;i++){
 			for(int j = 0; j<IA.getCarte().length;j++){
-				if(IA.getCarte()[i][j] == c  && IA.getCarte()[i][j] instanceof CaseBateau){
+				if(IA.getCarte()[i][j] == c ){
+					IA.getCarte()[i][j].setCibler(true);
+				if(IA.getCarte()[i][j] instanceof CaseBateau){
 					toucher = true;
-					
+					}
 				}
 			}
 		}
@@ -63,28 +69,20 @@ public class Partie extends Observable {
 
 	}
 
-	public boolean JouerIA() {
-		boolean toucher = false;
-		Case c = ContexteTactique.getTactique().appliquerTactique(IA, joueur);
-		for(int i = 0; i<joueur.getCarte().length;i++){
-			for(int j = 0; j<joueur.getCarte().length;j++){
-				if(joueur.getCarte()[i][j] == c  && joueur.getCarte()[i][j] instanceof CaseBateau){
-					toucher = true;
-					
-				}
-			}
-		}
+	public Case JouerIA() {
 		
-		return toucher;
+		Case c = ContexteTactique.getTactique().appliquerTactique(IA, joueur);
+		
+		return c;
 	}
 
 	/**
-	 * Méthode qui permet de sauvegarder une partie
+	 * Mï¿½thode qui permet de sauvegarder une partie
 	 * @author Mathieu
 	 */
 	public void SauvegarderPartie() {
-		//Suppréssion du fichier de sauvegarde avant de le réutiliser pour éviter les problèmes.
-		//Une seule sauvegarde possible par conséquent !
+		//Supprï¿½ssion du fichier de sauvegarde avant de le rï¿½utiliser pour ï¿½viter les problï¿½mes.
+		//Une seule sauvegarde possible par consï¿½quent !
 		File file = new File("save.xml");
 		PrintWriter writer;
 		try {
@@ -107,7 +105,7 @@ public class Partie extends Observable {
 	}
 
 	/***
-	 * Métode qui permet de charger une partie
+	 * Mï¿½tode qui permet de charger une partie
 	 * @author Mathieu
 	 */
 	public void changerParametre() {

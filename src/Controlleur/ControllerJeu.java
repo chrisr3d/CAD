@@ -7,50 +7,57 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import Modele.Case;
+import Modele.CaseBateau;
 import Modele.Partie;
+import Modele.Tactique.ContexteTactique;
 import Vue.VueJeu;
 
-public class ControllerJeu implements ActionListener,MouseListener, MouseMotionListener{
+/**
+ * @author Misternutz
+ *
+ */
+public class ControllerJeu implements ActionListener, MouseListener, MouseMotionListener {
 
 	VueJeu vue;
-	public ControllerJeu(VueJeu vj){
+
+	public ControllerJeu(VueJeu vj) {
 		this.vue = vj;
 	}
 
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
-		for(int i=1; i<vue.getGrille().length;i++){
-			for(int j= 1; j<vue.getGrille().length;j++){
-				
-				if(arg0.getSource() == vue.getGrille()[i][j]){
-					if((vue.getGrille()[i][j].getText().equals(""))){
-					vue.getGrille()[i][j].setText("x");
-					}	
+
+		for (int i = 1; i < vue.getGrille().length; i++) {
+			for (int j = 1; j < vue.getGrille().length; j++) {
+
+				if (arg0.getSource() == vue.getGrille()[i][j]) {
+					if ((vue.getGrille()[i][j].getText().equals(""))) {
+						vue.getGrille()[i][j].setText("x");
+					}
 				}
 			}
 		}
-		
+
 	}
 
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
-		for(int i=1; i<vue.getGrille().length;i++){
-			for(int j= 1; j<vue.getGrille().length;j++){
-				
-				if(arg0.getSource() == vue.getGrille()[i][j]){
-					if((vue.getGrille()[i][j].getText().equals("x"))){
-						
-					
-					vue.getGrille()[i][j].setText("");
+
+		for (int i = 1; i < vue.getGrille().length; i++) {
+			for (int j = 1; j < vue.getGrille().length; j++) {
+
+				if (arg0.getSource() == vue.getGrille()[i][j]) {
+					if ((vue.getGrille()[i][j].getText().equals("x"))) {
+
+						vue.getGrille()[i][j].setText("");
 					}
-					
+
 				}
 			}
 		}
@@ -58,37 +65,52 @@ public class ControllerJeu implements ActionListener,MouseListener, MouseMotionL
 
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		//Tour du joueur 
-		for(int i=1; i<vue.getGrille().length;i++){
-			for(int j= 1; j<vue.getGrille().length;j++){
-				
-				if(arg0.getSource() == vue.getGrille()[i][j]){
-					boolean touch = Partie.getInstance().tirer(Partie.getInstance().getIA().getCarte()[i-1][j-1]);
-					if(touch){
+		// Tour du joueur
+		for (int i = 1; i < vue.getGrille().length; i++) {
+			for (int j = 1; j < vue.getGrille().length; j++) {
+
+				if (arg0.getSource() == vue.getGrille()[i][j]) {
+					boolean touch = Partie.getInstance().tirer(Partie.getInstance().getIA().getCarte()[i - 1][j - 1]);
+					if (touch) {
 						vue.getGrille()[i][j].setText("TOUCHE");
-					}else{
-					
-					vue.getGrille()[i][j].setText("COULE");
+					} else {
+
+						vue.getGrille()[i][j].setText("COULE");
 					}
+				}
+			}
+		}
+
+		// Tour de l'IA
+
+
+		try {
+			vue.getInformations().setText("Tour de l'adversaire");
+			
+			Thread.sleep(2000);
+			
+
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Case touchIA = Partie.getInstance().JouerIA();
+		
+		
+		for(int i = 0; i<Partie.getInstance().getJoueur().getCarte().length;i++){
+			for(int j = 0; j<Partie.getInstance().getJoueur().getCarte().length;j++){
+				if(Partie.getInstance().getJoueur().getCarte()[i][j] == touchIA  && Partie.getInstance().getJoueur().getCarte()[i][j] instanceof CaseBateau){
+					vue.getGrille2()[i+1][j+1].setBackground(Color.RED);;
+					
 				}
 			}
 		}
 		
 		
-		//Tour de l'IA
 		
-		boolean touchIA = Partie.getInstance().JouerIA();
-		try {
-			vue.getInformations().setText("Tour de l'adversaire");
-			Thread.sleep(2000);
-			
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+
 		vue.getInformations().setText("Votre tour");
-		
+
 	}
 
 	public void mouseReleased(MouseEvent arg0) {
@@ -105,7 +127,7 @@ public class ControllerJeu implements ActionListener,MouseListener, MouseMotionL
 
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		//System.out.println("hi");
+		// System.out.println("hi");
 	}
 
 }
