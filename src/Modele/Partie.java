@@ -9,6 +9,9 @@ import Modele.Bateau.FabriqueBateau;
 
 public class Partie extends Observable{
 
+	private static Partie INSTANCE = new Partie();
+
+	
 	Parametre param;
 	
 	int NbBateauRestantJoueur;
@@ -19,7 +22,7 @@ public class Partie extends Observable{
 	
 	Plateau IA;
 	
-	public Partie(Parametre param, Plateau joueur, Plateau IA){
+	private Partie(){
 		
 	}
 	
@@ -51,5 +54,49 @@ public class Partie extends Observable{
 	
 	public Parametre getParametres() {
 		return param;
+	}
+	
+	public static Partie getInstance()
+	{	return INSTANCE;
+	}
+
+	public Parametre getParam() {
+		return param;
+	}
+
+	public void setParam(Parametre param) {
+		this.param = param;
+	}
+
+	public int getNbBateauRestantJoueur() {
+		return NbBateauRestantJoueur;
+	}
+
+	public void setNbBateauRestantJoueur(int nbBateauRestantJoueur) {
+		NbBateauRestantJoueur = nbBateauRestantJoueur;
+	}
+
+	public int getNbBateauRestantIA() {
+		return NbBateauRestantIA;
+	}
+
+	public void setNbBateauRestantIA(int nbBateauRestantIA) {
+		NbBateauRestantIA = nbBateauRestantIA;
+	}
+
+	public Plateau getJoueur() {
+		return joueur;
+	}
+
+	public void setJoueur(Plateau joueur) {
+		this.joueur = joueur;
+	}
+
+	public Plateau getIA() {
+		return IA;
+	}
+
+	public void setIA(Plateau iA) {
+		IA = iA;
 	}
 }
