@@ -15,9 +15,7 @@ public class Main {
 		para.save(p);
 		Parametre p2 = para.find();
 		System.out.println(p2.getHauteurPlateau() + p2.getLargeurPlateau() );
-		//e.save("Futur");
-		//Epoque ep = e.find();
-		//TactiqueIAStrategie p = s.find();
+		System.out.println(p.getMode().name());
 		
 	}
 

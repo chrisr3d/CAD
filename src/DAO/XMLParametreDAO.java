@@ -7,10 +7,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import Modele.Modes;
 import Modele.Parametre;
 import Modele.Epoque.Epoque;
 import Modele.Epoque.EpoqueActuelle;
 import Modele.Epoque.EpoqueFutur;
+import Modele.Tactique.ListeTactique;
 
 public class XMLParametreDAO extends DAO<Parametre>{
 
@@ -72,6 +74,20 @@ public class XMLParametreDAO extends DAO<Parametre>{
 					}else{
 						caMarchePas = true;
 					}
+					
+					//Auto
+					ligne=fichier.readLine();
+					if(ligne.equals("<Mode>")){
+						ligne=fichier.readLine();
+						for (Modes mod : Modes.values()) {
+							if(mod.name().equals(ligne)){
+								p.setMode(mod);
+							}
+						}
+						ligne=fichier.readLine();
+					}else{
+						caMarchePas = true;
+					}
 				}
 			}
 			fichier.close();
@@ -116,6 +132,13 @@ public class XMLParametreDAO extends DAO<Parametre>{
 				fichier.write(contenu.isAutomatique() ? "True" : "False");
 				fichier.newLine();
 				fichier.write("</Auto>");
+				fichier.newLine();
+				
+				fichier.write("<Mode>");
+				fichier.newLine();
+				fichier.write(contenu.getMode().name());
+				fichier.newLine();
+				fichier.write("</Mode>");
 				
 			fichier.newLine();
 			fichier.write("</Parametre>");
