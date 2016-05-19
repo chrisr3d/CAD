@@ -28,7 +28,6 @@ public class Bateau {
 	public Bateau() {
 		
 	}
-		// TODO Auto-generated constructor stub
 
 	public Bateau(int t){
 		this.taille = t;
