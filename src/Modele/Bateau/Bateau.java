@@ -20,7 +20,8 @@ public class Bateau {
 	
 	boolean horizontal;
 	
-	public Bateau(){
+	public Bateau(int t){
+		this.taille = t;
 		
 	}
 

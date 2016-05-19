@@ -44,6 +44,8 @@ public class Options {
 	JLabel lblEpoque;
 	JLabel lblStrategie;
 	JComboBox<Modes> modes;
+	JLabel nbBoats;
+	JLabel tailleBoat;
 
 	ControllerOptions co;
 
@@ -52,11 +54,12 @@ public class Options {
 	 */
 
 	public Options() {
+		
 		co = new ControllerOptions(this);
 		frame = new JFrame();
 		frame.setTitle("Options");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 550, 340);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
@@ -64,6 +67,16 @@ public class Options {
 		ButtonGroup bg = new ButtonGroup();
 		modes = new JComboBox<Modes>();
 		modes.setModel(new DefaultComboBoxModel<Modes>(Modes.values()));
+		modes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(modes.getSelectedItem() == Modes.Mosaique){
+					tailleBateau.setEnabled(false);
+				}else{
+					tailleBateau.setEnabled(true);
+				}
+				
+			}
+		});
 		rdbtnManuel = new JRadioButton("Manuel");
 		
 
@@ -79,21 +92,35 @@ public class Options {
 		lblModeDePlacement = new JLabel("Mode de placement :");
 		lblModeDePlacement.setBounds(17, 38, 143, 16);
 		contentPane.add(lblModeDePlacement);
-		SpinnerNumberModel model1 = new SpinnerNumberModel(5.0, 5.0, 10.0, 1.0);
-		SpinnerNumberModel model2 = new SpinnerNumberModel(1.0, 1.0, 8.0, 1.0);
-		SpinnerNumberModel model3 = new SpinnerNumberModel(2.0, 1.0, 5.0, 1.0);
+		SpinnerNumberModel model1 = new SpinnerNumberModel(6.0, 6.0, 10.0, 1.0);
+		SpinnerNumberModel model2 = new SpinnerNumberModel(2.0, 2.0, 5.0, 1.0);
+		SpinnerNumberModel model3 = new SpinnerNumberModel(1.0, 1.0, 5.0, 1.0);
 		spinner = new JSpinner(model1);
 		tailleBateau = new JSpinner(model2);
 		nbBateau = new JSpinner(model3);
 
-		spinner.setBounds(231, 84, 58, 26);
-
+		spinner.setBounds(131, 84, 58, 26);
+		nbBateau.setBounds(300, 84, 58, 26);
+		tailleBateau.setBounds(460, 84, 58, 26);
 		contentPane.add(spinner);
-
+		contentPane.add(nbBateau);
+		tailleBateau.setEnabled(false);
+		contentPane.add(tailleBateau);
+		
+		
+		
 		lblTailleDeLa = new JLabel("Taille de la grille :");
 		lblTailleDeLa.setBounds(17, 89, 129, 16);
 		contentPane.add(lblTailleDeLa);
 
+		nbBoats = new JLabel("Nombre Bateaux : ");
+		nbBoats.setBounds(190, 89, 129, 16);
+		contentPane.add(nbBoats);
+		
+		tailleBoat = new JLabel("Taille bateaux :");
+		tailleBoat.setBounds(360, 84, 90, 26);
+		contentPane.add(tailleBoat);
+		
 
 		btnValider = new JButton("Valider");
 		btnValider.addActionListener(co);
@@ -124,7 +151,28 @@ public class Options {
 		lblStrategie = new JLabel("Strategie :");
 		lblStrategie.setBounds(17, 170, 96, 16);
 		contentPane.add(lblStrategie);
+		frame.setResizable(false);
 	}
+
+	public JLabel getTailleBoat() {
+		return tailleBoat;
+	}
+
+	public void setTailleBoat(JLabel tailleBoat) {
+		this.tailleBoat = tailleBoat;
+	}
+
+	
+
+	public JLabel getNbBoats() {
+		return nbBoats;
+	}
+
+	public void setNbBoats(JLabel nbBoats) {
+		this.nbBoats = nbBoats;
+	}
+
+	
 
 	public JLabel getModeTexte() {
 		return modeTexte;
