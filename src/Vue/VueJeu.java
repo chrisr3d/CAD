@@ -2,6 +2,7 @@ package Vue;
 
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
@@ -13,7 +14,10 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.EmptyBorder;
 
+import Modele.CaseBateau;
 import Modele.Parametre;
+import Modele.Partie;
+import Modele.Plateau;
 
 import javax.swing.JLabel;
 import java.awt.GridLayout;
@@ -37,7 +41,7 @@ public class VueJeu extends JFrame implements Observer{
 	/**
 	 * Create the frame.
 	 */
-	public VueJeu(Parametre p) {
+	public VueJeu() {
 		
 		getContentPane().setLayout(new GridLayout(3,1));
 		
@@ -47,28 +51,26 @@ public class VueJeu extends JFrame implements Observer{
 		informations = new JTextField();
 		informations.setText("J'affiche les informations bitches");
 		
-		contentPane.setLayout(new GridLayout(p.getHauteurPlateau()+1,p.getHauteurPlateau()+1));
-		contentPane2.setLayout(new GridLayout(p.getHauteurPlateau()+1,p.getHauteurPlateau()+1));
+		contentPane.setLayout(new GridLayout(Partie.getInstance().getParametres().getHauteurPlateau()+1,Partie.getInstance().getParametres().getHauteurPlateau()+1));
+		contentPane2.setLayout(new GridLayout(Partie.getInstance().getParametres().getHauteurPlateau()+1,Partie.getInstance().getParametres().getHauteurPlateau()+1));
 		//panelInfo.add(informations);
 		
 		this.setTitle("Jeu");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, (p.getHauteurPlateau()+1)*100, (p.getHauteurPlateau()+1)*100);
+		setBounds(100, 100, (Partie.getInstance().getParametres().getHauteurPlateau()+1)*100, (Partie.getInstance().getParametres().getHauteurPlateau()+1)*100);
 		getContentPane().add(contentPane);
 		//informations.setBounds(informations.getX(), informations.getY(), 100, 100);
 		//informations.setMaximumSize(new Dimension(1100, 100));
-		getContentPane().add(contentPane2);
-		getContentPane().add(informations);
 		
-		Grille = new JTextField[p.getHauteurPlateau()+1][p.getLargeurPlateau()+1];
-		Grille2 = new JTextField[p.getLargeurPlateau()+1][p.getLargeurPlateau()+1];
+		getContentPane().add(informations);
+		getContentPane().add(contentPane2);
+		Grille = new JTextField[Partie.getInstance().getParametres().getHauteurPlateau()+1][Partie.getInstance().getParametres().getLargeurPlateau()+1];
+		Grille2 = new JTextField[Partie.getInstance().getParametres().getLargeurPlateau()+1][Partie.getInstance().getParametres().getLargeurPlateau()+1];
 		
 		//Création de la grille de jeu
 		
 
-		
-		
 		
 
 		
@@ -127,7 +129,16 @@ public class VueJeu extends JFrame implements Observer{
 
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
+		/*if(arg instanceof Plateau){
+		for(int i = 0; i < Grille.length; i++){
+			for(int j = 0; j< Grille.length;i++){
+				if(((Plateau) arg).getCarte()[i][j] instanceof CaseBateau){
+					Grille[i][j].setBackground(Color.RED);
+					
+				}
+			}
+		}
+		}*/
 		
 	}
 }

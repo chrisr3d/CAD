@@ -71,7 +71,8 @@ public class Main {
 		Plateau plateauJ = new Plateau();
 		plateauIA.setBateau(listBoatJ);
 		
-		Partie parti = new Partie(p);
+		Partie parti = Partie.getInstance();
+		parti.setParam(p);
 		parti.setJoueur(plateauJ);
 		parti.setIA(plateauIA);
 		

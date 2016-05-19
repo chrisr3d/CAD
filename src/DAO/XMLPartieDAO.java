@@ -30,7 +30,7 @@ public class XMLPartieDAO extends DAO<Partie> {
 	public Partie find() {
 		// TODO Auto-generated method stub
 		BufferedReader fichier;
-		Partie p = new Partie();
+		Partie p = Partie.getInstance();
 		// Booléen qui va passer a TRUE si le fichier est mal formé et que le
 		// parametre ne contient pas tout les attributs nécessaires
 		boolean caMarchePas = false;
