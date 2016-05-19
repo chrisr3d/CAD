@@ -53,9 +53,10 @@ public class ControllerOptions implements ActionListener{
 	 		o.getFrame().setVisible(false);
 			o.getFrame().setEnabled(false);
 			Plateau jeu;
+			Plateau adversaire;
 			
 			jeu = new Plateau((int)i,(int)i);
-			
+			adversaire = new Plateau((int)i,(int)i);
 			if(o.getRdbtnAutomatique().isSelected()){
 				
 				
@@ -64,6 +65,7 @@ public class ControllerOptions implements ActionListener{
 				if(o.getModes().getSelectedItem() == Modes.Normal){
 				for(int j = 0; j<nbBoat;j++){
 					jeu.placerAleatoireBateau(FabriqueBateau.getBateau(tailleB));
+					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(tailleB));
 					//PlacerBateau	
 					
 				}
@@ -75,38 +77,82 @@ public class ControllerOptions implements ActionListener{
 				for(int k = 0; k<nbBoat;k++){
 					int t = (int) (2 + (Math.random() * (5 - 2)));
 					jeu.placerAleatoireBateau(FabriqueBateau.getBateau(t));
+					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(t));
 					//PlacerBateau
 					
 				}
 				
 					
 				}
+				switch((listeEpoque)o.getComboBox().getSelectedItem()){
+				case Actuelle :
+					FabriqueEpoque.setEpoqueActuelle();
+					FabriqueEpoque.choisirEpoqueFutur(jeu.getBateau());
+					FabriqueEpoque.choisirEpoqueFutur(adversaire.getBateau());
+					break;
+				case Futur :
+					FabriqueEpoque.setEpoqueFutur();
+					FabriqueEpoque.choisirEpoqueActuelle(jeu.getBateau());
+					FabriqueEpoque.choisirEpoqueActuelle(adversaire.getBateau());
+					break;
+				}
+				VueJeu vj = new VueJeu(p);
+				vj.setVisible(true);
 				
 			}else {
+				//Placement manuel des bateaux
+				
+				//Placement adversaire
+				if(o.getModes().getSelectedItem() == Modes.Normal){
+				for(int j = 0; j<nbBoat;j++){
+					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(tailleB));
+					
+					
+				}
 				
 				
+				}else{
+					
+					
+				for(int k = 0; k<nbBoat;k++){
+					int t = (int) (2 + (Math.random() * (5 - 2)));
+					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(t));
+				
+					
+				}
+				
+					
+				}
+				switch((listeEpoque)o.getComboBox().getSelectedItem()){
+				case Actuelle :
+					FabriqueEpoque.setEpoqueActuelle();
+					FabriqueEpoque.choisirEpoqueFutur(jeu.getBateau());
+					FabriqueEpoque.choisirEpoqueFutur(adversaire.getBateau());
+					break;
+				case Futur :
+					FabriqueEpoque.setEpoqueFutur();
+					FabriqueEpoque.choisirEpoqueActuelle(jeu.getBateau());
+					FabriqueEpoque.choisirEpoqueActuelle(adversaire.getBateau());
+					break;
+				}
 				
 				
 				
 			}
 			
-			switch((listeEpoque)o.getComboBox().getSelectedItem()){
-			case Actuelle :
-				FabriqueEpoque.setEpoqueActuelle();
-				FabriqueEpoque.choisirEpoqueFutur(jeu.getBateau());
-				break;
-			case Futur :
-				FabriqueEpoque.setEpoqueFutur();
-				FabriqueEpoque.choisirEpoqueActuelle(jeu.getBateau());
-				break;
-			}
+			
+				
 			
 			
 			
-			//Partie aléatoire
 			
-			VueJeu vj = new VueJeu(p);
-			vj.setVisible(true);
+		
+			
+			
+			
+			
+			
+			
 		
 
 

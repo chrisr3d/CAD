@@ -2,6 +2,7 @@ package Vue;
 
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
@@ -13,7 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.EmptyBorder;
 
+import Modele.CaseBateau;
 import Modele.Parametre;
+import Modele.Plateau;
 
 import javax.swing.JLabel;
 import java.awt.GridLayout;
@@ -67,8 +70,6 @@ public class VueJeu extends JFrame implements Observer{
 		//Création de la grille de jeu
 		
 
-		
-		
 		
 
 		
@@ -127,7 +128,16 @@ public class VueJeu extends JFrame implements Observer{
 
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
+		/*if(arg instanceof Plateau){
+		for(int i = 0; i < Grille.length; i++){
+			for(int j = 0; j< Grille.length;i++){
+				if(((Plateau) arg).getCarte()[i][j] instanceof CaseBateau){
+					Grille[i][j].setBackground(Color.RED);
+					
+				}
+			}
+		}
+		}*/
 		
 	}
 }

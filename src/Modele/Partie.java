@@ -19,7 +19,7 @@ public class Partie extends Observable{
 	
 	Plateau IA;
 	
-	public Partie(Parametre param){
+	public Partie(Parametre param, Plateau joueur, Plateau IA){
 		
 	}
 	

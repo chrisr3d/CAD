@@ -43,25 +43,35 @@ public class Plateau {
 		
 		boolean placer = false;
 		boolean cut = false;
-		int orient = 1 + (int) (Math.random() * ((2 - 1) + 1));
-		System.out.println(" salut " + orient);
+		int orient;
+		
 		// Placement horizontal
+		while (!placer) {
+		cut = false;
+		orient = 1 + (int) (Math.random() * ((2 - 1) + 1));
+		System.out.println("orient : " +orient);
 		if (orient == 1) {
-			while (!placer) {
+			
 				int ligne = (int) 1 + (int) (Math.random() * ((carte.length - 2) + 1));
 				int colone = 1 + (int) (Math.random() * (((carte.length - b.taille)) + 1));
-				
+				System.out.println("ligne :" + ligne + " colone : " + colone);
 				ArrayList<CaseBateau> caseb = new ArrayList<CaseBateau>();
 				for (int p = 0; p < b.taille; p++) {
 					if(colone+p> carte.length-1){
-						
+						cut = true;
+					}
+					
+				}
+				
+				if(!cut){
+				for (int p = 0; p < b.taille; p++) {
 					if (carte[ligne][colone + p] != null) {
 						cut = true;
 					}
-					cut = true;
-					}
+					
 				}
-
+				}
+				
 				if (!cut) {
 					for (int j = 0; j < b.taille; j++) {
 						caseb.add(new CaseBateau(ligne, colone + j));
@@ -76,24 +86,31 @@ public class Plateau {
 					}
 					placer = true;
 				}
-			}
+				
+			
 
 			// Placement vertical
 		} else {
-			while (!placer) {
+			
 				int ligne = 1 + (int) (Math.random() * (((carte.length - b.taille) - 1) + 1));
 				int colone = (int) 1 + (int) (Math.random() * ((carte.length-2) + 1));
 				
+				System.out.println("ligne :" + ligne + " colone : " + colone + " taille : " + b.taille);
 				ArrayList<CaseBateau> caseb = new ArrayList<CaseBateau>();
+				
 				for (int p = 0; p < b.taille; p++) {
 					if(ligne+p > carte.length-1){
-						
-						
-					if (carte[ligne + p][colone] != null) {
+						System.out.println("yo");
 						cut = true;
 					}
+				}
+				if(!cut){
+					for (int p = 0; p < b.taille; p++) {
+					if (carte[ligne + p][colone] != null) {
+					
 					cut = true;
 					}
+				}
 				}
 
 				if (!cut) {
@@ -113,6 +130,10 @@ public class Plateau {
 			}
 		}
 
+		
+		
+		
+		
 	}
 
 	public void ajouterBateau(Bateau b) {

@@ -8,7 +8,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	
-		XMLParametreDAO para = XMLParametreDAO.getInstance();
+		/*XMLParametreDAO para = XMLParametreDAO.getInstance();
 		Parametre p = new Parametre(6, 6, true,Modes.Mosaique);
 		Partie pp = new Partie(p);
 		pp.SauvegarderPartie();
@@ -18,7 +18,7 @@ public class Main {
 		//e.save("Futur");
 		//Epoque ep = e.find();
 		//TactiqueIAStrategie p = s.find();
-		
+		*/
 	}
 
 }
