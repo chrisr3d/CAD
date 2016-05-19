@@ -24,6 +24,7 @@ public class Main {
 		cb.add(cb1);
 		cb.add(cb2);
 		b1.setEmplacement(cb);
+		//qsdqsd
 		
 		Bateau b2 = new Bateau(3,true);
 		ArrayList<CaseBateau> cbb = new ArrayList<CaseBateau>();
