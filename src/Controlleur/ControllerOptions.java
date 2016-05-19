@@ -15,6 +15,8 @@ import Modele.Plateau;
 import Modele.Bateau.FabriqueBateau;
 import Modele.Epoque.FabriqueEpoque;
 import Modele.Epoque.listeEpoque;
+import Modele.Tactique.ContexteTactique;
+import Modele.Tactique.ListeTactique;
 import Vue.Options;
 import Vue.VueJeu;
 
@@ -83,6 +85,17 @@ public class ControllerOptions implements ActionListener {
 				FabriqueEpoque.choisirEpoqueActuelle(adversaire.getBateau());
 				break;
 			}*/
+			
+			
+			switch((ListeTactique) o.getComboBox_1().getSelectedItem()){
+			case Aleatoire :
+				ContexteTactique.choisirTactiqueAleatoire();
+				break;
+				
+			case Croix :
+				ContexteTactique.choisirTactiqueCroix();
+				break;
+			}
 
 			Partie.getInstance().setJoueur(jeu);
 			Partie.getInstance().setIA(adversaire);
@@ -124,6 +137,9 @@ public class ControllerOptions implements ActionListener {
 				FabriqueEpoque.choisirEpoqueActuelle(adversaire.getBateau());
 				break;
 			}
+			
+			
+			
 
 		}
 

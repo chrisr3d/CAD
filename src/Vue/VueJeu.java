@@ -163,7 +163,7 @@ public class VueJeu implements Observer {
 					if (!(j == Grille2.length) && !(l == Grille2.length)) {
 						if (Partie.getInstance().getJoueur().getCarte()[j-1][l-1] instanceof CaseBateau) {
 							
-							Grille2[j][l].setBackground(Color.RED);
+							Grille2[j][l].setBackground(Color.GRAY);
 						}
 					}
 					Grille2[j][l].setText("");

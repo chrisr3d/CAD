@@ -39,9 +39,6 @@ public class Plateau {
 		this.bateau = bateau;
 	}
 
-	public void tirer(Case c) {
-
-	}
 
 	public void placerAleatoireBateau(Bateau b) {
 		

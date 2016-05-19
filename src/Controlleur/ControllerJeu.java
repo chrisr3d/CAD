@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import Modele.Partie;
 import Vue.VueJeu;
 
 public class ControllerJeu implements ActionListener,MouseListener, MouseMotionListener{
@@ -57,16 +58,37 @@ public class ControllerJeu implements ActionListener,MouseListener, MouseMotionL
 
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		//Tour du joueur 
 		for(int i=1; i<vue.getGrille().length;i++){
 			for(int j= 1; j<vue.getGrille().length;j++){
 				
 				if(arg0.getSource() == vue.getGrille()[i][j]){
-					vue.getGrille()[i][j].setText("COULE");
+					boolean touch = Partie.getInstance().tirer(Partie.getInstance().getIA().getCarte()[i-1][j-1]);
+					if(touch){
+						vue.getGrille()[i][j].setText("TOUCHE");
+					}else{
 					
+					vue.getGrille()[i][j].setText("COULE");
+					}
 				}
 			}
 		}
+		
+		
+		//Tour de l'IA
+		
+		boolean touchIA = Partie.getInstance().JouerIA();
+		try {
+			vue.getInformations().setText("Tour de l'adversaire");
+			Thread.sleep(2000);
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		vue.getInformations().setText("Votre tour");
+		
 	}
 
 	public void mouseReleased(MouseEvent arg0) {
