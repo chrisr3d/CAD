@@ -58,7 +58,7 @@ public class VueJeu extends JFrame implements Observer{
 		this.setTitle("Jeu");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, (Partie.getInstance().getParametres().getHauteurPlateau()+1)*100, (Partie.getInstance().getParametres().getHauteurPlateau()+1)*100);
+		setBounds(100, 100, (Partie.getInstance().getParametres().getHauteurPlateau()+1)*50, (Partie.getInstance().getParametres().getHauteurPlateau()+1)*100);
 		getContentPane().add(contentPane);
 		//informations.setBounds(informations.getX(), informations.getY(), 100, 100);
 		//informations.setMaximumSize(new Dimension(1100, 100));

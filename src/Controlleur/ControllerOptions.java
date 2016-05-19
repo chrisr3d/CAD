@@ -16,6 +16,7 @@ import Modele.Bateau.FabriqueBateau;
 import Modele.Epoque.FabriqueEpoque;
 import Modele.Epoque.listeEpoque;
 import Vue.Options;
+import Vue.Placement;
 import Vue.VueJeu;
 
 public class ControllerOptions implements ActionListener {
@@ -125,7 +126,8 @@ public class ControllerOptions implements ActionListener {
 				FabriqueEpoque.choisirEpoqueActuelle(adversaire.getBateau());
 				break;
 			}
-
+			Placement pl = new Placement();
+			pl.setVisible(true);
 		}
 
 	}
