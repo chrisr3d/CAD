@@ -157,12 +157,13 @@ public class VueJeu implements Observer {
 				Grille2[j][l].setEditable(false);
 
 				if (j != 0 && l != 0) {
+					
 					System.out.println(j + " " + l + "" + Grille2.length);
-					if (!(j == Grille2.length-1) && !(l == Grille2.length -1)) {
-						if (Partie.getInstance().getJoueur().getCarte()[j][l] instanceof CaseBateau) {
+					
+					if (!(j == Grille2.length) && !(l == Grille2.length)) {
+						if (Partie.getInstance().getJoueur().getCarte()[j-1][l-1] instanceof CaseBateau) {
 							
 							Grille2[j][l].setBackground(Color.RED);
-							
 						}
 					}
 					Grille2[j][l].setText("");

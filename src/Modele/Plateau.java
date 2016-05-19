@@ -57,7 +57,7 @@ public class Plateau {
 			
 				int ligne = (int) 0 + (int) (Math.random() * ((carte.length -1) + 1));
 				int colone = 0 + (int) (Math.random() * (((carte.length - b.taille)) + 1));
-				System.out.println("ligne :" + ligne + " colone : " + colone);
+				
 				ArrayList<CaseBateau> caseb = new ArrayList<CaseBateau>();
 				for (int p = 0; p < b.taille; p++) {
 					if(colone+p> carte.length-1){
@@ -83,10 +83,10 @@ public class Plateau {
 					bateau.add(b);
 					
 					for (int k = 0; k < b.taille; k++) {
-					
 						carte[ligne][colone + k] = caseb.get(k);
 						
 					}
+					System.out.println("ligne :" + ligne + " colone : " + colone +" taille :"+ b.taille + "orient : " + orient);
 					placer = true;
 				}
 				
@@ -102,7 +102,7 @@ public class Plateau {
 				
 				for (int p = 0; p < b.taille; p++) {
 					if(ligne+p > carte.length-1){
-						System.out.println("yo");
+						
 						cut = true;
 					}
 				}
@@ -123,9 +123,11 @@ public class Plateau {
 					bateau.add(b);
 					
 					for (int k = 0; k < b.getTaille(); k++) {
+						
 						carte[ligne + k][colone] = caseb.get(k);
 						
 					}
+					System.out.println("ligne :" + ligne + " colone : " + colone +" taille :"+ b.taille+ "orient : " + orient);
 					placer = true;
 				}
 
