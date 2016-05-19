@@ -17,8 +17,8 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 	 */
 	private boolean toucher = false;
 	/**
-	 * On stocke la case sur lequel on a tirÃ© la derniÃ¨re fois si on a touchÃ© un
-	 * bateau, pour tirer autour ensuite
+	 * On stocke la case sur lequel on a tirÃ© la derniÃ¨re fois si on a touchÃ©
+	 * un bateau, pour tirer autour ensuite
 	 */
 	private Case dernierTir = null;
 
@@ -57,16 +57,18 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 		// la case que l'on va retourner
 		Case tir = null;
 		ArrayList<Case> portee = new ArrayList<Case>();
-		// pour chaque bateau, on rï¿½cupï¿½re les cases bateaux pour vï¿½rifier la
+		// pour chaque bateau, on rï¿½cupï¿½re les cases bateaux pour vï¿½rifier
+		// la
 		// portï¿½e
 		for (Bateau bat : platIA.getBateau()) {
 			for (CaseBateau cb : bat.getEmplacement()) {
 				for (int i = 0; i < Parametre.getLargeurPlateau(); i++) {
 					for (int j = 0; j < Parametre.getHauteurPlateau(); j++) {
-						if (Math.abs(cb.getX() - joueur.getCarte()[i][j].getX()) + Math.abs(cb.getY() - joueur.getCarte()[i][j].getY()) + ((Parametre.getHauteurPlateau()-1)-cb.getY())  <= bat.getPuissance()) {
+						if (Math.abs(cb.getX() - joueur.getCarte()[i][j].getX())
+								+ Math.abs(cb.getY() - joueur.getCarte()[i][j].getY())
+								+ ((Parametre.getHauteurPlateau() - 1) - cb.getY()) <= bat.getPuissance()) {
 							// vï¿½rifier qu'on ne les a pas dï¿½jï¿½ ajoutï¿½
-							if (!portee.contains(joueur.getCarte()[i][j])
-									&& !joueur.getCarte()[i][j].isCibler()) {
+							if (!portee.contains(joueur.getCarte()[i][j]) && !joueur.getCarte()[i][j].isCibler()) {
 								portee.add(joueur.getCarte()[i][j]);
 							}
 						}
@@ -74,19 +76,45 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 				}
 			}
 		}
+		
+		boolean trouve = false;
 		// Si on a touchÃ© au dernier tir alors on tir en croix
 		if (this.toucher && this.dernierTir != null) {
 			// On tir a gauche en premier
-			if (this.dernierTir.getX() - 1 >= 0) {
-				tir = new Case(this.dernierTir.getX() - 1,this.dernierTir.getY());
-			} else if (this.dernierTir.getY() - 1 >= 0) {// en haut
-				tir = new Case(this.dernierTir.getX(),this.dernierTir.getY() - 1);
-			} else if (this.dernierTir.getX() + 1 < Parametre.getLargeurPlateau()) {// a droite
-				tir = new Case(this.dernierTir.getX() + 1,this.dernierTir.getY());
-			} else if (this.dernierTir.getY() + 1 < Parametre.getHauteurPlateau()) {// en bas
-				tir = new Case(this.dernierTir.getX(),this.dernierTir.getY() + 1);
+			if (this.dernierTir.getX() - 1 >= 0 && !trouve) {
+				//On fait le 2eme test ici, pour éviter les problèmes d'arrayOutOfBound de getCase()
+				if (!(joueur.getCarte()[this.dernierTir.getX() - 1][this.dernierTir.getY()].isCibler())) {
+					tir = new Case(this.dernierTir.getX() - 1, this.dernierTir.getY());
+					trouve = true;
+				}
 			}
-		} else {// sinon on tir de maniÃ¨re alÃ©atoire
+			if (this.dernierTir.getY() - 1 >= 0 && !trouve) {// en haut
+				if (!(joueur.getCarte()[this.dernierTir.getX()][this.dernierTir.getY() - 1].isCibler())) {
+					tir = new Case(this.dernierTir.getX(), this.dernierTir.getY() - 1);
+					trouve = true;
+				}
+			}
+			if (this.dernierTir.getX() + 1 < Parametre.getLargeurPlateau() && !trouve) {// a  droite
+				if (!(joueur.getCarte()[this.dernierTir.getX()+1][this.dernierTir.getY()].isCibler())) {
+					tir = new Case(this.dernierTir.getX() + 1, this.dernierTir.getY());
+					trouve = true;
+				}
+			}
+			if (this.dernierTir.getY() + 1 < Parametre.getHauteurPlateau() && !trouve) {// en bas
+				if (!(joueur.getCarte()[this.dernierTir.getX()][this.dernierTir.getY()+1].isCibler())) {									
+					tir = new Case(this.dernierTir.getX(), this.dernierTir.getY() + 1);
+					trouve = true;
+				}
+			}
+			//si on a pas trouvé de case sur lequel on peut tirer autour de la case bateau qu'on avait déjà touché
+			//on réinitialise toucher et dernierTir pour ne pas a nouveau tirer autour
+			if(!trouve){
+				this.toucher = false;
+				dernierTir = null;
+			}
+		} 
+		if(!this.toucher || !trouve){
+			// sinon on tir de maniÃ¨re alÃ©atoire
 			int indiceAuHasard = (int) (Math.random() * (portee.size() - 1));
 			tir = portee.get(indiceAuHasard);
 		}

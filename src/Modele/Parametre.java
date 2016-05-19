@@ -13,6 +13,14 @@ public class Parametre {
 		this.mode = m;
 	}
 	
+	public Modes getMode() {
+		return mode;
+	}
+
+	public void setMode(Modes mode) {
+		this.mode = mode;
+	}
+
 	public Parametre() {
 	// TODO Auto-generated constructor stub
 	}
