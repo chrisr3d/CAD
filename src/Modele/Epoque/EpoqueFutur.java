@@ -1,14 +1,19 @@
 package Modele.Epoque;
 
 import java.awt.image.BufferedImage;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
-
 import Modele.Bateau.*;
-import Modele.Tactique.TactiqueAleatoire;
+
+/**
+ * Classe EpoqueFutur qui va appliquer les images, les noms et la puissance selon l'epoque en question
+ * @author Mathieu
+ *
+ */
 public class EpoqueFutur implements Epoque{
 
 	//volatile pour autoriser l'initialisation à null !

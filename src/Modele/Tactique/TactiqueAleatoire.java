@@ -8,12 +8,22 @@ import Modele.Parametre;
 import Modele.Plateau;
 import Modele.Bateau.Bateau;
 
+/**
+ * Classe qui va appliquer la tactique aléatoire
+ * Design Pattern : Singleton 
+ * 
+ * @author Mathieu
+ *
+ */
 public class TactiqueAleatoire implements TactiqueIAStrategie {
 
 	private static String nom = "Aleatoire";
 	// volatile pour autoriser l'initialisation ï¿½ null !
 	private volatile static TactiqueAleatoire unique = null;
 
+	/**
+	 * @return l'instance de la classe
+	 */
 	public static TactiqueAleatoire getInstance() {
 		/*
 		 * Ici je ne pense pas qu'il soit possible de crï¿½er deux intances en
@@ -33,15 +43,11 @@ public class TactiqueAleatoire implements TactiqueIAStrategie {
 
 	public Case appliquerTactique(Plateau platIA, Plateau joueur) {
 		// TODO Auto-generated method stub
-		// (vï¿½rifier que nous n'avons pas perdu)
-		// vï¿½rifier qu'il reste des bateaux adverse et pour soit
-		// rï¿½cupï¿½rer les caseBateau du bateau
-
 		// la case que l'on va retourner
 		Case tir = null;
 		ArrayList<Case> portee = new ArrayList<Case>();
 		// pour chaque bateau, on récupére les cases bateaux pour vï¿½rifier la
-		// portï¿½e
+		// porté
 		for (Bateau bat : platIA.getBateau()) {
 			for (CaseBateau cb : bat.getEmplacement()) {
 				for (int i = 0; i < Parametre.getLargeurPlateau()-1; i++) {

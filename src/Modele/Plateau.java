@@ -9,11 +9,6 @@ public class Plateau {
 	private Case[][] carte;
 	ArrayList<Bateau> bateau;
 
-
-	public Plateau() {
-		
-	}
-
 	public Plateau(int l, int h) {
 		bateau = new ArrayList<Bateau>();
 		carte = new Case[l][h];

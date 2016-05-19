@@ -10,6 +10,11 @@ import Modele.Tactique.TactiqueAleatoire;
 import Modele.Tactique.TactiqueCroix;
 import Modele.Tactique.TactiqueIAStrategie;
 
+/**
+ * Classe qui permet la sauvegarder la récupération de la stratégie à appliquer à la partie 
+ * @author Mathieu
+ *
+ */
 public class XMLStrategieDAO extends DAO<TactiqueIAStrategie>{
 
 	private volatile static XMLStrategieDAO unique = null;
@@ -25,6 +30,9 @@ public class XMLStrategieDAO extends DAO<TactiqueIAStrategie>{
 		return unique;
 	}
 	
+	/**
+	 * On retourne "NULL" ici car on applique directionement la stratégie 
+	 */
 	@Override
 	public TactiqueIAStrategie find() {
 		// TODO Auto-generated method stub

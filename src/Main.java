@@ -24,7 +24,6 @@ public class Main {
 		cb.add(cb1);
 		cb.add(cb2);
 		b1.setEmplacement(cb);
-		//qsdqsd
 		
 		Bateau b2 = new Bateau(3,true);
 		ArrayList<CaseBateau> cbb = new ArrayList<CaseBateau>();
@@ -67,9 +66,9 @@ public class Main {
 		listBoatJ.add(bj);
 		listBoatJ.add(b2j);
 		
-		Plateau plateauIA = new Plateau();
+		Plateau plateauIA = new Plateau(Parametre.getLargeurPlateau(),Parametre.getHauteurPlateau());
 		plateauIA.setBateau(listBoat);
-		Plateau plateauJ = new Plateau();
+		Plateau plateauJ = new Plateau(Parametre.getLargeurPlateau(),Parametre.getHauteurPlateau());
 		plateauIA.setBateau(listBoatJ);
 		
 		Partie parti = Partie.getInstance();
@@ -84,9 +83,11 @@ public class Main {
 		partie.save(parti);
 		
 		Partie pppppp = partie.find();
-		for (Bateau boat : pppppp.getJoueur().getBateau()) {
-			for (CaseBateau cbbb : boat.getEmplacement()) {
-				System.out.println(cbbb.getX() + "   "+ cbbb.getY()+ "   " +cbbb.isCibler());
+		for (int i = 0; i < Parametre.getLargeurPlateau(); i++) {
+			for (int j = 0; j < Parametre.getHauteurPlateau(); j++) {
+				if(parti.getJoueur().getCarte()[i][j] != null){
+					System.out.println(parti.getJoueur().getCarte()[i][j].getX() + "  " + parti.getJoueur().getCarte()[i][j].getY());
+				}
 			}
 		}
 		

@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 import Modele.Bateau.Bateau;
 
+/**
+ * Classe FabriqueEpoque qui va appliquer l'époque que l'utilisateur à choisis 
+ * @author Mathieu
+ *
+ */
 public class FabriqueEpoque {
 
 	private static Epoque currentEpoque=EpoqueFutur.getInstance();
@@ -19,11 +24,6 @@ public class FabriqueEpoque {
 	public static Epoque getEpoque() {
 		return currentEpoque;
 	}
-	
-	/**
-	 * Cette méthode sera appelée lors de l'appel de la méthode find pour le dao
-	 * Elle permet de fixer l'époque que nous aviosn sauvegarder
-	 */
 	
 	public static void setEpoqueActuelle(){
 		currentEpoque = EpoqueActuelle.getInstance();

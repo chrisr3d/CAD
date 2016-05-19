@@ -23,4 +23,8 @@ public class XMLDAOFactory extends AbstractDAOFactory{
 		return XMLEpoqueDAO.getInstance();
 	}
 	
+	public DAO getStrategie(){
+		return XMLStrategieDAO.getInstance();
+	}
+	
 }

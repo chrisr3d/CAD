@@ -11,7 +11,11 @@ import Modele.Epoque.Epoque;
 import Modele.Epoque.EpoqueActuelle;
 import Modele.Epoque.EpoqueFutur;
 import Modele.Epoque.FabriqueEpoque;
-
+/**
+ * Classe qui permet la sauvegarde de l'époque au format XML
+ * @author Mathieu
+ *
+ */
 public class XMLEpoqueDAO extends DAO<Epoque>{
 
 	private volatile static XMLEpoqueDAO unique = null;
@@ -28,8 +32,8 @@ public class XMLEpoqueDAO extends DAO<Epoque>{
 	}
 	
 	/**
-	 * Méthode qui peut retourner "null" si l'époque enregistrer ne fait pas partie des 
-	 * époque existante
+	 * @return NULL
+	 * Méthode qui retourne "NULL", puique l'on applique directement l'époque selon le fichier XML
 	 */
 	@Override
 	public Epoque find() {
@@ -57,6 +61,10 @@ public class XMLEpoqueDAO extends DAO<Epoque>{
 		return null;
 	}
 
+	/** 
+	 * Méthode qui permet d'enregistrer au format xml, l'époque
+	 * @see DAO.DAO#save(java.lang.Object)
+	 */
 	@Override
 	public void save(Epoque contenu) {
 		// TODO Auto-generated method stub

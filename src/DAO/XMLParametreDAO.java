@@ -2,22 +2,25 @@ package DAO;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 import Modele.Modes;
 import Modele.Parametre;
-import Modele.Epoque.Epoque;
-import Modele.Epoque.EpoqueActuelle;
-import Modele.Epoque.EpoqueFutur;
-import Modele.Tactique.ListeTactique;
 
+/**
+ * Classe qui permet de sauvegarder et de récupérer les parametres d'une partie au format XML
+ * @author Mathieu
+ *
+ */
 public class XMLParametreDAO extends DAO<Parametre>{
 
 	private volatile static XMLParametreDAO unique = null;
-
+	/**
+	 * Singleton 
+	 * @return l'instance de la classe
+	 */
 	public static XMLParametreDAO getInstance() {
 		if (unique == null) {
 			synchronized (XMLParametreDAO.class) {
@@ -104,6 +107,9 @@ public class XMLParametreDAO extends DAO<Parametre>{
 		return p;
 	}
 
+	/**
+	 * méthode qui permet de sauvegarder la classe parametre au format XML
+	 */
 	@Override
 	public void save(Parametre contenu) {
 		// TODO Auto-generated method stub

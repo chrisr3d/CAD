@@ -8,14 +8,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Modele.CaseBateau;
+import Modele.Parametre;
 import Modele.Partie;
 import Modele.Plateau;
 import Modele.Bateau.Bateau;
 
+/**
+ * Classe qui permet la sauvegarde et la récupération de la classe Partie au format XML
+ * @author Mathieu
+ *
+ */
 public class XMLPartieDAO extends DAO<Partie> {
 
 	private volatile static XMLPartieDAO unique = null;
 
+	/**
+	 * Singleton
+	 * @return une instance de la classes
+	 */
 	public static XMLPartieDAO getInstance() {
 		if (unique == null) {
 			synchronized (XMLPartieDAO.class) {
@@ -27,6 +37,10 @@ public class XMLPartieDAO extends DAO<Partie> {
 		return unique;
 	}
 
+	/**
+	 * Méthode qui est très longue et peu lisible ..
+	 * Elle permet "simplement" de récupérer les informations concernant la partie depuis un fichier XML
+	 */
 	public Partie find() {
 		// TODO Auto-generated method stub
 		BufferedReader fichier;
@@ -207,10 +221,23 @@ public class XMLPartieDAO extends DAO<Partie> {
 				}
 			}
 			fichier.close();
-			Plateau IA = new Plateau();
+			Plateau IA = new Plateau(Parametre.getLargeurPlateau(),Parametre.getHauteurPlateau());
 			IA.setBateau(bateauIA);
-			Plateau Jou = new Plateau();
+			Plateau Jou = new Plateau(Parametre.getLargeurPlateau(),Parametre.getHauteurPlateau());
 			Jou.setBateau(bateauJoueur);
+			//remplir la carte des plateaux
+			for (Bateau bateau : Jou.getBateau()) {
+				for (CaseBateau Case : bateau.getEmplacement()) {
+					Jou.getCarte()[Case.getX()][Case.getY()] = Case;
+				}
+			}
+			for (Bateau bateau : IA.getBateau()) {
+				for (CaseBateau Case : bateau.getEmplacement()) {
+					IA.getCarte()[Case.getX()][Case.getY()] = Case;
+				}
+			}
+		
+			
 			p.setIA(IA);
 			p.setJoueur(Jou);
 			
@@ -227,6 +254,11 @@ public class XMLPartieDAO extends DAO<Partie> {
 		return p;
 	}
 
+	
+	/** 
+	 * Méthode qui permet la sauvegarde dans un fichier XML des informations de la partie
+	 * @see DAO.DAO#save(java.lang.Object)
+	 */
 	@Override
 	public void save(Partie contenu) {
 		// TODO Auto-generated method stub

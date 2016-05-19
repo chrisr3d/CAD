@@ -8,6 +8,12 @@ import Modele.Parametre;
 import Modele.Plateau;
 import Modele.Bateau.Bateau;
 
+/**
+ * Classe qui va appliquer une tactique de tir
+ * Design Pattern : Singleton
+ * @author Mathieu
+ *
+ */
 public class TactiqueCroix implements TactiqueIAStrategie {
 
 	private static String nom = "Croix";
@@ -25,6 +31,9 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 	// volatile pour autoriser l'initialisation � null !
 	private volatile static TactiqueCroix unique = null;
 
+	/**
+	 * @return l'instance de la tactique
+	 */
 	public static TactiqueCroix getInstance() {
 		/*
 		 * Ici je ne pense pas qu'il soit possible de cr�er deux intances en
@@ -47,6 +56,10 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 		return this.nom;
 	}
 
+	/** 
+	 * @return la case sur lequel l'IA va tirer
+	 * @see Modele.Tactique.TactiqueIAStrategie#appliquerTactique(Modele.Plateau, Modele.Plateau)
+	 */
 	public Case appliquerTactique(Plateau platIA, Plateau joueur) {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
