@@ -3,10 +3,6 @@ package Modele;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-
-import javax.xml.parsers.FactoryConfigurationError;
-
 import DAO.XMLDAOFactory;
 import DAO.XMLEpoqueDAO;
 import DAO.XMLParametreDAO;
@@ -48,13 +44,38 @@ public class Partie extends Observable {
 	private Partie() {
 
 	}
+	
+	public boolean tirer(Case c){
+		boolean toucher = false;
+		for(int i = 0; i<IA.getCarte().length;i++){
+			for(int j = 0; j<IA.getCarte().length;j++){
+				if(IA.getCarte()[i][j] == c  && IA.getCarte()[i][j] instanceof CaseBateau){
+					toucher = true;
+					
+				}
+			}
+		}
+		return toucher;
+		
+	}
 
 	public void Jouer() {
 
 	}
 
-	public void JouerIA() {
-
+	public boolean JouerIA() {
+		boolean toucher = false;
+		Case c = ContexteTactique.getTactique().appliquerTactique(IA, joueur);
+		for(int i = 0; i<joueur.getCarte().length;i++){
+			for(int j = 0; j<joueur.getCarte().length;j++){
+				if(joueur.getCarte()[i][j] == c  && joueur.getCarte()[i][j] instanceof CaseBateau){
+					toucher = true;
+					
+				}
+			}
+		}
+		
+		return toucher;
 	}
 
 	/**

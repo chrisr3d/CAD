@@ -15,7 +15,10 @@ import Modele.Plateau;
 import Modele.Bateau.FabriqueBateau;
 import Modele.Epoque.FabriqueEpoque;
 import Modele.Epoque.listeEpoque;
+import Modele.Tactique.ContexteTactique;
+import Modele.Tactique.ListeTactique;
 import Vue.Options;
+import Vue.Placement;
 import Vue.VueJeu;
 
 public class ControllerOptions implements ActionListener {
@@ -64,15 +67,14 @@ public class ControllerOptions implements ActionListener {
 			} else {
 
 				for (int k = 0; k < nbBoat; k++) {
-					int t = (int) (2 + (Math.random() * (5 - 2)));
+					int t = 2 + (int)(Math.random() * ((5 - 2) + 1));
 					jeu.placerAleatoireBateau(FabriqueBateau.getBateau(t));
 					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(t));
-					// PlacerBateau
 
 				}
 
 			}
-			switch ((listeEpoque) o.getComboBox().getSelectedItem()) {
+			/*switch ((listeEpoque) o.getComboBox().getSelectedItem()) {
 			case Actuelle:
 				FabriqueEpoque.setEpoqueActuelle();
 				FabriqueEpoque.choisirEpoqueFutur(jeu.getBateau());
@@ -83,6 +85,17 @@ public class ControllerOptions implements ActionListener {
 				FabriqueEpoque.choisirEpoqueActuelle(jeu.getBateau());
 				FabriqueEpoque.choisirEpoqueActuelle(adversaire.getBateau());
 				break;
+			}*/
+			
+			
+			switch((ListeTactique) o.getComboBox_1().getSelectedItem()){
+			case Aleatoire :
+				ContexteTactique.choisirTactiqueAleatoire();
+				break;
+				
+			case Croix :
+				ContexteTactique.choisirTactiqueCroix();
+				break;
 			}
 
 			Partie.getInstance().setJoueur(jeu);
@@ -92,7 +105,7 @@ public class ControllerOptions implements ActionListener {
 			Partie.getInstance().setParam(p);
 
 			VueJeu vj = new VueJeu();
-			vj.setVisible(true);
+			vj.getFrame().setVisible(true);
 
 		} else {
 			// Placement manuel des bateaux
@@ -125,6 +138,9 @@ public class ControllerOptions implements ActionListener {
 				FabriqueEpoque.choisirEpoqueActuelle(adversaire.getBateau());
 				break;
 			}
+
+			Placement pl = new Placement();
+			pl.setVisible(true);
 
 		}
 
