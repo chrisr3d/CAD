@@ -18,11 +18,19 @@ public class Bateau {
 	
 	protected BufferedImage texture;
 	
-	boolean horizontal;
+	boolean horizontale;
 	
+	public Bateau(int taille, boolean horizon){
+		this.taille = taille;
+		this.horizontale = horizon;
+	}
+
+	public Bateau() {
+		
+	}
+
 	public Bateau(int t){
 		this.taille = t;
-		
 	}
 
 	public boolean contientCase(Case c){
@@ -67,11 +75,11 @@ public class Bateau {
 	}
 
 	public boolean isHorizontal() {
-		return horizontal;
+		return horizontale;
 	}
 
 	public void setHorizontal(boolean horizontal) {
-		this.horizontal = horizontal;
+		this.horizontale = horizontal;
 	}
 
 	public int getPuissance() {

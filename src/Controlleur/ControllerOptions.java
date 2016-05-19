@@ -65,15 +65,14 @@ public class ControllerOptions implements ActionListener {
 			} else {
 
 				for (int k = 0; k < nbBoat; k++) {
-					int t = (int) (2 + (Math.random() * (5 - 2)));
+					int t = 2 + (int)(Math.random() * ((5 - 2) + 1));
 					jeu.placerAleatoireBateau(FabriqueBateau.getBateau(t));
 					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(t));
-					// PlacerBateau
 
 				}
 
 			}
-			switch ((listeEpoque) o.getComboBox().getSelectedItem()) {
+			/*switch ((listeEpoque) o.getComboBox().getSelectedItem()) {
 			case Actuelle:
 				FabriqueEpoque.setEpoqueActuelle();
 				FabriqueEpoque.choisirEpoqueFutur(jeu.getBateau());
@@ -84,7 +83,7 @@ public class ControllerOptions implements ActionListener {
 				FabriqueEpoque.choisirEpoqueActuelle(jeu.getBateau());
 				FabriqueEpoque.choisirEpoqueActuelle(adversaire.getBateau());
 				break;
-			}
+			}*/
 
 			Partie.getInstance().setJoueur(jeu);
 			Partie.getInstance().setIA(adversaire);
@@ -93,7 +92,7 @@ public class ControllerOptions implements ActionListener {
 			Partie.getInstance().setParam(p);
 
 			VueJeu vj = new VueJeu();
-			vj.setVisible(true);
+			vj.getFrame().setVisible(true);
 
 		} else {
 			// Placement manuel des bateaux

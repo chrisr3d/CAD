@@ -118,7 +118,7 @@ public class EpoqueActuelle implements Epoque{
 		case 2:
 			b.setPuissance(5);
 			break;
-		case 3:
+		case 3://test
 			b.setPuissance(7);
 			break;
 		case 4:

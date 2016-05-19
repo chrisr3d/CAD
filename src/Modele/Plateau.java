@@ -9,6 +9,11 @@ public class Plateau {
 	private Case[][] carte;
 	ArrayList<Bateau> bateau;
 
+
+	public Plateau() {
+		
+	}
+
 	public Plateau(int l, int h) {
 		bateau = new ArrayList<Bateau>();
 		carte = new Case[l][h];
@@ -39,71 +44,75 @@ public class Plateau {
 	}
 
 	public void placerAleatoireBateau(Bateau b) {
-
+		
 		boolean placer = false;
 		boolean cut = false;
 		int orient;
-
+		
 		// Placement horizontal
 		while (!placer) {
-			cut = false;
-			orient = 1 + (int) (Math.random() * ((2 - 1) + 1));
-			if (orient == 1) {
-
-				int ligne = (int) 1 + (int) (Math.random() * ((carte.length - 2) + 1));
-				int colone = 1 + (int) (Math.random() * (((carte.length - b.taille)) + 1));
+		cut = false;
+		orient = 1 + (int) (Math.random() * ((2 - 1) + 1));
+		if (orient == 1) {
+			
+				int ligne = (int) 0 + (int) (Math.random() * ((carte.length -1) + 1));
+				int colone = 0 + (int) (Math.random() * (((carte.length - b.taille)) + 1));
+				
 				ArrayList<CaseBateau> caseb = new ArrayList<CaseBateau>();
 				for (int p = 0; p < b.taille; p++) {
-					if (colone + p > carte.length - 1) {
+					if(colone+p> carte.length-1){
 						cut = true;
 					}
-
+					
 				}
-
-				if (!cut) {
-					for (int p = 0; p < b.taille; p++) {
-						if (carte[ligne][colone + p] != null) {
-							cut = true;
-						}
-
+				
+				if(!cut){
+				for (int p = 0; p < b.taille; p++) {
+					if (carte[ligne][colone + p] != null) {
+						cut = true;
 					}
+					
 				}
-
+				}
+				
 				if (!cut) {
 					for (int j = 0; j < b.taille; j++) {
 						caseb.add(new CaseBateau(ligne, colone + j));
 					}
 					b.setEmplacement(caseb);
 					bateau.add(b);
-
+					
 					for (int k = 0; k < b.taille; k++) {
-
 						carte[ligne][colone + k] = caseb.get(k);
-
+						
 					}
+					System.out.println("ligne :" + ligne + " colone : " + colone +" taille :"+ b.taille + "orient : " + orient);
 					placer = true;
 				}
+				
+			
 
-				// Placement vertical
-			} else {
-
-				int ligne = 1 + (int) (Math.random() * (((carte.length - b.taille) - 1) + 1));
-				int colone = (int) 1 + (int) (Math.random() * ((carte.length - 2) + 1));
+			// Placement vertical
+		} else {
+			
+				int ligne = 0 + (int) (Math.random() * (((carte.length - b.taille) ) + 1));
+				int colone = (int) 0 + (int) (Math.random() * ((carte.length-1) + 1));
+				
 				ArrayList<CaseBateau> caseb = new ArrayList<CaseBateau>();
-
+				
 				for (int p = 0; p < b.taille; p++) {
-					if (ligne + p > carte.length - 1) {
-						System.out.println("yo");
+					if(ligne+p > carte.length-1){
+						
 						cut = true;
 					}
 				}
-				if (!cut) {
+				if(!cut){
 					for (int p = 0; p < b.taille; p++) {
-						if (carte[ligne + p][colone] != null) {
-
-							cut = true;
-						}
+					if (carte[ligne + p][colone] != null) {
+					
+					cut = true;
 					}
+				}
 				}
 
 				if (!cut) {
@@ -112,17 +121,23 @@ public class Plateau {
 					}
 					b.setEmplacement(caseb);
 					bateau.add(b);
-
+					
 					for (int k = 0; k < b.getTaille(); k++) {
+						
 						carte[ligne + k][colone] = caseb.get(k);
-
+						
 					}
+					System.out.println("ligne :" + ligne + " colone : " + colone +" taille :"+ b.taille+ "orient : " + orient);
 					placer = true;
 				}
 
 			}
 		}
 
+		
+		
+		
+		
 	}
 
 	public void ajouterBateau(Bateau b) {
