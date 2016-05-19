@@ -69,7 +69,7 @@ public class XMLParametreDAO extends DAO<Parametre>{
 					ligne=fichier.readLine();
 					if(ligne.equals("<Auto>")){
 						ligne=fichier.readLine();
-						p.setAutomatique( (ligne=="True") ? true : false);
+						p.setAutomatique( (ligne.equals("True")) ? true : false);
 						ligne=fichier.readLine();
 					}else{
 						caMarchePas = true;

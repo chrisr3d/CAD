@@ -9,7 +9,7 @@ public class Plateau {
 	private Case[][] carte;
 	ArrayList<Bateau> bateau;
 
-	public Plateau(int l, int h) {
+	public Plateau() {
 	}
 
 	public void placerBateau(Bateau b, Case c) {

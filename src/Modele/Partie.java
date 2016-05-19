@@ -1,11 +1,13 @@
 package Modele;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 import Modele.Observable;
  
 
 import Modele.Bateau.Bateau;
-import Modele.Bateau.FabriqueBateau;
 
 public class Partie extends Observable{
 
@@ -23,6 +25,10 @@ public class Partie extends Observable{
 		
 	}
 	
+	public Partie() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void Jouer(){
 		
 	}
@@ -32,13 +38,17 @@ public class Partie extends Observable{
 	}
 	
 	public void SauvegarderPartie(){
-		try{
-    		
     		File file = new File("save.xml");
-    		file.delete();
-    	}catch(Exception e){
-    		e.printStackTrace();
-    	}
+    		PrintWriter writer;
+			try {
+				writer = new PrintWriter(file);
+				writer.print("");
+	    		writer.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		
 	}
 	
 	public void changerParametre(){
@@ -50,5 +60,37 @@ public class Partie extends Observable{
 	
 	public Parametre getParametres() {
 		return param;
+	}
+	
+	public int getNbBateauRestantJoueur() {
+		return NbBateauRestantJoueur;
+	}
+
+	public void setNbBateauRestantJoueur(int nbBateauRestantJoueur) {
+		NbBateauRestantJoueur = nbBateauRestantJoueur;
+	}
+
+	public int getNbBateauRestantIA() {
+		return NbBateauRestantIA;
+	}
+
+	public void setNbBateauRestantIA(int nbBateauRestantIA) {
+		NbBateauRestantIA = nbBateauRestantIA;
+	}
+
+	public Plateau getJoueur() {
+		return joueur;
+	}
+
+	public void setJoueur(Plateau joueur) {
+		this.joueur = joueur;
+	}
+
+	public Plateau getIA() {
+		return IA;
+	}
+
+	public void setIA(Plateau iA) {
+		IA = iA;
 	}
 }
