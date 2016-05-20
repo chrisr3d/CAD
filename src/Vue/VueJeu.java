@@ -16,9 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.EmptyBorder;
-
-import com.sun.javafx.tk.Toolkit;
 
 import Controlleur.ControllerJeu;
 import Controlleur.ControllerMenu;
