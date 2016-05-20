@@ -9,18 +9,25 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JMenuItem;
 
+import Modele.Parametre;
+import Vue.Options;
 import Vue.Placement;
 
 public class ControllerFenetre implements ActionListener, MouseListener, MouseMotionListener{
 
 	Placement place;
+	Options o;
 	private int nb,placeI,placeJ;
 	//private boolean pressed = false; //
+
 	private boolean selected=false; //true lorsqu'une taille de bateau est selectionnee
 	private boolean placed=false; //true lorsque la premiere case du bateau est placee
 	
-	public ControllerFenetre(Placement pl){
+	
+	public ControllerFenetre(Placement pl, Options o){
 		this.place=pl;
+		this.o=o;
+		
 	}
 	
 	public void mouseClicked(MouseEvent arg0) {
@@ -109,7 +116,7 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 				enoughPlace = true;
 			}
 			gray=false;
-			
+
 			//en bas de la premiere case du bateau
 			for(int k=i+1;k<(i+nb);k++){
 				if(k<(place.getGrille().length)){
@@ -127,7 +134,7 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 				enoughPlace=true;
 			}
 			gray=false;
-			
+
 			//a gauche de la premiere case du bateau
 			for(int k=j-1;k>(j-nb);k--){
 				if(k>0){
@@ -246,10 +253,42 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 					}
 				}
 				placed=false;
-				place.getBut3().setEnabled(true);
-				place.getBut2().setEnabled(true);
-				place.getBut4().setEnabled(true);
-				place.getBut5().setEnabled(true);
+				int nb = Integer.parseInt(place.getNbBateaux().getText())-1;
+				String nbat = Integer.toString(nb);
+				place.getNbBateaux().setText(nbat);
+				if(Integer.parseInt(place.getNbBateaux().getText())>0){
+					if(place.getMode().getText()=="Mosaique"){
+						place.getBut3().setEnabled(true);
+						place.getBut2().setEnabled(true);
+						place.getBut4().setEnabled(true);
+						place.getBut5().setEnabled(true);
+					}
+					else{
+						String tb = place.getTailleB().getText();
+						String t = tb.substring(tb.length()-1, tb.length());
+						int taille = Integer.parseInt(t);
+						switch(taille){
+						case 2:
+							place.getBut2().setEnabled(true);
+							break;
+						case 3:
+							place.getBut3().setEnabled(true);
+							break;
+						case 4:
+							place.getBut4().setEnabled(true);
+							break;
+						case 5:
+							place.getBut5().setEnabled(true);
+							break;
+						}
+					}
+				}
+				else{
+					place.getBut3().setEnabled(false);
+					place.getBut2().setEnabled(false);
+					place.getBut4().setEnabled(false);
+					place.getBut5().setEnabled(false);
+				}
 				selected=false;
 			}
 		}
@@ -270,9 +309,12 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 		// TODO Auto-generated method stub
 		if(!placed){
 			place.getBut2().setEnabled(false);
-			place.getBut3().setEnabled(true);
-			place.getBut4().setEnabled(true);
-			place.getBut5().setEnabled(true);
+			if(place.getMode().getText()=="Mosaique"){
+				place.getBut3().setEnabled(true);
+				place.getBut4().setEnabled(true);
+				place.getBut5().setEnabled(true);
+			}
+			
 			nb=2;
 			selected=true;
 		}
@@ -282,9 +324,11 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 		// TODO Auto-generated method stub
 		if(!placed){
 			place.getBut3().setEnabled(false);
-			place.getBut2().setEnabled(true);
-			place.getBut4().setEnabled(true);
-			place.getBut5().setEnabled(true);
+			if(place.getMode().getText()=="Mosaique"){
+				place.getBut2().setEnabled(true);
+				place.getBut4().setEnabled(true);
+				place.getBut5().setEnabled(true);
+			}
 			nb=3;
 			selected=true;
 		}
@@ -294,9 +338,11 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 		// TODO Auto-generated method stub
 		if(!placed){
 			place.getBut4().setEnabled(false);
-			place.getBut3().setEnabled(true);
-			place.getBut2().setEnabled(true);
-			place.getBut5().setEnabled(true);
+			if(place.getMode().getText()=="Mosaique"){
+				place.getBut3().setEnabled(true);
+				place.getBut2().setEnabled(true);
+				place.getBut5().setEnabled(true);
+			}
 			nb=4;
 			selected=true;
 		}
@@ -306,9 +352,11 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 		// TODO Auto-generated method stub
 		if(!placed){
 			place.getBut5().setEnabled(false);
-			place.getBut3().setEnabled(true);
-			place.getBut4().setEnabled(true);
-			place.getBut2().setEnabled(true);
+			if(place.getMode().getText()=="Mosaique"){
+				place.getBut3().setEnabled(true);
+				place.getBut4().setEnabled(true);
+				place.getBut2().setEnabled(true);
+			}
 			nb=5;
 			selected=true;
 		}
