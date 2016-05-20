@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import Modele.Partie;
+
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -53,7 +56,7 @@ public class Menu {
 			public void actionPerformed(ActionEvent e) {
 				
 				frame.setVisible(false);
-				frame.setEnabled(false);
+				
 				Options j = new Options();
 				j.getFrame().setVisible(true);
 				
@@ -64,6 +67,17 @@ public class Menu {
 		
 		JButton btnChargerPartie = new JButton("Charger Partie");
 		btnChargerPartie.setBounds(141, 100, 183, 62);
+		btnChargerPartie.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Partie.getInstance().changerParametre();
+				frame.setVisible(false);
+				frame.setEnabled(false);
+				VueJeu j = new VueJeu();
+				j.getFrame().setVisible(true);
+			}
+		});
 		panel.add(btnChargerPartie);
 		
 		JButton btnQuitter = new JButton("Quitter");

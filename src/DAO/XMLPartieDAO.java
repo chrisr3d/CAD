@@ -340,7 +340,7 @@ public class XMLPartieDAO extends DAO<Partie> {
 			fichier.newLine();
 
 			fichier.write("<BateauxJoueur>");
-			for (Bateau boat : contenu.getIA().getBateau()) {
+			for (Bateau boat : contenu.getJoueur().getBateau()) {
 
 				fichier.newLine();
 				fichier.write("<Bateau>");

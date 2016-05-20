@@ -127,7 +127,7 @@ public class Options {
 		btnValider = new JButton("Valider");
 		btnValider.addActionListener(co);
 
-		btnValider.setBounds(172, 228, 117, 29);
+		btnValider.setBounds(210, 250, 117, 29);
 		contentPane.add(btnValider);
 		modes.setBounds(237, 200, 150, 27);
 		contentPane.add(modes);
