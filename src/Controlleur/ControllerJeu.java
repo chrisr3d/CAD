@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -23,9 +24,13 @@ import Vue.VueJeu;
 public class ControllerJeu implements ActionListener, MouseListener, MouseMotionListener {
 	boolean tir = false;
 	VueJeu vue;
+	ArrayList<Case> portee;
+	boolean tirOk = false;
 
 	public ControllerJeu(VueJeu vj) {
 		this.vue = vj;
+		portee = new ArrayList<Case>();
+		portee = Partie.getInstance().testPorte();
 
 	}
 
@@ -38,7 +43,6 @@ public class ControllerJeu implements ActionListener, MouseListener, MouseMotion
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		// Tour du joueur
-
 		for (int i = 1; i < vue.getGrille().length; i++) {
 			for (int j = 1; j < vue.getGrille().length; j++) {
 
@@ -47,21 +51,25 @@ public class ControllerJeu implements ActionListener, MouseListener, MouseMotion
 					if (!vue.getGrille()[i][j].isEnabled()) {
 						tir = false;
 					} else {
-						tir = true;
-						vue.getGrille()[i][j].setEnabled(false);
-						boolean touch = Partie.getInstance()
-								.tirer(Partie.getInstance().getIA().getCarte()[i - 1][j - 1]);
-						if (touch) {
+						if (tirOk) {
+							tir = true;
+							vue.getGrille()[i][j].setEnabled(false);
+							boolean touch = Partie.getInstance()
+									.tirer(Partie.getInstance().getIA().getCarte()[i - 1][j - 1]);
+							if (touch) {
 
-							vue.getGrille()[i][j].setText("TOUCHE");
-							vue.getGrille()[i][j].setForeground(Color.RED);
-						} else {
+								vue.getGrille()[i][j].setText("TOUCHE");
+								vue.getGrille()[i][j].setForeground(Color.RED);
+							} else {
 
-							vue.getGrille()[i][j].setText("COULE");
+								vue.getGrille()[i][j].setText("COULE");
+							}
+						}else{
+							tir = false;
 						}
 					}
-
 				}
+
 			}
 		}
 
@@ -123,6 +131,7 @@ public class ControllerJeu implements ActionListener, MouseListener, MouseMotion
 
 			}
 			Partie.getInstance().verificationMort(Partie.getInstance().getJoueur());
+			portee = Partie.getInstance().testPorte();
 		}
 
 		if (Partie.getInstance().getNbBateauRestantJoueur() == 0) {
@@ -143,26 +152,20 @@ public class ControllerJeu implements ActionListener, MouseListener, MouseMotion
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
-		/*
-		 * for (int i = 1; i < vue.getGrille().length; i++) { for (int j = 1; j
-		 * < vue.getGrille().length; j++) {
-		 * 
-		 * for(Bateau b : Partie.getInstance().getJoueur().getBateau()){
-		 * 
-		 * } if (arg0.getSource() == vue.getGrille()[i][j]) { if
-		 * ((vue.getGrille()[i][j].getText().equals(""))) {
-		 * vue.getGrille()[i][j].setText("x"); } } } }
-		 */
+		for (int i = 1; i < vue.getGrille().length; i++) {
+			for (int j = 1; j < vue.getGrille().length; j++) {
 
-		for (Bateau bat : Partie.getInstance().getJoueur().getBateau()) {
-			for (CaseBateau cb : bat.getEmplacement()) {
-				for (int i = 0; i < Parametre.getHauteurPlateau(); i++) {
-					for (int j = 0; j < Parametre.getLargeurPlateau(); j++) {
-						
-						
-						
-					}
+				if (arg0.getSource() == vue.getGrille()[i][j]) {
+					if (vue.getGrille()[i][j].isEnabled())
+						for (Case c : portee) {
+							if (c.getX() == Partie.getInstance().getJoueur().getCarte()[i - 1][j - 1].getX()
+									&& c.getY() == Partie.getInstance().getJoueur().getCarte()[i - 1][j - 1].getY()) {
+								vue.getGrille()[i][j].setText("x");
+								tirOk = true;
+							}
+						}
 				}
+
 			}
 		}
 
@@ -175,6 +178,7 @@ public class ControllerJeu implements ActionListener, MouseListener, MouseMotion
 			for (int j = 1; j < vue.getGrille().length; j++) {
 
 				if (arg0.getSource() == vue.getGrille()[i][j]) {
+					tirOk = false;
 					if ((vue.getGrille()[i][j].getText().equals("x"))) {
 
 						vue.getGrille()[i][j].setText("");

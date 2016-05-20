@@ -44,7 +44,6 @@ public class ControllerMenu implements MenuListener, ActionListener {
 		}else{
 			ContexteTactique.choisirTactiqueCroix();
 		}
-		System.out.println(ContexteTactique.getTactique().getNom());
 	
 	}
 

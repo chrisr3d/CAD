@@ -93,8 +93,6 @@ public class Plateau {
 						carte[ligne][colone + k] = caseb.get(k);
 
 					}
-					System.out.println(
-							"ligne :" + ligne + " colone : " + colone + " taille :" + b.taille + "orient : " + orient);
 					placer = true;
 				}
 
@@ -133,8 +131,6 @@ public class Plateau {
 						carte[ligne + k][colone] = caseb.get(k);
 
 					}
-					System.out.println(
-							"ligne :" + ligne + " colone : " + colone + " taille :" + b.taille + "orient : " + orient);
 					placer = true;
 				}
 

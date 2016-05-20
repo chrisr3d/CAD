@@ -223,18 +223,20 @@ public class Partie extends Observable {
 	}
 
 	// Pour une case donnée, si oui ou non elle est accessible
+	
 	public ArrayList<Case> testPorte() {
 		ArrayList<Case> caseOk = new ArrayList<Case>();
 		boolean ok = false;
-		for (Bateau bat : this.getIA().getBateau()) {
+		for (Bateau bat : this.getJoueur().getBateau()) {
 			for (CaseBateau cb : bat.getEmplacement()) {
 				for (int i = 0; i < Parametre.getHauteurPlateau(); i++) {
 					for (int j = 0; j < Parametre.getLargeurPlateau(); j++) {
 						Case temp = new Case(Parametre.getHauteurPlateau()-1,cb.getY());
-						if ((Math.abs(joueur.getCarte()[i][j].getX() - temp.getX())
-								+ Math.abs(temp.getY() - joueur.getCarte()[i][j].getY())
-								+ (Parametre.getHauteurPlateau() - cb.getX())) <= bat.getPuissance()) {
-							caseOk.add(temp);
+						if ((Math.abs	(IA.getCarte()[i][j].getX() - temp.getX())
+								
+								+ Math.abs(temp.getY() - IA.getCarte()[i][j].getY())
+								+ (cb.getX()+1)) <= bat.getPuissance()) {
+							caseOk.add(this.getJoueur().getCarte()[i][j]);
 							
 						}
 					}

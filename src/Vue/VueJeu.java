@@ -199,10 +199,14 @@ public class VueJeu implements Observer {
 
 		for (int i = 0; i < Grille.length; i++) {
 			for (int k = 0; k < Grille.length; k++) {
+				
 				Grille[i][k] = new JButton();
 				Grille[i][k].addMouseListener(cj);
 
 				if (i != 0 && k != 0) {
+					if(Partie.getInstance().getIA().getCarte()[i-1][k-1].isCibler() && Partie.getInstance().getIA().getCarte()[i-1][k-1] instanceof CaseBateau ){
+						Grille[i][k].setText("TOUCHE");
+					}
 
 					Grille[i][k].setText("");
 
@@ -226,7 +230,7 @@ public class VueJeu implements Observer {
 					
 					
 					if (!(j == Grille2.length) && !(l == Grille2.length)) {
-						if (Partie.getInstance().getJoueur().getCarte()[j-1][l-1] instanceof CaseBateau && !Partie.getInstance().getJoueur().getCarte()[j-1][l-1].isCibler() ) {
+						if (Partie.getInstance().getJoueur().getCarte()[j-1][l-1] instanceof CaseBateau ) {
 							
 							Grille2[j][l].setBackground(Color.GRAY);
 						}
