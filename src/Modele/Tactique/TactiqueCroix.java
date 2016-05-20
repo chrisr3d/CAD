@@ -9,8 +9,8 @@ import Modele.Plateau;
 import Modele.Bateau.Bateau;
 
 /**
- * Classe qui va appliquer une tactique de tir
- * Design Pattern : Singleton
+ * Classe qui va appliquer une tactique de tir Design Pattern : Singleton
+ * 
  * @author Mathieu
  *
  */
@@ -56,9 +56,11 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 		return this.nom;
 	}
 
-	/** 
-	 * @return la case sur lequel l'IA va tirer - retourne null si l'IA ne peut plus tirer nul part
-	 * @see Modele.Tactique.TactiqueIAStrategie#appliquerTactique(Modele.Plateau, Modele.Plateau)
+	/**
+	 * @return la case sur lequel l'IA va tirer - retourne null si l'IA ne peut
+	 *         plus tirer nul part
+	 * @see Modele.Tactique.TactiqueIAStrategie#appliquerTactique(Modele.Plateau,
+	 *      Modele.Plateau)
 	 */
 	public Case appliquerTactique(Plateau platIA, Plateau joueur) {
 		// TODO Auto-generated method stub
@@ -73,29 +75,36 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 		// pour chaque bateau, on rï¿½cupï¿½re les cases bateaux pour vï¿½rifier
 		// la
 		// portï¿½e
-		for (Bateau bat : platIA.getBateau()) {
-			for (CaseBateau cb : bat.getEmplacement()) {
-				for (int i = 0; i < Parametre.getLargeurPlateau(); i++) {
-					for (int j = 0; j < Parametre.getHauteurPlateau(); j++) {
-						if (Math.abs(cb.getX() - joueur.getCarte()[i][j].getX())
-								+ Math.abs(cb.getY() - joueur.getCarte()[i][j].getY())
-								+ ((Parametre.getHauteurPlateau() - 1) - cb.getY()) <= bat.getPuissance()) {
-							// vï¿½rifier qu'on ne les a pas dï¿½jï¿½ ajoutï¿½
-							if (!portee.contains(joueur.getCarte()[i][j]) && !joueur.getCarte()[i][j].isCibler()) {
-								portee.add(joueur.getCarte()[i][j]);
+		if (platIA != null && joueur != null && platIA.getBateau() != null && joueur.getBateau() != null && joueur.getCarte() !=null && platIA.getCarte() != null) {
+			if (!platIA.getBateau().isEmpty() && !joueur.getBateau().isEmpty()) {
+				for (Bateau bat : platIA.getBateau()) {
+					for (CaseBateau cb : bat.getEmplacement()) {
+						for (int i = 0; i < Parametre.getLargeurPlateau(); i++) {
+							for (int j = 0; j < Parametre.getHauteurPlateau(); j++) {
+								if (Math.abs(cb.getX() - joueur.getCarte()[i][j].getX())
+										+ Math.abs(cb.getY() - joueur.getCarte()[i][j].getY())
+										+ ((Parametre.getHauteurPlateau() - 1) - cb.getY()) <= bat.getPuissance()) {
+									// vï¿½rifier qu'on ne les a pas dï¿½jï¿½
+									// ajoutï¿½
+									if (!portee.contains(joueur.getCarte()[i][j])
+											&& !joueur.getCarte()[i][j].isCibler()) {
+										portee.add(joueur.getCarte()[i][j]);
+									}
+								}
 							}
 						}
 					}
 				}
 			}
 		}
-		
+
 		boolean trouve = false;
 		// Si on a touchÃ© au dernier tir alors on tir en croix
 		if (this.toucher && this.dernierTir != null) {
 			// On tir a gauche en premier
 			if (this.dernierTir.getX() - 1 >= 0 && !trouve) {
-				//On fait le 2eme test ici, pour éviter les problèmes d'arrayOutOfBound de getCase()
+				// On fait le 2eme test ici, pour éviter les problèmes
+				// d'arrayOutOfBound de getCase()
 				if (!(joueur.getCarte()[this.dernierTir.getX() - 1][this.dernierTir.getY()].isCibler())) {
 					tir = new Case(this.dernierTir.getX() - 1, this.dernierTir.getY());
 					trouve = true;
@@ -107,36 +116,46 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 					trouve = true;
 				}
 			}
-			if (this.dernierTir.getX() + 1 < Parametre.getLargeurPlateau() && !trouve) {// a  droite
-				if (!(joueur.getCarte()[this.dernierTir.getX()+1][this.dernierTir.getY()].isCibler())) {
+			if (this.dernierTir.getX() + 1 < Parametre.getLargeurPlateau() && !trouve) {// a
+																						// droite
+				if (!(joueur.getCarte()[this.dernierTir.getX() + 1][this.dernierTir.getY()].isCibler())) {
 					tir = new Case(this.dernierTir.getX() + 1, this.dernierTir.getY());
 					trouve = true;
 				}
 			}
-			if (this.dernierTir.getY() + 1 < Parametre.getHauteurPlateau() && !trouve) {// en bas
-				if (!(joueur.getCarte()[this.dernierTir.getX()][this.dernierTir.getY()+1].isCibler())) {									
+			if (this.dernierTir.getY() + 1 < Parametre.getHauteurPlateau() && !trouve) {// en
+																						// bas
+				if (!(joueur.getCarte()[this.dernierTir.getX()][this.dernierTir.getY() + 1].isCibler())) {
 					tir = new Case(this.dernierTir.getX(), this.dernierTir.getY() + 1);
 					trouve = true;
 				}
 			}
-			//si on a pas trouvé de case sur lequel on peut tirer autour de la case bateau qu'on avait déjà touché
-			//on réinitialise toucher et dernierTir pour ne pas a nouveau tirer autour
-			if(!trouve){
+			// si on a pas trouvé de case sur lequel on peut tirer autour de la
+			// case bateau qu'on avait déjà touché
+			// on réinitialise toucher et dernierTir pour ne pas a nouveau tirer
+			// autour
+			if (!trouve) {
 				this.toucher = false;
 				dernierTir = null;
 			}
-		} 
-		if(!this.toucher || !trouve){
-			// sinon on tir de maniÃ¨re alÃ©atoire
-			int indiceAuHasard = (int) (Math.random() * (portee.size() - 1));
-			tir = portee.get(indiceAuHasard);
+		}
+		if (!portee.isEmpty()) {
+			if (!this.toucher || !trouve) {
+				// sinon on tir de maniÃ¨re alÃ©atoire
+				int indiceAuHasard = (int) (Math.random() * (portee.size() - 1));
+				tir = portee.get(indiceAuHasard);
+			}
 		}
 		// vÃ©rifier si on a touchÃ©
-		for (Bateau bat : joueur.getBateau()) {
-			if (bat.contientCase(tir)) {
-				// stocker le dernier tir et passer toucher Ã  vrai
-				this.dernierTir = tir;
-				this.toucher = true;
+		if (joueur != null && joueur.getBateau() !=null) {
+			for (Bateau bat : joueur.getBateau()) {
+				if (tir != null) {
+					if (bat.contientCase(tir)) {
+						// stocker le dernier tir et passer toucher Ã  vrai
+						this.dernierTir = tir;
+						this.toucher = true;
+					}
+				}
 			}
 		}
 		return tir;
