@@ -11,11 +11,13 @@ import Modele.Tactique.TactiqueCroix;
 import Modele.Tactique.TactiqueIAStrategie;
 
 /**
- * Classe qui permet la sauvegarder la recuperation de la strategie a appliquer a la partie 
+ * Classe qui permet la sauvegarder la recuperation de la strategie a appliquer
+ * a la partie
+ * 
  * @author Mathieu
  *
  */
-public class XMLStrategieDAO extends DAO<TactiqueIAStrategie>{
+public class XMLStrategieDAO extends DAO<TactiqueIAStrategie> {
 
 	private volatile static XMLStrategieDAO unique = null;
 
@@ -29,9 +31,9 @@ public class XMLStrategieDAO extends DAO<TactiqueIAStrategie>{
 		}
 		return unique;
 	}
-	
+
 	/**
-	 * On retourne "NULL" ici car on applique directionement la strategie 
+	 * On retourne "NULL" ici car on applique directionement la strategie
 	 */
 	@Override
 	public TactiqueIAStrategie find() {
@@ -40,13 +42,14 @@ public class XMLStrategieDAO extends DAO<TactiqueIAStrategie>{
 		try {
 			fichier = new BufferedReader(new FileReader("save.xml"));
 			String ligne;
-			while ((ligne=fichier.readLine())!=null){
-				//si on trouve une ligne qui commence par �poque, on lit la suivante
-				if(ligne.equals("<Strategie>")){
-					ligne=fichier.readLine();
-					if(ligne.equals("Aleatoire")){
+			while ((ligne = fichier.readLine()) != null) {
+				// si on trouve une ligne qui commence par �poque, on lit la
+				// suivante
+				if (ligne.equals("<Strategie>")) {
+					ligne = fichier.readLine();
+					if (ligne.equals("Aleatoire")) {
 						return TactiqueAleatoire.getInstance();
-					}else if(ligne.equals("Croix")){
+					} else if (ligne.equals("Croix")) {
 						return TactiqueCroix.getInstance();
 					}
 				}
@@ -62,21 +65,22 @@ public class XMLStrategieDAO extends DAO<TactiqueIAStrategie>{
 	@Override
 	public void save(TactiqueIAStrategie contenu) {
 		// TODO Auto-generated method stub
-		BufferedWriter fichier;
-		try {
-			fichier = new BufferedWriter(new FileWriter("save.xml",true));
-			fichier.write("<Strategie>");
-			fichier.newLine();
-			fichier.write(contenu.getNom());
-			fichier.newLine();
-			fichier.write("</Strategie>");
-			fichier.newLine();
-			fichier.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (contenu != null) {
+			BufferedWriter fichier;
+			try {
+				fichier = new BufferedWriter(new FileWriter("save.xml", true));
+				fichier.write("<Strategie>");
+				fichier.newLine();
+				fichier.write(contenu.getNom());
+				fichier.newLine();
+				fichier.write("</Strategie>");
+				fichier.newLine();
+				fichier.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		
 	}
 
 }

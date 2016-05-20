@@ -1,8 +1,5 @@
 package DAO;
 
-import Modele.Parametre;
-import Modele.Partie;
-import Modele.Epoque.Epoque;
 
 /**
  * 
@@ -12,18 +9,16 @@ import Modele.Epoque.Epoque;
  */
 public class XMLDAOFactory extends AbstractDAOFactory{
 
-	
-	public DAO getPartieDAO() {
+	public XMLPartieDAO getPartieDAO() {
 		return XMLPartieDAO.getInstance();
 	}
-	public DAO getParametreDAO() {
+	public XMLParametreDAO getParametreDAO() {
 		return XMLParametreDAO.getInstance();
 	}
-	public DAO getEpoqueDAO() {
+	public XMLEpoqueDAO getEpoqueDAO() {
 		return XMLEpoqueDAO.getInstance();
 	}
-	
-	public DAO getStrategie(){
+	public XMLStrategieDAO getStrategie(){
 		return XMLStrategieDAO.getInstance();
 	}
 	

@@ -31,7 +31,7 @@ public class TactiquesTests {
 	private Plateau plateauJ;
 	
 	@Before
-	public void setUp() throws IOException {
+	public void setUp()  {
 		Case[][] carte = new Case[2][2];
 		Parametre p = new Parametre(2, 2, true, Modes.Normal);
 		ArrayList<Bateau> listBoat = new ArrayList<Bateau>();
@@ -133,7 +133,7 @@ public class TactiquesTests {
 	 * @throws IOException
 	 */
 	@Test
-	public void testTactiqueCroixRetourneNull() throws IOException {
+	public void testTactiqueCroixRetourneNull() {
 		
 		Case c = TactiqueCroix.getInstance().appliquerTactique(plateauIA, plateauJ);
 
@@ -147,7 +147,7 @@ public class TactiquesTests {
 	 * @throws IOException
 	 */
 	@Test
-	public void testTactiqueAleatoireRetourneNull() throws IOException {
+	public void testTactiqueAleatoireRetourneNull()  {
 		
 		Case c = TactiqueAleatoire.getInstance().appliquerTactique(plateauIA, plateauJ);
 
@@ -159,7 +159,7 @@ public class TactiquesTests {
 	 * @throws IOException
 	 */
 	@Test
-	public void testTactiqueAleatoireParametrePlateauNull() throws IOException {
+	public void testTactiqueAleatoireParametrePlateauNull()  {
 		
 		Case c = TactiqueAleatoire.getInstance().appliquerTactique(null, null);
 
@@ -171,7 +171,7 @@ public class TactiquesTests {
 	 * @throws IOException
 	 */
 	@Test
-	public void testTactiqueCroixParametrePlateauNull() throws IOException {
+	public void testTactiqueCroixParametrePlateauNull() {
 		
 		Case c = TactiqueCroix.getInstance().appliquerTactique(null, null);
 
@@ -183,7 +183,7 @@ public class TactiquesTests {
 	 * @throws IOException
 	 */
 	@Test
-	public void testTactiqueAleatoireParametreListeBateauNull() throws IOException {
+	public void testTactiqueAleatoireParametreListeBateauNull() {
 		plateauIA.setBateau(null);
 		plateauJ.setBateau(null);
 		Case c = TactiqueAleatoire.getInstance().appliquerTactique(plateauIA, plateauJ);
@@ -196,7 +196,7 @@ public class TactiquesTests {
 	 * @throws IOException
 	 */
 	@Test
-	public void testTactiqueAleatoireCroixListeBateauNull() throws IOException {
+	public void testTactiqueAleatoireCroixListeBateauNull()  {
 		plateauIA.setBateau(null);
 		plateauJ.setBateau(null);
 		Case c = TactiqueCroix.getInstance().appliquerTactique(plateauIA, plateauJ);
@@ -209,7 +209,7 @@ public class TactiquesTests {
 	 * @throws IOException
 	 */
 	@Test
-	public void testTactiqueAleatoireParametreCarteNull() throws IOException {
+	public void testTactiqueAleatoireParametreCarteNull() {
 		plateauIA.setCarte(null);
 		plateauJ.setCarte(null);
 		Case c = TactiqueAleatoire.getInstance().appliquerTactique(plateauIA, plateauJ);
@@ -222,7 +222,7 @@ public class TactiquesTests {
 	 * @throws IOException
 	 */
 	@Test
-	public void testTactiqueAleatoireCroixCarteNull() throws IOException {
+	public void testTactiqueAleatoireCroixCarteNull()  {
 		plateauIA.setCarte(null);
 		plateauJ.setCarte(null);
 		Case c = TactiqueCroix.getInstance().appliquerTactique(plateauIA, plateauJ);
@@ -235,7 +235,7 @@ public class TactiquesTests {
 	 * @throws IOException
 	 */
 	@Test
-	public void testTactiqueAleatoireNormal() throws IOException {
+	public void testTactiqueAleatoireNormal() {
 		//De base les parametres de cette classe me donne un plateau sur lequel il n'y a plus de case sur laquelle tirer
 		//Je change une case pour que l'on puisse tirer dessus
 		plateauJ.getCarte()[1][1].setCibler(false);
@@ -251,7 +251,7 @@ public class TactiquesTests {
 	 * @throws IOException
 	 */
 	@Test
-	public void testTactiqueCroixNormal() throws IOException {
+	public void testTactiqueCroixNormal(){
 		//De base les parametres de cette classe me donne un plateau sur lequel il n'y a plus de case sur laquelle tirer
 		//Je change une case pour que l'on puisse tirer dessus
 		plateauJ.getCarte()[1][1].setCibler(false);

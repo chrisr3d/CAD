@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import DAO.AbstractDAOFactory;
+import DAO.FactoryTypeDAO;
 import DAO.XMLDAOFactory;
 import DAO.XMLEpoqueDAO;
 import DAO.XMLParametreDAO;
@@ -128,10 +130,12 @@ public class Partie extends Observable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		XMLStrategieDAO strategie = XMLStrategieDAO.getInstance();
-		XMLParametreDAO parametre = XMLParametreDAO.getInstance();
-		XMLEpoqueDAO epoque = XMLEpoqueDAO.getInstance();
-		XMLPartieDAO partie = XMLPartieDAO.getInstance();
+		XMLDAOFactory  a = (XMLDAOFactory) AbstractDAOFactory.getFactory(FactoryTypeDAO.XML_DAO_Factory);
+		
+		XMLStrategieDAO strategie = a.getStrategie();
+		XMLParametreDAO parametre = a.getParametreDAO();
+		XMLEpoqueDAO epoque = a.getEpoqueDAO();
+		XMLPartieDAO partie = a.getPartieDAO();
 		epoque.save(FabriqueEpoque.getEpoque());
 		strategie.save(ContexteTactique.getTactique());
 		parametre.save(this.param);
