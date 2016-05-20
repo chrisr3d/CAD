@@ -118,27 +118,6 @@ public class ControllerOptions implements ActionListener {
 			// Placement manuel des bateaux
 
 			// Placement adversaire
-			switch ((listeEpoque) o.getComboBox().getSelectedItem()) {
-			case Actuelle:
-				FabriqueEpoque.setEpoqueActuelle();
-				FabriqueEpoque.choisirEpoqueFutur(jeu.getBateau());
-				FabriqueEpoque.choisirEpoqueFutur(adversaire.getBateau());
-				break;
-			case Futur:
-				FabriqueEpoque.setEpoqueFutur();
-				FabriqueEpoque.choisirEpoqueActuelle(jeu.getBateau());
-				FabriqueEpoque.choisirEpoqueActuelle(adversaire.getBateau());
-				break;
-			}
-			switch((ListeTactique) o.getComboBox_1().getSelectedItem()){
-			case Aleatoire :
-				ContexteTactique.choisirTactiqueAleatoire();
-				break;
-				
-			case Croix :
-				ContexteTactique.choisirTactiqueCroix();
-				break;
-			}
 			Partie.getInstance().setParam(p);
 			Placement pl = new Placement(o);
 			pl.getFrame().setVisible(true);

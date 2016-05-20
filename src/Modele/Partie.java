@@ -86,7 +86,7 @@ public class Partie extends Observable {
 			for (int j = 0; j < IA.getCarte().length; j++) {
 				if (IA.getCarte()[i][j] == c && NbBateauRestantJoueur > 0) {
 					IA.getCarte()[i][j].setCibler(true);
-
+					
 					if (IA.getCarte()[i][j] instanceof CaseBateau) {
 						caseDonneBateau(IA.getCarte()[i][j]);
 						toucher = true;
@@ -231,10 +231,13 @@ public class Partie extends Observable {
 	// Pour une case donnée, si oui ou non elle est accessible
 	
 	public ArrayList<Case> testPorte() {
+		
 		ArrayList<Case> caseOk = new ArrayList<Case>();
 		boolean ok = false;
 		for (Bateau bat : this.getJoueur().getBateau()) {
+			System.out.println(bat.getPuissance());
 			for (CaseBateau cb : bat.getEmplacement()) {
+				
 				for (int i = 0; i < Parametre.getHauteurPlateau(); i++) {
 					for (int j = 0; j < Parametre.getLargeurPlateau(); j++) {
 						Case temp = new Case(Parametre.getHauteurPlateau()-1,cb.getY());
@@ -242,6 +245,7 @@ public class Partie extends Observable {
 								
 								+ Math.abs(temp.getY() - IA.getCarte()[i][j].getY())
 								+ (cb.getX()+1)) <= bat.getPuissance()) {
+							
 							for(Case c : caseOk){
 							if(c.getX() == this.getJoueur().getCarte()[i][j].getX() && c.getY() == this.getJoueur().getCarte()[i][j].getY()){
 								ok = true;

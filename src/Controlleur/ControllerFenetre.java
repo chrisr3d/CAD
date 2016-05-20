@@ -17,6 +17,10 @@ import Modele.Partie;
 import Modele.Plateau;
 import Modele.Bateau.Bateau;
 import Modele.Bateau.FabriqueBateau;
+import Modele.Epoque.FabriqueEpoque;
+import Modele.Epoque.listeEpoque;
+import Modele.Tactique.ContexteTactique;
+import Modele.Tactique.ListeTactique;
 import Vue.Options;
 import Vue.Placement;
 import Vue.VueJeu;
@@ -438,6 +442,28 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 
 	public void pressValider() {
 		// TODO Auto-generated method stub
+		switch ((listeEpoque) o.getComboBox().getSelectedItem()) {
+		case Actuelle:
+			FabriqueEpoque.setEpoqueActuelle();
+			FabriqueEpoque.choisirEpoqueFutur(jeu.getBateau());
+			FabriqueEpoque.choisirEpoqueFutur(adversaire.getBateau());
+			break;
+		case Futur:
+			FabriqueEpoque.setEpoqueFutur();
+			FabriqueEpoque.choisirEpoqueActuelle(jeu.getBateau());
+			FabriqueEpoque.choisirEpoqueActuelle(adversaire.getBateau());
+			break;
+		}
+		switch((ListeTactique) o.getComboBox_1().getSelectedItem()){
+		case Aleatoire :
+			ContexteTactique.choisirTactiqueAleatoire();
+			break;
+			
+		case Croix :
+			ContexteTactique.choisirTactiqueCroix();
+			break;
+		}
+		
 		Partie.getInstance().setJoueur(jeu);
 		Partie.getInstance().setIA(adversaire);
 		Partie.getInstance().setNbBateauRestantIA(nbBoat);
