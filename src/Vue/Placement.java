@@ -5,20 +5,24 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Controlleur.ControllerFenetre;
+import Modele.Parametre;
 import Modele.Partie;
 
 public class Placement extends JFrame implements Observer{
+	Options opt;
 	private JPanel contentPane, bateaux;
 	private JButton[][] Grille;
 	private JButton but2,but3,but4,but5;
+	private JLabel info,nbBateauxTxt,nbBateaux,mode,tailleBateaux;
 	Alphabet tab = new Alphabet();
-	ControllerFenetre cf = new ControllerFenetre(this);
+	ControllerFenetre cf = new ControllerFenetre(this,opt);
 	
 	public JButton[][] getGrille(){
 		return Grille;
@@ -56,8 +60,27 @@ public class Placement extends JFrame implements Observer{
 	public void setCf(ControllerFenetre cf){
 		this.cf=cf;
 	}
+	public JLabel getNbBateaux(){
+		return nbBateaux;
+	}
+	public void setNbBateaux(JLabel nb){
+		nbBateaux=nb;
+	}
+	public JLabel getMode(){
+		return mode;
+	}
+	public void setMode(JLabel m){
+		mode=m;
+	}
+	public JLabel getTailleB(){
+		return tailleBateaux;
+	}
+	public void setTailleB(JLabel tb){
+		tailleBateaux=tb;
+	}
 	
-	public Placement(){
+	public Placement(Options opt){
+		this.opt=opt;
 		getContentPane().setLayout(new GridLayout(2,1));
 		
 		contentPane = new JPanel();
@@ -94,17 +117,80 @@ public class Placement extends JFrame implements Observer{
 		but3 = new JButton("3");
 		but4 = new JButton("4");
 		but5 = new JButton("5");
-		but2.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*25-55,40,110,29);
-		but3.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*25-55,115,110,29);
-		but4.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*25-55,190,110,29);
-		but5.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*25-55,265,110,29);
+		nbBateauxTxt = new JLabel("Nombre de bateaux restants :");
+		nbBateaux = new JLabel();
+		info = new JLabel("Créer Bateau de taille :");
+		Double d2 = (Double) opt.getNbBateau().getValue();
+		Integer nbBoat = d2.intValue();
+		nbBateaux.setText(nbBoat.toString());
+		String modeB = opt.getModes().getSelectedItem().toString();
+		mode = new JLabel("Mode : "+modeB);
+		but2.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*27,40,110,29);
+		but3.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*27,115,110,29);
+		but4.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*27,190,110,29);
+		but5.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*27,265,110,29);
+		nbBateauxTxt.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*45,100, 250,50);
+		Double tg = (Double) opt.getSpinner().getValue();
+		Integer tailleG = tg.intValue(); 
+		switch(tailleG){
+		case 6:
+			nbBateaux.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*77,100,50,50);
+			break;
+		case 7:
+			nbBateaux.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*73,100,50,50);
+			break;
+		case 8:
+			nbBateaux.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*70,100,50,50);
+			break;
+		case 9:
+			nbBateaux.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*68,100,50,50);
+			break;
+		case 10:
+			nbBateaux.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*65,100,50,50);
+			break;
+		}
+		mode.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*45,150,250,50);
+		info.setBounds(10,140,250,50);
 		but2.addActionListener(cf);
 		but3.addActionListener(cf);
 		but4.addActionListener(cf);
 		but5.addActionListener(cf);
+		bateaux.add(info);
+		bateaux.add(nbBateauxTxt);
+		bateaux.add(nbBateaux);
+		bateaux.add(mode);
 		bateaux.add(but2);
 		bateaux.add(but3);
 		bateaux.add(but4);
 		bateaux.add(but5);
+		if(modeB == "Normal"){
+			Double d3 = (Double) opt.getTailleBateau().getValue();
+			Integer tailleB = d3.intValue();
+			tailleBateaux = new JLabel("Taille des bateaux : "+tailleB.toString());
+			tailleBateaux.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*45,200,250,50);
+			bateaux.add(tailleBateaux);
+			switch (tailleB){
+			case 2:
+				but3.setEnabled(false);
+				but4.setEnabled(false);
+				but5.setEnabled(false);
+				break;
+			case 3:
+				but2.setEnabled(false);
+				but4.setEnabled(false);
+				but5.setEnabled(false);
+				break;
+			case 4:
+				but3.setEnabled(false);
+				but2.setEnabled(false);
+				but5.setEnabled(false);
+				break;
+			case 5:
+				but3.setEnabled(false);
+				but4.setEnabled(false);
+				but2.setEnabled(false);
+				break;
+			}
+		}
 	}
 }

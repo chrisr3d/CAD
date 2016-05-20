@@ -146,7 +146,7 @@ public class ControllerOptions implements ActionListener {
 				break;
 			}
 
-			Placement pl = new Placement();
+			Placement pl = new Placement(o);
 			pl.setVisible(true);
 
 		}
