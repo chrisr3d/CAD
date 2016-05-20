@@ -235,7 +235,6 @@ public class Partie extends Observable {
 		ArrayList<Case> caseOk = new ArrayList<Case>();
 		boolean ok = false;
 		for (Bateau bat : this.getJoueur().getBateau()) {
-			System.out.println(bat.getPuissance());
 			for (CaseBateau cb : bat.getEmplacement()) {
 				
 				for (int i = 0; i < Parametre.getHauteurPlateau(); i++) {

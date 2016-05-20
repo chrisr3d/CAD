@@ -105,7 +105,6 @@ public class ControllerJeu implements ActionListener, MouseListener, MouseMotion
 				}
 			}
 		}
-		System.out.println(compteur);
 		if (compteur == portee.size()) {
 			String[] victoire = { " Quitter " };
 
