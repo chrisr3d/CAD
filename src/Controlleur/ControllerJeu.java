@@ -101,8 +101,8 @@ public void mouseClicked(MouseEvent arg0) {
 			Partie.getInstance().verificationMort(Partie.getInstance().getJoueur());
 		}
 		
-		if(Partie.getInstance().getNbBateauRestantJoueur() != 0) {
-	}else{
+		if(Partie.getInstance().getNbBateauRestantJoueur() == 0) {
+
 		JOptionPane.showMessageDialog(null, "T'as perdu gros connard");
 	}
 	}
