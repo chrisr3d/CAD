@@ -16,7 +16,7 @@ public class Bateau {
 	
 	public String nom;
 	
-	protected BufferedImage texture;
+	//protected BufferedImage texture;
 	
 	boolean horizontale;
 	
@@ -66,13 +66,7 @@ public class Bateau {
 		this.emplacement = emplacement;
 	}
 
-	public BufferedImage getTexture() {
-		return texture;
-	}
-
-	public void setTexture(BufferedImage texture) {
-		this.texture = texture;
-	}
+	
 
 	public boolean isHorizontal() {
 		return horizontale;

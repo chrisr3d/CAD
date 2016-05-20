@@ -37,8 +37,19 @@ public class Plateau {
 	public void setBateau(ArrayList<Bateau> bateau) {
 		this.bateau = bateau;
 	}
+	
+	public void remplirCaseVide(){
+		for(int i =0;i<carte.length;i++){
+			for(int j = 0; j<carte.length;j++){
+				if(!(carte[i][j] instanceof CaseBateau)){
+					carte[i][j] = new Case(i,j);
+				}
+			}
+		}
+		
+	}
 
-	//METTRE CASE A PAS NULL FDP BOUCLE SI PAS CASEEAU METTRE CASE 
+	 
 	public void placerAleatoireBateau(Bateau b) {
 
 		boolean placer = false;

@@ -67,6 +67,7 @@ public class ControllerOptions implements ActionListener {
 					// PlacerBateau
 
 				}
+				
 
 			} else {
 
@@ -78,7 +79,7 @@ public class ControllerOptions implements ActionListener {
 				}
 
 			}
-			/*switch ((listeEpoque) o.getComboBox().getSelectedItem()) {
+			switch ((listeEpoque) o.getComboBox().getSelectedItem()) {
 			case Actuelle:
 				FabriqueEpoque.setEpoqueActuelle();
 				FabriqueEpoque.choisirEpoqueFutur(jeu.getBateau());
@@ -89,7 +90,7 @@ public class ControllerOptions implements ActionListener {
 				FabriqueEpoque.choisirEpoqueActuelle(jeu.getBateau());
 				FabriqueEpoque.choisirEpoqueActuelle(adversaire.getBateau());
 				break;
-			}*/
+			}
 			
 			
 			switch((ListeTactique) o.getComboBox_1().getSelectedItem()){
@@ -107,7 +108,9 @@ public class ControllerOptions implements ActionListener {
 			Partie.getInstance().setNbBateauRestantIA(nbBoat);
 			Partie.getInstance().setNbBateauRestantJoueur(nbBoat);
 			Partie.getInstance().setParam(p);
-
+			
+			jeu.remplirCaseVide();
+			adversaire.remplirCaseVide();
 			VueJeu vj = new VueJeu();
 			vj.getFrame().setVisible(true);
 

@@ -16,7 +16,7 @@ import Modele.Bateau.*;
  */
 public class EpoqueFutur implements Epoque{
 
-	//volatile pour autoriser l'initialisation à null !
+	//volatile pour autoriser l'initialisation ï¿½ null !
 	private volatile static EpoqueFutur unique = null;
 	
 	public static EpoqueFutur getInstance(){
@@ -45,14 +45,14 @@ public class EpoqueFutur implements Epoque{
 		return listBateau;
 	}
 	/**
-	 * Méthode qui va donner une image de l'époque futuriste au bateau passé en paramètre
-	 * Si le bateau est horizontal, le bateau n'aura pas la même texture !
+	 * Mï¿½thode qui va donner une image de l'ï¿½poque futuriste au bateau passï¿½ en paramï¿½tre
+	 * Si le bateau est horizontal, le bateau n'aura pas la mï¿½me texture !
 	 * @param b : bateau
 	 * @throws IOException : exeception pour la lecture des images en dur
 	 */
 	private void ajoutImageEpoque(Bateau b) throws IOException {
 		// TODO Auto-generated method stub
-		BufferedImage in = null;
+	/*	BufferedImage in = null;
 		File img = null;
 		if(b.isHorizontal()){
 			switch (b.getTaille()) {
@@ -110,11 +110,11 @@ public class EpoqueFutur implements Epoque{
 				b.setTexture(in);
 				break;
 			}
-		}
+		}*/
 	}
 
 	/**
-	 * Méthode qui permet l'ajout d'une puissance à un bateau correspondant à l'époque futuriste
+	 * Mï¿½thode qui permet l'ajout d'une puissance ï¿½ un bateau correspondant ï¿½ l'ï¿½poque futuriste
 	 * @param b : bateau
 	 */
 	private void ajoutPuissanceEpoque(Bateau b) {
@@ -139,7 +139,7 @@ public class EpoqueFutur implements Epoque{
 	}
 
 	/**
-	 * Méthode qui permet l'ajout d'un nom correspondant à l'époque futuriste
+	 * Mï¿½thode qui permet l'ajout d'un nom correspondant ï¿½ l'ï¿½poque futuriste
 	 * Sources : https://fr.wikipedia.org/wiki/Vaisseau_spatial
 	 * @param b : bateau
 	 */
@@ -152,13 +152,13 @@ public class EpoqueFutur implements Epoque{
 			b.setNom("Croiseur");
 			break;
 		case 4:
-			b.setNom("Cuirassé");
+			b.setNom("Cuirassï¿½");
 			break;
 		case 5:
-			b.setNom("Vaisseau-mère");
+			b.setNom("Vaisseau-mï¿½re");
 			break;
 		default:
-			b.setNom("Vaisseau-mère");
+			b.setNom("Vaisseau-mï¿½re");
 			break;
 		}
 	}
