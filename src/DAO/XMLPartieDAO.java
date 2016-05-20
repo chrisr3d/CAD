@@ -14,7 +14,9 @@ import Modele.Plateau;
 import Modele.Bateau.Bateau;
 
 /**
- * Classe qui permet la sauvegarde et la r�cup�ration de la classe Partie au format XML
+ * Classe qui permet la sauvegarde et la r�cup�ration de la classe Partie au
+ * format XML
+ * 
  * @author Mathieu
  *
  */
@@ -24,6 +26,7 @@ public class XMLPartieDAO extends DAO<Partie> {
 
 	/**
 	 * Singleton
+	 * 
 	 * @return une instance de la classes
 	 */
 	public static XMLPartieDAO getInstance() {
@@ -38,8 +41,9 @@ public class XMLPartieDAO extends DAO<Partie> {
 	}
 
 	/**
-	 * M�thode qui est tr�s longue et peu lisible ..
-	 * Elle permet "simplement" de r�cup�rer les informations concernant la partie depuis un fichier XML
+	 * M�thode qui est tr�s longue et peu lisible .. Elle permet
+	 * "simplement" de r�cup�rer les informations concernant la partie
+	 * depuis un fichier XML
 	 */
 	public Partie find() {
 		// TODO Auto-generated method stub
@@ -82,7 +86,7 @@ public class XMLPartieDAO extends DAO<Partie> {
 						// Bateau - tag
 						if (ligne.equals("<Bateau>")) {
 							Bateau bat = new Bateau();
-							
+
 							// Taille
 							ligne = fichier.readLine();
 							if (ligne.equals("<Taille>")) {
@@ -110,7 +114,7 @@ public class XMLPartieDAO extends DAO<Partie> {
 									int y = -1;
 									// X
 									ligne = fichier.readLine();
-									if (ligne .equals("<X>")) {
+									if (ligne.equals("<X>")) {
 										ligne = fichier.readLine();
 										x = Integer.parseInt(ligne);
 										ligne = fichier.readLine();
@@ -147,7 +151,7 @@ public class XMLPartieDAO extends DAO<Partie> {
 						ligne = fichier.readLine();
 					}
 				} else if (ligne.equals("<BateauxJoueur>")) {
-					while (!(ligne.equals("</BateauxJoueur>")) && ligne !=null) {
+					while (!(ligne.equals("</BateauxJoueur>")) && ligne != null) {
 						// Bateau - tag
 						if (ligne.equals("<Bateau>")) {
 							Bateau bat = new Bateau();
@@ -172,8 +176,8 @@ public class XMLPartieDAO extends DAO<Partie> {
 								caMarchePas = true;
 							}
 							ligne = fichier.readLine();
-							while (!(ligne.equals("</Cases>")) && ligne !=null) {
-								
+							while (!(ligne.equals("</Cases>")) && ligne != null) {
+
 								if (ligne.equals("<Case>")) {
 									int x = -1;
 									int y = -1;
@@ -202,7 +206,7 @@ public class XMLPartieDAO extends DAO<Partie> {
 									ligne = fichier.readLine();
 									if (ligne.equals("<Cibler>")) {
 										ligne = fichier.readLine();
-										
+
 										temp.setCibler((ligne.equals("True")) ? true : false);
 										ligne = fichier.readLine();
 									} else {
@@ -221,11 +225,11 @@ public class XMLPartieDAO extends DAO<Partie> {
 				}
 			}
 			fichier.close();
-			Plateau IA = new Plateau(Parametre.getLargeurPlateau(),Parametre.getHauteurPlateau());
+			Plateau IA = new Plateau(Parametre.getLargeurPlateau(), Parametre.getHauteurPlateau());
 			IA.setBateau(bateauIA);
-			Plateau Jou = new Plateau(Parametre.getLargeurPlateau(),Parametre.getHauteurPlateau());
+			Plateau Jou = new Plateau(Parametre.getLargeurPlateau(), Parametre.getHauteurPlateau());
 			Jou.setBateau(bateauJoueur);
-			//remplir la carte des plateaux
+			// remplir la carte des plateaux
 			for (Bateau bateau : Jou.getBateau()) {
 				for (CaseBateau Case : bateau.getEmplacement()) {
 					Jou.getCarte()[Case.getX()][Case.getY()] = Case;
@@ -236,11 +240,10 @@ public class XMLPartieDAO extends DAO<Partie> {
 					IA.getCarte()[Case.getX()][Case.getY()] = Case;
 				}
 			}
-		
-			
+
 			p.setIA(IA);
 			p.setJoueur(Jou);
-			
+
 			if (caMarchePas) {
 				throw (new Exception("La sauvegarde n'est pas recuperable !"));
 			}
@@ -254,156 +257,158 @@ public class XMLPartieDAO extends DAO<Partie> {
 		return p;
 	}
 
-	
-	/** 
-	 * Methode qui permet la sauvegarde dans un fichier XML des informations de la partie
+	/**
+	 * Methode qui permet la sauvegarde dans un fichier XML des informations de
+	 * la partie
+	 * 
 	 * @see DAO.DAO#save(java.lang.Object)
 	 */
 	@Override
 	public void save(Partie contenu) {
 		// TODO Auto-generated method stub
-		BufferedWriter fichier;
-		try {
-			fichier = new BufferedWriter(new FileWriter("save.xml", true));
-			fichier.write("<Partie>");
-			fichier.newLine();
-
-			fichier.write("<NbBateauRestantIA>");
-			fichier.newLine();
-			fichier.write(contenu.getNbBateauRestantIA() + "");
-			fichier.newLine();
-			fichier.write("</NbBateauRestantIA>");
-			fichier.newLine();
-
-			fichier.write("<NbBateauRestantJoueur>");
-			fichier.newLine();
-			fichier.write(contenu.getNbBateauRestantJoueur() + "");
-			fichier.newLine();
-			fichier.write("</NbBateauRestantJoueur>");
-			fichier.newLine();
-
-			fichier.write("<BateauxIA>");
-			for (Bateau boat : contenu.getIA().getBateau()) {
-
-				fichier.newLine();
-				fichier.write("<Bateau>");
-				fichier.newLine();
-				fichier.write("<Taille>");
-				fichier.newLine();
-				fichier.write(boat.getTaille() + "");
-				fichier.newLine();
-				fichier.write("</Taille>");
+		if (contenu != null) {
+			BufferedWriter fichier;
+			try {
+				fichier = new BufferedWriter(new FileWriter("save.xml", true));
+				fichier.write("<Partie>");
 				fichier.newLine();
 
-				fichier.write("<Horizontale>");
+				fichier.write("<NbBateauRestantIA>");
 				fichier.newLine();
-				fichier.write(boat.isHorizontal() ? "True" : "False");
+				fichier.write(contenu.getNbBateauRestantIA() + "");
 				fichier.newLine();
-				fichier.write("</Horizontale>");
+				fichier.write("</NbBateauRestantIA>");
 				fichier.newLine();
 
-				fichier.write("<Cases>");
-				for (CaseBateau cb : boat.getEmplacement()) {
+				fichier.write("<NbBateauRestantJoueur>");
+				fichier.newLine();
+				fichier.write(contenu.getNbBateauRestantJoueur() + "");
+				fichier.newLine();
+				fichier.write("</NbBateauRestantJoueur>");
+				fichier.newLine();
+
+				fichier.write("<BateauxIA>");
+				for (Bateau boat : contenu.getIA().getBateau()) {
 
 					fichier.newLine();
-					fichier.write("<Case>");
+					fichier.write("<Bateau>");
 					fichier.newLine();
-					fichier.write("<X>");
+					fichier.write("<Taille>");
 					fichier.newLine();
-					fichier.write(cb.getX() + "");
+					fichier.write(boat.getTaille() + "");
 					fichier.newLine();
-					fichier.write("</X>");
+					fichier.write("</Taille>");
+					fichier.newLine();
 
+					fichier.write("<Horizontale>");
 					fichier.newLine();
-					fichier.write("<Y>");
+					fichier.write(boat.isHorizontal() ? "True" : "False");
 					fichier.newLine();
-					fichier.write(cb.getY() + "");
+					fichier.write("</Horizontale>");
 					fichier.newLine();
-					fichier.write("</Y>");
 
+					fichier.write("<Cases>");
+					for (CaseBateau cb : boat.getEmplacement()) {
+
+						fichier.newLine();
+						fichier.write("<Case>");
+						fichier.newLine();
+						fichier.write("<X>");
+						fichier.newLine();
+						fichier.write(cb.getX() + "");
+						fichier.newLine();
+						fichier.write("</X>");
+
+						fichier.newLine();
+						fichier.write("<Y>");
+						fichier.newLine();
+						fichier.write(cb.getY() + "");
+						fichier.newLine();
+						fichier.write("</Y>");
+
+						fichier.newLine();
+						fichier.write("<Cibler>");
+						fichier.newLine();
+						fichier.write(cb.isCibler() ? "True" : "False");
+						fichier.newLine();
+						fichier.write("</Cibler>");
+						fichier.newLine();
+						fichier.write("</Case>");
+					}
 					fichier.newLine();
-					fichier.write("<Cibler>");
+					fichier.write("</Cases>");
 					fichier.newLine();
-					fichier.write(cb.isCibler() ? "True" : "False");
-					fichier.newLine();
-					fichier.write("</Cibler>");
-					fichier.newLine();
-					fichier.write("</Case>");
+					fichier.write("</Bateau>");
 				}
 				fichier.newLine();
-				fichier.write("</Cases>");
-				fichier.newLine();
-				fichier.write("</Bateau>");
-			}
-			fichier.newLine();
-			fichier.write("</BateauIA>");
-			fichier.newLine();
-
-			fichier.write("<BateauxJoueur>");
-			for (Bateau boat : contenu.getJoueur().getBateau()) {
-
-				fichier.newLine();
-				fichier.write("<Bateau>");
-				fichier.newLine();
-				fichier.write("<Taille>");
-				fichier.newLine();
-				fichier.write(boat.getTaille() + "");
-				fichier.newLine();
-				fichier.write("</Taille>");
+				fichier.write("</BateauIA>");
 				fichier.newLine();
 
-				fichier.write("<Horizontale>");
-				fichier.newLine();
-				fichier.write(boat.isHorizontal() ? "True" : "False");
-				fichier.newLine();
-				fichier.write("</Horizontale>");
-				fichier.newLine();
-
-				fichier.write("<Cases>");
-				for (CaseBateau cb : boat.getEmplacement()) {
+				fichier.write("<BateauxJoueur>");
+				for (Bateau boat : contenu.getJoueur().getBateau()) {
 
 					fichier.newLine();
-					fichier.write("<Case>");
+					fichier.write("<Bateau>");
 					fichier.newLine();
-					fichier.write("<X>");
+					fichier.write("<Taille>");
 					fichier.newLine();
-					fichier.write(cb.getX() + "");
+					fichier.write(boat.getTaille() + "");
 					fichier.newLine();
-					fichier.write("</X>");
+					fichier.write("</Taille>");
+					fichier.newLine();
 
+					fichier.write("<Horizontale>");
 					fichier.newLine();
-					fichier.write("<Y>");
+					fichier.write(boat.isHorizontal() ? "True" : "False");
 					fichier.newLine();
-					fichier.write(cb.getY() + "");
+					fichier.write("</Horizontale>");
 					fichier.newLine();
-					fichier.write("</Y>");
 
+					fichier.write("<Cases>");
+					for (CaseBateau cb : boat.getEmplacement()) {
+
+						fichier.newLine();
+						fichier.write("<Case>");
+						fichier.newLine();
+						fichier.write("<X>");
+						fichier.newLine();
+						fichier.write(cb.getX() + "");
+						fichier.newLine();
+						fichier.write("</X>");
+
+						fichier.newLine();
+						fichier.write("<Y>");
+						fichier.newLine();
+						fichier.write(cb.getY() + "");
+						fichier.newLine();
+						fichier.write("</Y>");
+
+						fichier.newLine();
+						fichier.write("<Cibler>");
+						fichier.newLine();
+						fichier.write(cb.isCibler() ? "True" : "False");
+						fichier.newLine();
+						fichier.write("</Cibler>");
+						fichier.newLine();
+						fichier.write("</Case>");
+					}
 					fichier.newLine();
-					fichier.write("<Cibler>");
+					fichier.write("</Cases>");
 					fichier.newLine();
-					fichier.write(cb.isCibler() ? "True" : "False");
-					fichier.newLine();
-					fichier.write("</Cibler>");
-					fichier.newLine();
-					fichier.write("</Case>");
+					fichier.write("</Bateau>");
 				}
 				fichier.newLine();
-				fichier.write("</Cases>");
+				fichier.write("</BateauxJoueur>");
 				fichier.newLine();
-				fichier.write("</Bateau>");
-			}
-			fichier.newLine();
-			fichier.write("</BateauxJoueur>");
-			fichier.newLine();
 
-			fichier.write("</Partie>");
-			fichier.newLine();
-			fichier.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				fichier.write("</Partie>");
+				fichier.newLine();
+				fichier.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-
 	}
 
 }
