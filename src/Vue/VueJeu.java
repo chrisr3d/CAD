@@ -226,7 +226,7 @@ public class VueJeu implements Observer {
 					
 					
 					if (!(j == Grille2.length) && !(l == Grille2.length)) {
-						if (Partie.getInstance().getJoueur().getCarte()[j-1][l-1] instanceof CaseBateau && !Partie.getInstance().getJoueur().getCarte()[j-1][l-1].isCibler() ) {
+						if (Partie.getInstance().getJoueur().getCarte()[j-1][l-1] instanceof CaseBateau ) {
 							
 							Grille2[j][l].setBackground(Color.GRAY);
 						}

@@ -136,7 +136,6 @@ public class Partie extends Observable {
 		strategie.save(ContexteTactique.getTactique());
 		parametre.save(this.param);
 		partie.save(this);
-		
 
 	}
 
@@ -167,6 +166,8 @@ public class Partie extends Observable {
 			FabriqueEpoque.choisirEpoqueFutur(this.getIA().getBateau());
 			FabriqueEpoque.choisirEpoqueFutur(this.getJoueur().getBateau());
 		}
+		Partie.getInstance().getIA().remplirCaseVide();
+		Partie.getInstance().getJoueur().remplirCaseVide();
 	}
 
 	public void verificationMort(Plateau p) {
