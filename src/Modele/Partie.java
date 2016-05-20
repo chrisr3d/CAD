@@ -3,6 +3,8 @@ package Modele;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import DAO.XMLDAOFactory;
 import DAO.XMLEpoqueDAO;
 import DAO.XMLParametreDAO;
@@ -49,18 +51,58 @@ public class Partie extends Observable {
 
 	}
 	
+	
+	
+	
+	
+	public void caseDonneBateau(Case c){
+		Bateau temp = null;
+		for(Bateau b : this.getIA().getBateau()){
+			for(Case ca : b.getEmplacement()){
+				if(c.getX() == ca.getX() && c.getY()==ca.getY()){
+					ca.setCibler(true);
+					
+					
+				}
+			}
+		}
+		
+		
+	}
+	
+	public void caseDonneBateauJoueur(Case c){
+		Bateau temp = null;
+		for(Bateau b : this.getJoueur().getBateau()){
+			for(Case ca : b.getEmplacement()){
+				if(c.getX() == ca.getX() && c.getY()==ca.getY()){
+					ca.setCibler(true);
+					
+					
+				}
+			}
+		}
+		
+		
+	}
+	
+	
 	public boolean tirer(Case c){
 		boolean toucher = false;
+		Bateau b = null;
 		for(int i = 0; i<IA.getCarte().length;i++){
 			for(int j = 0; j<IA.getCarte().length;j++){
-				if(IA.getCarte()[i][j] == c ){
+				if(IA.getCarte()[i][j] == c && NbBateauRestantJoueur > 0){
 					IA.getCarte()[i][j].setCibler(true);
+					
 				if(IA.getCarte()[i][j] instanceof CaseBateau){
+					caseDonneBateau(IA.getCarte()[i][j]);
 					toucher = true;
 					}
 				}
 			}
 		}
+		
+		verificationMortIA(IA);
 		return toucher;
 		
 	}
@@ -72,6 +114,7 @@ public class Partie extends Observable {
 	public Case JouerIA() {
 		
 		Case c = ContexteTactique.getTactique().appliquerTactique(IA, joueur);
+		
 		
 		return c;
 	}
@@ -130,6 +173,56 @@ public class Partie extends Observable {
 			FabriqueEpoque.choisirEpoqueFutur(this.getIA().getBateau());
 			FabriqueEpoque.choisirEpoqueFutur(this.getJoueur().getBateau());
 		}
+	}
+	
+	public void verificationMort(Plateau p){
+		int compteur = 0;
+		Bateau tempo = null;
+		ArrayList<Bateau> temp = new ArrayList<Bateau>();
+		temp = p.getBateau();
+		for(Bateau b : p.getBateau()){
+			compteur = 0;
+			for(CaseBateau cb : b.getEmplacement()) {
+						if(cb.isCibler()){
+							compteur++;
+						}
+						if(compteur == b.taille){
+							tempo = b;
+						}
+			}
+		}
+		
+		if(tempo != null){
+		p.getBateau().remove(tempo);
+		NbBateauRestantJoueur--;
+		
+		}
+		
+	}
+	
+	public void verificationMortIA(Plateau p){
+		int compteur = 0;
+		Bateau tempo = null;
+		ArrayList<Bateau> temp = new ArrayList<Bateau>();
+		temp = p.getBateau();
+		for(Bateau b : p.getBateau()){
+			compteur = 0;
+			for(CaseBateau cb : b.getEmplacement()) {
+						if(cb.isCibler()){
+							compteur++;
+						}
+						if(compteur == b.taille){
+							tempo = b;
+						}
+			}
+		}
+		
+		if(tempo != null){
+		p.getBateau().remove(tempo);
+		NbBateauRestantIA--;
+		
+		}
+		
 	}
 
 	public void tournerBateau(Bateau b) {
