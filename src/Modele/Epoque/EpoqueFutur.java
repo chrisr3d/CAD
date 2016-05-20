@@ -16,7 +16,7 @@ import Modele.Bateau.*;
  */
 public class EpoqueFutur implements Epoque{
 
-	//volatile pour autoriser l'initialisation � null !
+	//volatile pour autoriser l'initialisation a null !
 	private volatile static EpoqueFutur unique = null;
 	
 	public static EpoqueFutur getInstance(){
@@ -45,8 +45,8 @@ public class EpoqueFutur implements Epoque{
 		return listBateau;
 	}
 	/**
-	 * M�thode qui va donner une image de l'�poque futuriste au bateau pass� en param�tre
-	 * Si le bateau est horizontal, le bateau n'aura pas la m�me texture !
+	 * Methode qui va donner une image de l'epoque futuriste au bateau passe en paramatre
+	 * Si le bateau est horizontal, le bateau n'aura pas la meme texture !
 	 * @param b : bateau
 	 * @throws IOException : exeception pour la lecture des images en dur
 	 */
@@ -114,7 +114,7 @@ public class EpoqueFutur implements Epoque{
 	}
 
 	/**
-	 * M�thode qui permet l'ajout d'une puissance � un bateau correspondant � l'�poque futuriste
+	 * Methode qui permet l'ajout d'une puissance a un bateau correspondant a l'epoque futuriste
 	 * @param b : bateau
 	 */
 	private void ajoutPuissanceEpoque(Bateau b) {
@@ -139,7 +139,7 @@ public class EpoqueFutur implements Epoque{
 	}
 
 	/**
-	 * M�thode qui permet l'ajout d'un nom correspondant � l'�poque futuriste
+	 * Methode qui permet l'ajout d'un nom correspondant a l'epoque futuriste
 	 * Sources : https://fr.wikipedia.org/wiki/Vaisseau_spatial
 	 * @param b : bateau
 	 */
@@ -152,13 +152,13 @@ public class EpoqueFutur implements Epoque{
 			b.setNom("Croiseur");
 			break;
 		case 4:
-			b.setNom("Cuirass�");
+			b.setNom("Cuirasse");
 			break;
 		case 5:
-			b.setNom("Vaisseau-m�re");
+			b.setNom("Vaisseau-mere");
 			break;
 		default:
-			b.setNom("Vaisseau-m�re");
+			b.setNom("Vaisseau-mere");
 			break;
 		}
 	}

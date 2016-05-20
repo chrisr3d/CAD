@@ -11,7 +11,7 @@ import Modele.Tactique.TactiqueCroix;
 import Modele.Tactique.TactiqueIAStrategie;
 
 /**
- * Classe qui permet la sauvegarder la récupération de la stratégie à appliquer à la partie 
+ * Classe qui permet la sauvegarder la recuperation de la strategie a appliquer a la partie 
  * @author Mathieu
  *
  */
@@ -31,7 +31,7 @@ public class XMLStrategieDAO extends DAO<TactiqueIAStrategie>{
 	}
 	
 	/**
-	 * On retourne "NULL" ici car on applique directionement la stratégie 
+	 * On retourne "NULL" ici car on applique directionement la strategie 
 	 */
 	@Override
 	public TactiqueIAStrategie find() {
@@ -41,7 +41,7 @@ public class XMLStrategieDAO extends DAO<TactiqueIAStrategie>{
 			fichier = new BufferedReader(new FileReader("save.xml"));
 			String ligne;
 			while ((ligne=fichier.readLine())!=null){
-				//si on trouve une ligne qui commence par époque, on lit la suivante
+				//si on trouve une ligne qui commence par ï¿½poque, on lit la suivante
 				if(ligne.equals("<Strategie>")){
 					ligne=fichier.readLine();
 					if(ligne.equals("Aleatoire")){

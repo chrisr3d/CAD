@@ -21,6 +21,7 @@ public class Placement extends JFrame implements Observer{
 	private JButton[][] Grille;
 	private JButton but2,but3,but4,but5;
 	private JLabel info,nbBateauxTxt,nbBateaux,mode,tailleBateaux;
+	private JButton valider;
 	Alphabet tab = new Alphabet();
 	ControllerFenetre cf = new ControllerFenetre(this,opt);
 	
@@ -117,6 +118,7 @@ public class Placement extends JFrame implements Observer{
 		but3 = new JButton("3");
 		but4 = new JButton("4");
 		but5 = new JButton("5");
+		valider = new JButton("Valider");
 		nbBateauxTxt = new JLabel("Nombre de bateaux restants :");
 		nbBateaux = new JLabel();
 		info = new JLabel("Créer Bateau de taille :");
@@ -151,10 +153,19 @@ public class Placement extends JFrame implements Observer{
 		}
 		mode.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*45,150,250,50);
 		info.setBounds(10,140,250,50);
+		valider.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*50,250,200,50);
 		but2.addActionListener(cf);
 		but3.addActionListener(cf);
 		but4.addActionListener(cf);
 		but5.addActionListener(cf);
+		valider.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				cf.pressValider();
+			}
+		});
+		valider.setVisible(false);
+		bateaux.add(valider);
 		bateaux.add(info);
 		bateaux.add(nbBateauxTxt);
 		bateaux.add(nbBateaux);

@@ -4,8 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.GridBagLayout;
 
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -15,6 +17,8 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.EmptyBorder;
+
+import com.sun.javafx.tk.Toolkit;
 
 import Controlleur.ControllerJeu;
 import Controlleur.ControllerMenu;
@@ -29,7 +33,10 @@ import Modele.Tactique.TactiqueAleatoire;
 
 import javax.swing.JLabel;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JMenuBar;
@@ -41,7 +48,7 @@ public class VueJeu implements Observer {
 
 	private JFrame frame;
 	// private JPanel panelInfo;
-	private JTextField informations;
+	private JPanel img;
 	private JPanel contentPane;
 	private JPanel contentPane2;
 	private JButton[][] Grille;
@@ -62,14 +69,6 @@ public class VueJeu implements Observer {
 
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
-	}
-
-	public JTextField getInformations() {
-		return informations;
-	}
-
-	public void setInformations(JTextField informations) {
-		this.informations = informations;
 	}
 
 	public JPanel getContentPane() {
@@ -128,10 +127,23 @@ public class VueJeu implements Observer {
 		contentPane = new JPanel();
 		contentPane2 = new JPanel();
 		// panelInfo = new JPanel();
-		informations = new JTextField();
-		informations.setText("J'affiche les informations bitches");
+		img = new JPanel(){
+			Image img;
 
-		contentPane.setLayout(new GridLayout(Partie.getInstance().getParametres().getHauteurPlateau() + 1,
+		    public void paint(Graphics g)
+		    {
+		        // Draws the img to the BackgroundPanel.
+		    	Image img = null;
+				try {
+					img = ImageIO.read(new File("Images/bataillenavale.jpg"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		        g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), null);
+		    }
+		};
+contentPane.setLayout(new GridLayout(Partie.getInstance().getParametres().getHauteurPlateau() + 1,
 				Partie.getInstance().getParametres().getHauteurPlateau() + 1));
 		contentPane2.setLayout(new GridLayout(Partie.getInstance().getParametres().getHauteurPlateau() + 1,
 				Partie.getInstance().getParametres().getHauteurPlateau() + 1));
@@ -143,7 +155,7 @@ public class VueJeu implements Observer {
 				(Partie.getInstance().getParametres().getHauteurPlateau() + 1) * 100);
 		frame.getContentPane().add(contentPane);
 
-		frame.getContentPane().add(informations);
+		frame.getContentPane().add(img);
 		frame.getContentPane().add(contentPane2);
 		
 		menuBar = new JMenuBar();
@@ -204,7 +216,6 @@ public class VueJeu implements Observer {
 				Grille[i][k].addMouseListener(cj);
 
 				if (i != 0 && k != 0) {
-					System.out.println(Partie.getInstance().getIA().getCarte()[i-1][k-1].isCibler());
 					if(Partie.getInstance().getIA().getCarte()[i-1][k-1].isCibler()  ){
 						Grille[i][k].setText("TOUCHE");
 						Grille[i][k].setEnabled(false);

@@ -2,7 +2,7 @@ package DAO;
 /**
  * 
  * @author Mathieu
- * aid� du site : 
+ * aide du site : 
  * http://cyrille-herby.developpez.com/tutoriels/java/mapper-sa-base-donnees-avec-pattern-dao/
  */
 public abstract class AbstractDAOFactory {
@@ -12,7 +12,7 @@ public abstract class AbstractDAOFactory {
 	public abstract DAO getParametreDAO();
 	
 	/**
-	 * M�thode nous permettant de r�cup�rer une factory de DAO
+	 * Methode nous permettant de recuperer une factory de DAO
 	 * @param type
 	 * @return AbstractDAOFactory
 	 */

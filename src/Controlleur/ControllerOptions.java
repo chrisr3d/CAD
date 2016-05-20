@@ -118,21 +118,6 @@ public class ControllerOptions implements ActionListener {
 			// Placement manuel des bateaux
 
 			// Placement adversaire
-			if (o.getModes().getSelectedItem() == Modes.Normal) {
-				for (int j = 0; j < nbBoat; j++) {
-					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(tailleB));
-
-				}
-
-			} else {
-
-				for (int k = 0; k < nbBoat; k++) {
-					int t = (int) (2 + (Math.random() * (5 - 2)));
-					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(t));
-
-				}
-
-			}
 			switch ((listeEpoque) o.getComboBox().getSelectedItem()) {
 			case Actuelle:
 				FabriqueEpoque.setEpoqueActuelle();
@@ -145,7 +130,16 @@ public class ControllerOptions implements ActionListener {
 				FabriqueEpoque.choisirEpoqueActuelle(adversaire.getBateau());
 				break;
 			}
-
+			switch((ListeTactique) o.getComboBox_1().getSelectedItem()){
+			case Aleatoire :
+				ContexteTactique.choisirTactiqueAleatoire();
+				break;
+				
+			case Croix :
+				ContexteTactique.choisirTactiqueCroix();
+				break;
+			}
+			Partie.getInstance().setParam(p);
 			Placement pl = new Placement(o);
 			pl.setVisible(true);
 
