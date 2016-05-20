@@ -139,6 +139,7 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 				dernierTir = null;
 			}
 		}
+		
 		if (!portee.isEmpty()) {
 			if (!this.toucher || !trouve) {
 				// sinon on tir de manière aléatoire
