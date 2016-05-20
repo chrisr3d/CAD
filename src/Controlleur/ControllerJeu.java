@@ -142,40 +142,29 @@ public class ControllerJeu implements ActionListener, MouseListener, MouseMotion
 
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
-		/*for (int i = 1; i < vue.getGrille().length; i++) {
-			for (int j = 1; j < vue.getGrille().length; j++) {
-				
-				for(Bateau b : Partie.getInstance().getJoueur().getBateau()){
-					
-				}
-				if (arg0.getSource() == vue.getGrille()[i][j]) {
-					if ((vue.getGrille()[i][j].getText().equals(""))) {
-						vue.getGrille()[i][j].setText("x");
+
+		/*
+		 * for (int i = 1; i < vue.getGrille().length; i++) { for (int j = 1; j
+		 * < vue.getGrille().length; j++) {
+		 * 
+		 * for(Bateau b : Partie.getInstance().getJoueur().getBateau()){
+		 * 
+		 * } if (arg0.getSource() == vue.getGrille()[i][j]) { if
+		 * ((vue.getGrille()[i][j].getText().equals(""))) {
+		 * vue.getGrille()[i][j].setText("x"); } } } }
+		 */
+
+		for (Bateau bat : Partie.getInstance().getJoueur().getBateau()) {
+			for (CaseBateau cb : bat.getEmplacement()) {
+				for (int i = 0; i < Parametre.getHauteurPlateau(); i++) {
+					for (int j = 0; j < Parametre.getLargeurPlateau(); j++) {
+						
+						
+						
 					}
 				}
 			}
-		}*/
-		
-		
-		for (int i = 0; i < Parametre.getLargeurPlateau(); i++) {
-			for (int j = 0; j < Parametre.getHauteurPlateau(); j++) {
-				for (Bateau bat : Partie.getInstance().getJoueur().getBateau()) {
-					for (CaseBateau cb : bat.getEmplacement()) {
-						if (Math.abs(cb.getX() + Partie.getInstance().getIA().getCarte()[i][j].getX())
-								- Math.abs(cb.getY() - Partie.getInstance().getIA().getCarte()[i][j].getY())
-								- ((Parametre.getHauteurPlateau() ) + cb.getY()) <= bat.getPuissance()) {
-							if (arg0.getSource() == vue.getGrille()[i][j]) {
-								if ((vue.getGrille()[i][j].getText().equals(""))) {
-									vue.getGrille()[i][j].setText("x");
-								}
-							}
-						}}
-					}
-				}
-			}
-		
-		
+		}
 
 	}
 

@@ -50,7 +50,6 @@ public class TactiqueAleatoire implements TactiqueIAStrategie {
 		// porté
 		for (Bateau case1 : platIA.getBateau()) {
 			for (CaseBateau case2 : case1.getEmplacement()) {
-				System.out.println(case2.getX() + "  "+case2.getY());
 			}
 		}
 		if (platIA != null && joueur != null && platIA.getBateau() != null && joueur.getBateau() != null && joueur.getCarte() !=null && platIA.getCarte() != null) {

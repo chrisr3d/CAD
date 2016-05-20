@@ -36,75 +36,66 @@ public class Partie extends Observable {
 
 	Plateau IA;
 
-	public static Partie getInstance(){
-		if(unique == null){
-			synchronized(Partie.class){
-				if(unique == null){
+	public static Partie getInstance() {
+		if (unique == null) {
+			synchronized (Partie.class) {
+				if (unique == null) {
 					unique = new Partie();
 				}
 			}
 		}
 		return unique;
 	}
-	
+
 	private Partie() {
 
 	}
-	
-	
-	
-	
-	
-	public void caseDonneBateau(Case c){
+
+	public void caseDonneBateau(Case c) {
 		Bateau temp = null;
-		for(Bateau b : this.getIA().getBateau()){
-			for(Case ca : b.getEmplacement()){
-				if(c.getX() == ca.getX() && c.getY()==ca.getY()){
+		for (Bateau b : this.getIA().getBateau()) {
+			for (Case ca : b.getEmplacement()) {
+				if (c.getX() == ca.getX() && c.getY() == ca.getY()) {
 					ca.setCibler(true);
-					
-					
+
 				}
 			}
 		}
-		
-		
+
 	}
-	
-	public void caseDonneBateauJoueur(Case c){
+
+	public void caseDonneBateauJoueur(Case c) {
 		Bateau temp = null;
-		for(Bateau b : this.getJoueur().getBateau()){
-			for(Case ca : b.getEmplacement()){
-				if(c.getX() == ca.getX() && c.getY()==ca.getY()){
+		for (Bateau b : this.getJoueur().getBateau()) {
+			for (Case ca : b.getEmplacement()) {
+				if (c.getX() == ca.getX() && c.getY() == ca.getY()) {
 					ca.setCibler(true);
-					
-					
+
 				}
 			}
 		}
-		
-		
+
 	}
-	
-	
-	public boolean tirer(Case c){
+
+	public boolean tirer(Case c) {
 		boolean toucher = false;
 		Bateau b = null;
-		for(int i = 0; i<IA.getCarte().length;i++){
-			for(int j = 0; j<IA.getCarte().length;j++){
-				if(IA.getCarte()[i][j] == c && NbBateauRestantJoueur > 0){
+		for (int i = 0; i < IA.getCarte().length; i++) {
+			for (int j = 0; j < IA.getCarte().length; j++) {
+				if (IA.getCarte()[i][j] == c && NbBateauRestantJoueur > 0) {
 					IA.getCarte()[i][j].setCibler(true);
-					
-				if(IA.getCarte()[i][j] instanceof CaseBateau){
-					caseDonneBateau(IA.getCarte()[i][j]);
-					toucher = true;
+
+					if (IA.getCarte()[i][j] instanceof CaseBateau) {
+						caseDonneBateau(IA.getCarte()[i][j]);
+						toucher = true;
 					}
 				}
 			}
 		}
-		
+
 		verificationMortIA(IA);
 		return toucher;
-		
+
 	}
 
 	public void Jouer() {
@@ -112,20 +103,21 @@ public class Partie extends Observable {
 	}
 
 	public Case JouerIA() {
-		
+
 		Case c = ContexteTactique.getTactique().appliquerTactique(IA, joueur);
-		
-		
+
 		return c;
 	}
 
 	/**
 	 * M�thode qui permet de sauvegarder une partie
+	 * 
 	 * @author Mathieu
 	 */
 	public void SauvegarderPartie() {
-		//Suppr�ssion du fichier de sauvegarde avant de le r�utiliser pour �viter les probl�mes.
-		//Une seule sauvegarde possible par cons�quent !
+		// Suppr�ssion du fichier de sauvegarde avant de le r�utiliser pour
+		// �viter les probl�mes.
+		// Une seule sauvegarde possible par cons�quent !
 		File file = new File("save.xml");
 		PrintWriter writer;
 		try {
@@ -144,11 +136,12 @@ public class Partie extends Observable {
 		partie.save(this);
 		strategie.save(ContexteTactique.getTactique());
 		parametre.save(this.param);
-		
+
 	}
 
 	/***
 	 * M�tode qui permet de charger une partie
+	 * 
 	 * @author Mathieu
 	 */
 	public void changerParametre() {
@@ -166,66 +159,89 @@ public class Partie extends Observable {
 		this.setNbBateauRestantIA(temporaire.getNbBateauRestantIA());
 		this.setNbBateauRestantJoueur(temporaire.getNbBateauRestantJoueur());
 		this.setParam(parametre.find());
-		if(FabriqueEpoque.getEpoque() instanceof EpoqueActuelle){
+		if (FabriqueEpoque.getEpoque() instanceof EpoqueActuelle) {
 			FabriqueEpoque.choisirEpoqueActuelle(this.getIA().getBateau());
 			FabriqueEpoque.choisirEpoqueActuelle(this.getJoueur().getBateau());
-		}else if(FabriqueEpoque.getEpoque() instanceof EpoqueFutur){
+		} else if (FabriqueEpoque.getEpoque() instanceof EpoqueFutur) {
 			FabriqueEpoque.choisirEpoqueFutur(this.getIA().getBateau());
 			FabriqueEpoque.choisirEpoqueFutur(this.getJoueur().getBateau());
 		}
 	}
-	
-	public void verificationMort(Plateau p){
+
+	public void verificationMort(Plateau p) {
 		int compteur = 0;
 		Bateau tempo = null;
 		ArrayList<Bateau> temp = new ArrayList<Bateau>();
 		temp = p.getBateau();
-		for(Bateau b : p.getBateau()){
+		for (Bateau b : p.getBateau()) {
 			compteur = 0;
-			for(CaseBateau cb : b.getEmplacement()) {
-						if(cb.isCibler()){
-							compteur++;
-						}
-						if(compteur == b.taille){
-							tempo = b;
-						}
+			for (CaseBateau cb : b.getEmplacement()) {
+				if (cb.isCibler()) {
+					compteur++;
+				}
+				if (compteur == b.taille) {
+					tempo = b;
+				}
 			}
 		}
-		
-		if(tempo != null){
-		p.getBateau().remove(tempo);
-		NbBateauRestantJoueur--;
-		
+
+		if (tempo != null) {
+			p.getBateau().remove(tempo);
+			NbBateauRestantJoueur--;
+
 		}
-		
+
 	}
-	
-	public void verificationMortIA(Plateau p){
+
+	public void verificationMortIA(Plateau p) {
 		int compteur = 0;
 		Bateau tempo = null;
 		ArrayList<Bateau> temp = new ArrayList<Bateau>();
 		temp = p.getBateau();
-		for(Bateau b : p.getBateau()){
+		for (Bateau b : p.getBateau()) {
 			compteur = 0;
-			for(CaseBateau cb : b.getEmplacement()) {
-						if(cb.isCibler()){
-							compteur++;
-						}
-						if(compteur == b.taille){
-							tempo = b;
-						}
+			for (CaseBateau cb : b.getEmplacement()) {
+				if (cb.isCibler()) {
+					compteur++;
+				}
+				if (compteur == b.taille) {
+					tempo = b;
+				}
 			}
 		}
-		
-		if(tempo != null){
-		p.getBateau().remove(tempo);
-		NbBateauRestantIA--;
-		
+
+		if (tempo != null) {
+			p.getBateau().remove(tempo);
+			NbBateauRestantIA--;
+
 		}
-		
+
 	}
 
 	public void tournerBateau(Bateau b) {
+
+	}
+
+	// Pour une case donnée, si oui ou non elle est accessible
+	public ArrayList<Case> testPorte() {
+		ArrayList<Case> caseOk = new ArrayList<Case>();
+		boolean ok = false;
+		for (Bateau bat : this.getIA().getBateau()) {
+			for (CaseBateau cb : bat.getEmplacement()) {
+				for (int i = 0; i < Parametre.getHauteurPlateau(); i++) {
+					for (int j = 0; j < Parametre.getLargeurPlateau(); j++) {
+						Case temp = new Case(Parametre.getHauteurPlateau()-1,cb.getY());
+						if ((Math.abs(joueur.getCarte()[i][j].getX() - temp.getX())
+								+ Math.abs(temp.getY() - joueur.getCarte()[i][j].getY())
+								+ (Parametre.getHauteurPlateau() - cb.getX())) <= bat.getPuissance()) {
+							caseOk.add(temp);
+							
+						}
+					}
+				}
+			}
+		}
+		return caseOk;
 
 	}
 
@@ -236,7 +252,6 @@ public class Partie extends Observable {
 	public void setParam(Parametre param) {
 		this.param = param;
 	}
-
 
 	public int getNbBateauRestantJoueur() {
 		return NbBateauRestantJoueur;

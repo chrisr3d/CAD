@@ -160,7 +160,6 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 				}
 			}
 		}
-		System.out.println(tir.getX() + " "+ tir.getY());
 		return tir;
 	}
 
