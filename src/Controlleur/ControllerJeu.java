@@ -64,7 +64,7 @@ public class ControllerJeu implements ActionListener, MouseListener, MouseMotion
 
 								vue.getGrille()[i][j].setText("COULE");
 							}
-						}else{
+						} else {
 							tir = false;
 						}
 					}
@@ -87,6 +87,36 @@ public class ControllerJeu implements ActionListener, MouseListener, MouseMotion
 				System.exit(0);
 			}
 
+		}
+
+		// Verification si le joueur peut encore tirer
+		int compteur = 0;
+		for (int az = 0; az < Partie.getInstance().getJoueur().getCarte().length; az++) {
+			for (int za = 0; za < Partie.getInstance().getJoueur().getCarte().length; za++) {
+				for (Case c : portee) {
+					if (c.getX() == Partie.getInstance().getJoueur().getCarte()[az][za].getX()
+							&& c.getY() == Partie.getInstance().getJoueur().getCarte()[az][za].getY()) {
+
+						if (!vue.getGrille()[az + 1][za + 1].isEnabled()) {
+							compteur++;
+						}
+
+					}
+				}
+			}
+		}
+		System.out.println(compteur);
+		if (compteur == portee.size()) {
+			String[] victoire = { " Quitter " };
+
+			int rang = JOptionPane.showOptionDialog(null, "Vous avez perdu vous ne pouvez plus tirer..", "",
+					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, victoire, victoire[0]);
+
+			if (rang == JOptionPane.OK_OPTION) {
+				vue.getFrame().setVisible(false);
+				vue.getFrame().setEnabled(false);
+				System.exit(0);
+			}
 		}
 
 		// Tour de l'IA

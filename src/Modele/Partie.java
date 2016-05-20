@@ -238,13 +238,22 @@ public class Partie extends Observable {
 								
 								+ Math.abs(temp.getY() - IA.getCarte()[i][j].getY())
 								+ (cb.getX()+1)) <= bat.getPuissance()) {
-							caseOk.add(this.getJoueur().getCarte()[i][j]);
+							for(Case c : caseOk){
+							if(c.getX() == this.getJoueur().getCarte()[i][j].getX() && c.getY() == this.getJoueur().getCarte()[i][j].getY()){
+								ok = true;
+							}
+							}
+							if(!ok){
+								caseOk.add(this.getJoueur().getCarte()[i][j]);
+							}
 							
+							} ok = false;
+						
 						}
 					}
 				}
 			}
-		}
+		
 		return caseOk;
 
 	}
