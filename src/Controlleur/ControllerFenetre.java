@@ -214,13 +214,13 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 					}
 					b = FabriqueBateau.getBateau(nb);
 					ArrayList<CaseBateau> caseb = new ArrayList<CaseBateau>();
-					for(int k=placeI;k>(i-nb+1);k--){
-						caseb.add(new CaseBateau(k-1,j-1));
+					for(int k=i;k>(i-nb);k--){
+						caseb.add(new CaseBateau(k+1,j-1));
 					}
 					b.setEmplacement(caseb);
 					jeu.getBateau().add(b);
 					for (int k=0;k<nb;k++) {
-						jeu.getCarte()[i-k-1][j-1] = caseb.get(k);
+						jeu.getCarte()[i-k][j-1] = caseb.get(k);
 					}
 					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(nb));
 					if((placeI+1)<(place.getGrille().length)){
@@ -244,13 +244,13 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 					}
 					b = FabriqueBateau.getBateau(nb);
 					ArrayList<CaseBateau> caseb = new ArrayList<CaseBateau>();
-					for(int k=placeJ;k>(j-nb+1);k--){
-						caseb.add(new CaseBateau(i-1,k-1));
+					for(int k=j;k>(j-nb);k--){
+						caseb.add(new CaseBateau(i-1,k+1));
 					}
 					b.setEmplacement(caseb);
 					jeu.getBateau().add(b);
 					for (int k=0;k<nb;k++) {
-						jeu.getCarte()[i-1][j-k-1] = caseb.get(k);
+						jeu.getCarte()[i-1][j-k] = caseb.get(k);
 					}
 					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(nb));
 					
@@ -274,13 +274,13 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 					}
 					b = FabriqueBateau.getBateau(nb);
 					ArrayList<CaseBateau> caseb = new ArrayList<CaseBateau>();
-					for(int k=placeI;k<(i+nb-1);k++){
-						caseb.add(new CaseBateau(k-1,j-1));
+					for(int k=i;k<(i+nb);k++){
+						caseb.add(new CaseBateau(k,j-1));
 					}
 					b.setEmplacement(caseb);
 					jeu.getBateau().add(b);
 					for (int k=0;k<nb;k++) {
-						jeu.getCarte()[i+k-1][j-1] = caseb.get(k);
+						jeu.getCarte()[i+k-2][j-1] = caseb.get(k);
 					}
 					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(nb));
 
@@ -304,13 +304,13 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 					}
 					b = FabriqueBateau.getBateau(nb);
 					ArrayList<CaseBateau> caseb = new ArrayList<CaseBateau>();
-					for(int k=placeJ;k<(j+nb-1);k++){
-						caseb.add(new CaseBateau(i-1,k-1));
+					for(int k=j;k<(j+nb);k++){
+						caseb.add(new CaseBateau(i-1,k));
 					}
 					b.setEmplacement(caseb);
 					jeu.getBateau().add(b);
 					for (int k=0;k<nb;k++) {
-						jeu.getCarte()[i-1][j+k-1] = caseb.get(k);
+						jeu.getCarte()[i-1][j+k-2] = caseb.get(k);
 					}
 					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(nb));
 					if((placeJ-1)>0){

@@ -179,7 +179,7 @@ public class Placement  implements Observer{
 		valider.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//cf.pressValider();
+				cf.pressValider();
 			}
 		});
 		valider.setVisible(false);
