@@ -6,28 +6,55 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 import javax.swing.JMenuItem;
 
+import Modele.CaseBateau;
+import Modele.Modes;
 import Modele.Parametre;
+import Modele.Partie;
+import Modele.Plateau;
+import Modele.Bateau.Bateau;
+import Modele.Bateau.FabriqueBateau;
 import Vue.Options;
 import Vue.Placement;
+import Vue.VueJeu;
 
 public class ControllerFenetre implements ActionListener, MouseListener, MouseMotionListener{
 
 	Placement place;
+	Parametre param;
 	Options o;
+	Plateau jeu;
+	Plateau adversaire;
 	private int nb,placeI,placeJ;
 	//private boolean pressed = false; //
+	Bateau b;
 
 	private boolean selected=false; //true lorsqu'une taille de bateau est selectionnee
 	private boolean placed=false; //true lorsque la premiere case du bateau est placee
+	
+	Integer nbBoat;
+	Integer tailleB;
 	
 	
 	public ControllerFenetre(Placement pl, Options o){
 		this.place=pl;
 		this.o=o;
+		Double d = (Double) o.getSpinner().getValue();
+		Integer i = d.intValue();
+		Double d2 = (Double) o.getNbBateau().getValue();
+		nbBoat = d2.intValue();
+
+		Double d3 = (Double) o.getTailleBateau().getValue();
+		tailleB = d3.intValue();
 		
+		param = new Parametre((int) i, (int) i, true, (Modes) o.getModes().getSelectedItem());
+		o.getFrame().setVisible(false);
+		o.getFrame().setEnabled(false);
+		jeu = new Plateau((int) i, (int) i);
+		adversaire = new Plateau((int) i, (int) i);
 	}
 	
 	public void mouseClicked(MouseEvent arg0) {
@@ -175,6 +202,7 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 				placed=true;
 				place.getGrille()[i][j].setBackground(Color.GRAY);
 				place.getGrille()[i][j].setText(String.valueOf(nb));
+				
 			}
 		}
 		else{
@@ -184,6 +212,17 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 						place.getGrille()[k][j].setBackground(Color.GRAY);
 						place.getGrille()[k][j].setText(String.valueOf(nb));
 					}
+					b = FabriqueBateau.getBateau(nb);
+					ArrayList<CaseBateau> caseb = new ArrayList<CaseBateau>();
+					for(int k=placeI;k>(i-nb+1);k--){
+						caseb.add(new CaseBateau(k-1,j-1));
+					}
+					b.setEmplacement(caseb);
+					jeu.getBateau().add(b);
+					for (int k=0;k<nb;k++) {
+						jeu.getCarte()[i-k-1][j-1] = caseb.get(k);
+					}
+					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(nb));
 					if((placeI+1)<(place.getGrille().length)){
 						if(place.getGrille()[placeI+1][j].getBackground()!=Color.GRAY)
 							place.getGrille()[placeI+1][j].setBackground(null);
@@ -203,6 +242,18 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 						place.getGrille()[i][k].setBackground(Color.GRAY);
 						place.getGrille()[i][k].setText(String.valueOf(nb));
 					}
+					b = FabriqueBateau.getBateau(nb);
+					ArrayList<CaseBateau> caseb = new ArrayList<CaseBateau>();
+					for(int k=placeJ;k>(j-nb+1);k--){
+						caseb.add(new CaseBateau(i-1,k-1));
+					}
+					b.setEmplacement(caseb);
+					jeu.getBateau().add(b);
+					for (int k=0;k<nb;k++) {
+						jeu.getCarte()[i-1][j-k-1] = caseb.get(k);
+					}
+					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(nb));
+					
 					if((placeJ+1)<(place.getGrille().length)){
 						if(place.getGrille()[i][placeJ+1].getBackground()!=Color.GRAY)
 							place.getGrille()[i][placeJ+1].setBackground(null);
@@ -221,6 +272,18 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 						place.getGrille()[k][j].setBackground(Color.GRAY);
 						place.getGrille()[k][j].setText(String.valueOf(nb));
 					}
+					b = FabriqueBateau.getBateau(nb);
+					ArrayList<CaseBateau> caseb = new ArrayList<CaseBateau>();
+					for(int k=placeI;k<(i+nb-1);k++){
+						caseb.add(new CaseBateau(k-1,j-1));
+					}
+					b.setEmplacement(caseb);
+					jeu.getBateau().add(b);
+					for (int k=0;k<nb;k++) {
+						jeu.getCarte()[i+k-1][j-1] = caseb.get(k);
+					}
+					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(nb));
+
 					if((placeI-1)>0){
 						if(place.getGrille()[placeI-1][j].getBackground()!=Color.GRAY)
 							place.getGrille()[placeI-1][j].setBackground(null);
@@ -239,6 +302,17 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 						place.getGrille()[i][k].setBackground(Color.GRAY);
 						place.getGrille()[i][k].setText(String.valueOf(nb));
 					}
+					b = FabriqueBateau.getBateau(nb);
+					ArrayList<CaseBateau> caseb = new ArrayList<CaseBateau>();
+					for(int k=placeJ;k<(j+nb-1);k++){
+						caseb.add(new CaseBateau(i-1,k-1));
+					}
+					b.setEmplacement(caseb);
+					jeu.getBateau().add(b);
+					for (int k=0;k<nb;k++) {
+						jeu.getCarte()[i-1][j+k-1] = caseb.get(k);
+					}
+					adversaire.placerAleatoireBateau(FabriqueBateau.getBateau(nb));
 					if((placeJ-1)>0){
 						if(place.getGrille()[i][placeJ-1].getBackground()!=Color.GRAY)
 							place.getGrille()[i][placeJ-1].setBackground(null);
@@ -252,6 +326,7 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 							place.getGrille()[i+1][placeJ].setBackground(null);
 					}
 				}
+				
 				placed=false;
 				int nb = Integer.parseInt(place.getNbBateaux().getText())-1;
 				String nbat = Integer.toString(nb);
@@ -264,9 +339,7 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 						place.getBut5().setEnabled(true);
 					}
 					else{
-						String tb = place.getTailleB().getText();
-						String t = tb.substring(tb.length()-1, tb.length());
-						int taille = Integer.parseInt(t);
+						int taille = tailleB;
 						switch(taille){
 						case 2:
 							place.getBut2().setEnabled(true);
@@ -288,6 +361,7 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 					place.getBut2().setEnabled(false);
 					place.getBut4().setEnabled(false);
 					place.getBut5().setEnabled(false);
+					place.getValider().setVisible(true);
 				}
 				selected=false;
 			}
@@ -360,5 +434,17 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 			nb=5;
 			selected=true;
 		}
+	}
+
+	public void pressValider() {
+		// TODO Auto-generated method stub
+		Partie.getInstance().setJoueur(jeu);
+		Partie.getInstance().setIA(adversaire);
+		Partie.getInstance().setNbBateauRestantIA(nbBoat);
+		Partie.getInstance().setNbBateauRestantJoueur(nbBoat);
+		jeu.remplirCaseVide();
+		adversaire.remplirCaseVide();
+		VueJeu vj = new VueJeu();
+		vj.getFrame().setVisible(true);
 	}
 }

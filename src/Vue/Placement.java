@@ -12,10 +12,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Controlleur.ControllerFenetre;
+import Modele.Modes;
 import Modele.Parametre;
 import Modele.Partie;
+import Modele.Plateau;
 
-public class Placement extends JFrame implements Observer{
+public class Placement  implements Observer{
 	Options opt;
 	private JPanel contentPane, bateaux;
 	private JButton[][] Grille;
@@ -23,7 +25,8 @@ public class Placement extends JFrame implements Observer{
 	private JLabel info,nbBateauxTxt,nbBateaux,mode,tailleBateaux;
 	private JButton valider;
 	Alphabet tab = new Alphabet();
-	ControllerFenetre cf = new ControllerFenetre(this,opt);
+	ControllerFenetre cf;
+	JFrame frame;
 	
 	public JButton[][] getGrille(){
 		return Grille;
@@ -79,21 +82,38 @@ public class Placement extends JFrame implements Observer{
 	public void setTailleB(JLabel tb){
 		tailleBateaux=tb;
 	}
+	public JButton getValider(){
+		return valider;
+	}
+	public void setValider(JButton v){
+		valider=v;
+	}
 	
 	public Placement(Options opt){
+		frame = new JFrame();
 		this.opt=opt;
-		getContentPane().setLayout(new GridLayout(2,1));
+		cf = new ControllerFenetre(this,opt);
+		Double d = (Double) opt.getSpinner().getValue();
+		Integer x = d.intValue();
+
+		Double d2 = (Double) opt.getNbBateau().getValue();
+		Integer nbBoat = d2.intValue();
+
+		Double d3 = (Double) opt.getTailleBateau().getValue();
+		Integer tailleB = d3.intValue();
+		
+		frame.getContentPane().setLayout(new GridLayout(2,1));
 		
 		contentPane = new JPanel();
 		bateaux = new JPanel();
 		contentPane.setLayout(new GridLayout(Partie.getInstance().getParametres().getHauteurPlateau()+1,
 				Partie.getInstance().getParametres().getHauteurPlateau()+1));
-		this.setTitle("Placez vos bateaux");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100,100, (Partie.getInstance().getParametres().getHauteurPlateau()+1)*85, 
+		frame.setTitle("Placez vos bateaux");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100,100, (Partie.getInstance().getParametres().getHauteurPlateau()+1)*85, 
 				(Partie.getInstance().getParametres().getHauteurPlateau()+1)*100);
-		getContentPane().add(contentPane);
-		getContentPane().add(bateaux);
+		frame.getContentPane().add(contentPane);
+		frame.getContentPane().add(bateaux);
 		Grille = new JButton[Partie.getInstance().getParametres().getHauteurPlateau()
 		                     +1][Partie.getInstance().getParametres().getLargeurPlateau()+1];
 		for (int i = 0; i < Grille.length; i++) {
@@ -122,8 +142,6 @@ public class Placement extends JFrame implements Observer{
 		nbBateauxTxt = new JLabel("Nombre de bateaux restants :");
 		nbBateaux = new JLabel();
 		info = new JLabel("Créer Bateau de taille :");
-		Double d2 = (Double) opt.getNbBateau().getValue();
-		Integer nbBoat = d2.intValue();
 		nbBateaux.setText(nbBoat.toString());
 		String modeB = opt.getModes().getSelectedItem().toString();
 		mode = new JLabel("Mode : "+modeB);
@@ -175,8 +193,6 @@ public class Placement extends JFrame implements Observer{
 		bateaux.add(but4);
 		bateaux.add(but5);
 		if(modeB == "Normal"){
-			Double d3 = (Double) opt.getTailleBateau().getValue();
-			Integer tailleB = d3.intValue();
 			tailleBateaux = new JLabel("Taille des bateaux : "+tailleB.toString());
 			tailleBateaux.setBounds((Partie.getInstance().getParametres().getHauteurPlateau()+1)*45,200,250,50);
 			bateaux.add(tailleBateaux);
@@ -203,5 +219,13 @@ public class Placement extends JFrame implements Observer{
 				break;
 			}
 		}
+		frame.pack();
+		frame.setVisible(true);
+	}
+	public JFrame getFrame() {
+		return frame;
+	}
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
 	}
 }

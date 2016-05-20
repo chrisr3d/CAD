@@ -141,7 +141,7 @@ public class ControllerOptions implements ActionListener {
 			}
 			Partie.getInstance().setParam(p);
 			Placement pl = new Placement(o);
-			pl.setVisible(true);
+			pl.getFrame().setVisible(true);
 
 		}
 
