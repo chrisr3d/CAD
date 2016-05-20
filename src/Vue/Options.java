@@ -60,6 +60,7 @@ public class Options {
 		frame.setTitle("Options");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 550, 340);
+		frame.setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
@@ -85,6 +86,7 @@ public class Options {
 
 		rdbtnAutomatique = new JRadioButton("Automatique");
 		rdbtnAutomatique.setBounds(261, 34, 113, 23);
+		rdbtnAutomatique.setSelected(true);
 		contentPane.add(rdbtnAutomatique);
 		bg.add(rdbtnAutomatique);
 		bg.add(rdbtnManuel);

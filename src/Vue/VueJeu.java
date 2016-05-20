@@ -6,25 +6,36 @@ import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 
+import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.EmptyBorder;
 
 import Controlleur.ControllerJeu;
+import Controlleur.ControllerMenu;
+import Controlleur.ControlleurSauvegarde;
 import Modele.CaseBateau;
 import Modele.Parametre;
 import Modele.Partie;
 import Modele.Plateau;
+import Modele.Tactique.ContexteTactique;
+import Modele.Tactique.ListeTactique;
+import Modele.Tactique.TactiqueAleatoire;
 
 import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JMenu;
+import java.awt.event.ActionEvent;
 
 public class VueJeu implements Observer {
 
@@ -36,7 +47,14 @@ public class VueJeu implements Observer {
 	private JButton[][] Grille;
 	private JTextField[][] Grille2;
 	Alphabet tab = new Alphabet();
-	ControllerJeu cj = new ControllerJeu(this);
+	private ControllerJeu cj = new ControllerJeu(this);
+	private ControllerMenu cm = new ControllerMenu(this);
+	private JMenuBar menuBar;
+	private JMenu mnFichier;
+	private JMenu mnStrategie;
+	private JMenuItem mntmSauvegarderPartie;
+	private JMenuItem mntmQuitter;
+	private ControlleurSauvegarde cs = new ControlleurSauvegarde();
 
 	public JFrame getFrame() {
 		return frame;
@@ -127,6 +145,51 @@ public class VueJeu implements Observer {
 
 		frame.getContentPane().add(informations);
 		frame.getContentPane().add(contentPane2);
+		
+		menuBar = new JMenuBar();
+		frame.setJMenuBar(menuBar);
+		
+		mnFichier = new JMenu("Fichier");
+		menuBar.add(mnFichier);
+		
+		mntmSauvegarderPartie = new JMenuItem("Sauvegarder Partie");
+		mntmSauvegarderPartie.addActionListener(cs);
+		mnFichier.add(mntmSauvegarderPartie);
+		
+		mntmQuitter = new JMenuItem("Quitter");
+		mntmQuitter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		mnFichier.add(mntmQuitter);
+		ButtonGroup bg = new ButtonGroup();
+		mnStrategie = new JMenu("Strategie");
+		JRadioButtonMenuItem jr = new JRadioButtonMenuItem();
+		
+		for(ListeTactique ts : ListeTactique.values()){
+			jr = new JRadioButtonMenuItem(ts.name());
+			jr.setSelected(true);
+			bg.add(jr);
+			mnStrategie.add(jr);
+			
+				
+		}
+		if(ContexteTactique.getTactique() instanceof TactiqueAleatoire){
+			mnStrategie.getItem(0).setSelected(true);
+		}else{
+			mnStrategie.getItem(1).setSelected(false);
+		}
+		
+		mnStrategie.addMenuListener(cm);
+		for(int a = 0; a<mnStrategie.getItemCount();a++){
+			mnStrategie.getItem(a).addActionListener(cm);
+			mnStrategie.getItem(a).setName(mnStrategie.getItem(a).getName());
+		}
+		
+		
+		
+		menuBar.add(mnStrategie);
 		Grille = new JButton[Partie.getInstance().getParametres().getHauteurPlateau()
 				+ 1][Partie.getInstance().getParametres().getLargeurPlateau() + 1];
 		Grille2 = new JTextField[Partie.getInstance().getParametres().getLargeurPlateau()
@@ -145,6 +208,7 @@ public class VueJeu implements Observer {
 
 				} else if (i == 0 && k != 0) {
 					Grille[i][k].setText(Integer.toString(k));
+					Grille[i][k].setEnabled(false);
 				}
 				contentPane.add(Grille[i][k]);
 			}
@@ -154,6 +218,7 @@ public class VueJeu implements Observer {
 		for (int j = 0; j < Grille2.length; j++) {
 			for (int l = 0; l < Grille2.length; l++) {
 				Grille2[j][l] = new JTextField();
+				
 				Grille2[j][l].setEditable(false);
 
 				if (j != 0 && l != 0) {
@@ -161,7 +226,7 @@ public class VueJeu implements Observer {
 					
 					
 					if (!(j == Grille2.length) && !(l == Grille2.length)) {
-						if (Partie.getInstance().getJoueur().getCarte()[j-1][l-1] instanceof CaseBateau) {
+						if (Partie.getInstance().getJoueur().getCarte()[j-1][l-1] instanceof CaseBateau && !Partie.getInstance().getJoueur().getCarte()[j-1][l-1].isCibler() ) {
 							
 							Grille2[j][l].setBackground(Color.GRAY);
 						}
@@ -170,6 +235,11 @@ public class VueJeu implements Observer {
 
 				} else if (j == 0 && l != 0) {
 					Grille2[j][l].setText(Integer.toString(l));
+					Grille2[j][l].setEnabled(false);
+				}else if(j == 0 && l == 0)  {
+					Grille2[j][l].setEnabled(false);
+					Grille[j][l].setEnabled(false);
+					
 				}
 				contentPane2.add(Grille2[j][l]);
 			}
@@ -177,7 +247,8 @@ public class VueJeu implements Observer {
 		}
 
 		for (int a = 1; a < Grille.length; a++) {
-
+			Grille2[a][0].setEnabled(false);
+			Grille[a][0].setEnabled(false);
 			Grille[a][0].setText(tab.getAlphabet()[a]);
 			Grille2[a][0].setText(tab.getAlphabet()[a]);
 		}
@@ -198,4 +269,53 @@ public class VueJeu implements Observer {
 		}
 
 	}
+
+	public ControllerMenu getCm() {
+		return cm;
+	}
+
+	public void setCm(ControllerMenu cm) {
+		this.cm = cm;
+	}
+
+	public JMenuBar getMenuBar() {
+		return menuBar;
+	}
+
+	public void setMenuBar(JMenuBar menuBar) {
+		this.menuBar = menuBar;
+	}
+
+	public JMenu getMnFichier() {
+		return mnFichier;
+	}
+
+	public void setMnFichier(JMenu mnFichier) {
+		this.mnFichier = mnFichier;
+	}
+
+	public JMenu getMnStrategie() {
+		return mnStrategie;
+	}
+
+	public void setMnStrategie(JMenu mnStrategie) {
+		this.mnStrategie = mnStrategie;
+	}
+
+	public JMenuItem getMntmSauvegarderPartie() {
+		return mntmSauvegarderPartie;
+	}
+
+	public void setMntmSauvegarderPartie(JMenuItem mntmSauvegarderPartie) {
+		this.mntmSauvegarderPartie = mntmSauvegarderPartie;
+	}
+
+	public JMenuItem getMntmQuitter() {
+		return mntmQuitter;
+	}
+
+	public void setMntmQuitter(JMenuItem mntmQuitter) {
+		this.mntmQuitter = mntmQuitter;
+	}
+	
 }

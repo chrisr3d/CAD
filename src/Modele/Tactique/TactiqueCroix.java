@@ -103,7 +103,7 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 		if (this.toucher && this.dernierTir != null) {
 			// On tir a gauche en premier
 			if (this.dernierTir.getX() - 1 >= 0 && !trouve) {
-				// On fait le 2eme test ici, pour éviter les problèmes
+				// On fait le 2eme test ici, pour ï¿½viter les problï¿½mes
 				// d'arrayOutOfBound de getCase()
 				if (!(joueur.getCarte()[this.dernierTir.getX() - 1][this.dernierTir.getY()].isCibler())) {
 					tir = new Case(this.dernierTir.getX() - 1, this.dernierTir.getY());
@@ -130,9 +130,9 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 					trouve = true;
 				}
 			}
-			// si on a pas trouvé de case sur lequel on peut tirer autour de la
-			// case bateau qu'on avait déjà touché
-			// on réinitialise toucher et dernierTir pour ne pas a nouveau tirer
+			// si on a pas trouvï¿½ de case sur lequel on peut tirer autour de la
+			// case bateau qu'on avait dï¿½jï¿½ touchï¿½
+			// on rï¿½initialise toucher et dernierTir pour ne pas a nouveau tirer
 			// autour
 			if (!trouve) {
 				this.toucher = false;
@@ -158,6 +158,7 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 				}
 			}
 		}
+		System.out.println(tir.getX() + " "+ tir.getY());
 		return tir;
 	}
 
