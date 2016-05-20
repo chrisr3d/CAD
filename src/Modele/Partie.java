@@ -128,14 +128,15 @@ public class Partie extends Observable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		XMLEpoqueDAO epoque = XMLEpoqueDAO.getInstance();
-		XMLPartieDAO partie = XMLPartieDAO.getInstance();
 		XMLStrategieDAO strategie = XMLStrategieDAO.getInstance();
 		XMLParametreDAO parametre = XMLParametreDAO.getInstance();
+		XMLEpoqueDAO epoque = XMLEpoqueDAO.getInstance();
+		XMLPartieDAO partie = XMLPartieDAO.getInstance();
 		epoque.save(FabriqueEpoque.getEpoque());
-		partie.save(this);
 		strategie.save(ContexteTactique.getTactique());
 		parametre.save(this.param);
+		partie.save(this);
+		
 
 	}
 
