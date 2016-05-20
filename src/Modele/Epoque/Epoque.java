@@ -5,7 +5,7 @@ import Modele.Bateau.*;
 import java.util.ArrayList;
 
 /**
- * Interface Epoque qui permet d'appliquer à une liste de bateaux
+ * Interface Epoque qui permet d'appliquer a une liste de bateaux
  * @author Mathieu
  *
  */

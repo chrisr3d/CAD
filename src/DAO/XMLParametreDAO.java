@@ -10,7 +10,7 @@ import Modele.Modes;
 import Modele.Parametre;
 
 /**
- * Classe qui permet de sauvegarder et de récupérer les parametres d'une partie au format XML
+ * Classe qui permet de sauvegarder et de recuperer les parametres d'une partie au format XML
  * @author Mathieu
  *
  */
@@ -33,14 +33,14 @@ public class XMLParametreDAO extends DAO<Parametre>{
 	}
 	
 	/**
-	 * Cette méthode peut déclencher une EXCEPTION si parametre ne contient pas tout les paramètres nécessaires.
+	 * Cette methode peut declencher une EXCEPTION si parametre ne contient pas tout les paramatres necessaires.
 	 * @throws  
 	 */
 	public Parametre find() {
 		// TODO Auto-generated method stub
 		BufferedReader fichier;
 		Parametre p = new Parametre();
-		//Booléen qui va passer a TRUE si le fichier est mal formé et que le parametre ne contient pas tout les attributs nécessaires
+		//Boolï¿½en qui va passer a TRUE si le fichier est mal formï¿½ et que le parametre ne contient pas tout les attributs nï¿½cessaires
 		boolean caMarchePas = false;
 		try {
 			fichier = new BufferedReader(new FileReader("save.xml"));
@@ -95,7 +95,7 @@ public class XMLParametreDAO extends DAO<Parametre>{
 			}
 			fichier.close();
 			if(caMarchePas){
-				throw( new Exception("La sauvegarde n'est pas récupérable !"));
+				throw( new Exception("La sauvegarde n'est pas recuperable !"));
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -108,7 +108,7 @@ public class XMLParametreDAO extends DAO<Parametre>{
 	}
 
 	/**
-	 * méthode qui permet de sauvegarder la classe parametre au format XML
+	 * methode qui permet de sauvegarder la classe parametre au format XML
 	 */
 	@Override
 	public void save(Parametre contenu) {

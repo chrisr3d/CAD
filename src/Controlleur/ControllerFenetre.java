@@ -16,8 +16,8 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 	Placement place;
 	private int nb,placeI,placeJ;
 	//private boolean pressed = false; //
-	private boolean selected=false; //true lorsqu'une taille de bateau est sélectionnée
-	private boolean placed=false; //true lorsque la première case du bateau est placée
+	private boolean selected=false; //true lorsqu'une taille de bateau est selectionnee
+	private boolean placed=false; //true lorsque la premiere case du bateau est placee
 	
 	public ControllerFenetre(Placement pl){
 		this.place=pl;
@@ -92,7 +92,7 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 			boolean enoughPlace = false;
 			boolean gray=false;
 			
-			//en haut de la première case du bateau
+			//en haut de la premiere case du bateau
 			for(int k=i-1;k>(i-nb);k--){
 				if(k>0){
 					if(place.getGrille()[k][j].getBackground()==Color.GRAY){
@@ -110,7 +110,7 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 			}
 			gray=false;
 			
-			//en bas de la première case du bateau
+			//en bas de la premiere case du bateau
 			for(int k=i+1;k<(i+nb);k++){
 				if(k<(place.getGrille().length)){
 					if(place.getGrille()[k][j].getBackground()==Color.GRAY){
@@ -128,7 +128,7 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 			}
 			gray=false;
 			
-			//à gauche de la première case du bateau
+			//a gauche de la premiere case du bateau
 			for(int k=j-1;k>(j-nb);k--){
 				if(k>0){
 					if(place.getGrille()[i][k].getBackground()==Color.GRAY){
@@ -146,7 +146,7 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 			}
 			gray=false;
 			
-			//à droite de la première case du bateau
+			//a droite de la premiere case du bateau
 			for(int k=j+1;k<(j+nb);k++){
 				if(k<(place.getGrille().length)){
 					if(place.getGrille()[i][k].getBackground()==Color.GRAY){
@@ -163,7 +163,7 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 				enoughPlace=true;
 			}
 			
-			//s'il y a de la place pour le bateau, on place la première case
+			//s'il y a de la place pour le bateau, on place la premiere case
 			if(enoughPlace){
 				placed=true;
 				place.getGrille()[i][j].setBackground(Color.GRAY);

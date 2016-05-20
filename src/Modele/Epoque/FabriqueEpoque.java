@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Modele.Bateau.Bateau;
 
 /**
- * Classe FabriqueEpoque qui va appliquer l'époque que l'utilisateur à choisis 
+ * Classe FabriqueEpoque qui va appliquer l'epoque que l'utilisateur a choisis 
  * @author Mathieu
  *
  */

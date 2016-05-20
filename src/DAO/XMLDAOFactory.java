@@ -7,7 +7,7 @@ import Modele.Epoque.Epoque;
 /**
  * 
  * @author Mathieu
- * aid� du site : 
+ * aide du site : 
  * http://cyrille-herby.developpez.com/tutoriels/java/mapper-sa-base-donnees-avec-pattern-dao/
  */
 public class XMLDAOFactory extends AbstractDAOFactory{

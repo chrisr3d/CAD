@@ -14,7 +14,7 @@ import Modele.Plateau;
 import Modele.Bateau.Bateau;
 
 /**
- * Classe qui permet la sauvegarde et la récupération de la classe Partie au format XML
+ * Classe qui permet la sauvegarde et la rï¿½cupï¿½ration de la classe Partie au format XML
  * @author Mathieu
  *
  */
@@ -38,15 +38,15 @@ public class XMLPartieDAO extends DAO<Partie> {
 	}
 
 	/**
-	 * Méthode qui est très longue et peu lisible ..
-	 * Elle permet "simplement" de récupérer les informations concernant la partie depuis un fichier XML
+	 * Mï¿½thode qui est trï¿½s longue et peu lisible ..
+	 * Elle permet "simplement" de rï¿½cupï¿½rer les informations concernant la partie depuis un fichier XML
 	 */
 	public Partie find() {
 		// TODO Auto-generated method stub
 		BufferedReader fichier;
 		Partie p = Partie.getInstance();
-		// Booléen qui va passer a TRUE si le fichier est mal formé et que le
-		// parametre ne contient pas tout les attributs nécessaires
+		// Booleen qui va passer a TRUE si le fichier est mal forme et que le
+		// parametre ne contient pas tout les attributs necessaires
 		boolean caMarchePas = false;
 		try {
 			fichier = new BufferedReader(new FileReader("save.xml"));
@@ -242,7 +242,7 @@ public class XMLPartieDAO extends DAO<Partie> {
 			p.setJoueur(Jou);
 			
 			if (caMarchePas) {
-				throw (new Exception("La sauvegarde n'est pas récupérable !"));
+				throw (new Exception("La sauvegarde n'est pas recuperable !"));
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -256,7 +256,7 @@ public class XMLPartieDAO extends DAO<Partie> {
 
 	
 	/** 
-	 * Méthode qui permet la sauvegarde dans un fichier XML des informations de la partie
+	 * Methode qui permet la sauvegarde dans un fichier XML des informations de la partie
 	 * @see DAO.DAO#save(java.lang.Object)
 	 */
 	@Override

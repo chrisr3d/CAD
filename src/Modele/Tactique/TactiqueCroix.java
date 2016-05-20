@@ -36,8 +36,8 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 	 */
 	public static TactiqueCroix getInstance() {
 		/*
-		 * Ici je ne pense pas qu'il soit possible de cr�er deux intances en
-		 * m�me temps car une instance de l'algo seulement au choix de
+		 * Ici je ne pense pas qu'il soit possible de creer deux intances en
+		 * meme temps car une instance de l'algo seulement au choix de
 		 * l'utilisateur (combobox ) Dans le doute on met le "double check test"
 		 * cf cours M1-S7-CAD
 		 */
@@ -65,16 +65,16 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 	public Case appliquerTactique(Plateau platIA, Plateau joueur) {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
-		// (v�rifier que nous n'avons pas perdu)
-		// v�rifier qu'il reste des bateaux adverse et pour soit
-		// r�cup�rer les caseBateau du bateau
+		// (verifier que nous n'avons pas perdu)
+		// verifier qu'il reste des bateaux adverse et pour soit
+		// recuperer les caseBateau du bateau
 
 		// la case que l'on va retourner
 		Case tir = null;
 		ArrayList<Case> portee = new ArrayList<Case>();
-		// pour chaque bateau, on r�cup�re les cases bateaux pour v�rifier
+		// pour chaque bateau, on recupere les cases bateaux pour verifier
 		// la
-		// port�e
+		// portee
 		if (platIA != null && joueur != null && platIA.getBateau() != null && joueur.getBateau() != null && joueur.getCarte() !=null && platIA.getCarte() != null) {
 			if (!platIA.getBateau().isEmpty() && !joueur.getBateau().isEmpty()) {
 				for (Bateau bat : platIA.getBateau()) {
@@ -85,8 +85,8 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 								if ((Math.abs(joueur.getCarte()[i][j].getX() - temp.getX())
 										+ Math.abs(temp.getY() - joueur.getCarte()[i][j].getY())
 										+ (Parametre.getHauteurPlateau() - cb.getX())) <= bat.getPuissance()) {
-									// v�rifier qu'on ne les a pas d�j�
-									// ajout�
+									// verifier qu'on ne les a pas deja
+									// ajoute
 									if (!portee.contains(joueur.getCarte()[i][j])
 											&& !joueur.getCarte()[i][j].isCibler()) {
 										portee.add(joueur.getCarte()[i][j]);
@@ -104,7 +104,7 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 		if (this.toucher && this.dernierTir != null) {
 			// On tir a gauche en premier
 			if (this.dernierTir.getX() - 1 >= 0 && !trouve) {
-				// On fait le 2eme test ici, pour �viter les probl�mes
+				// On fait le 2eme test ici, pour eviter les problemes
 				// d'arrayOutOfBound de getCase()
 				if (!(joueur.getCarte()[this.dernierTir.getX() - 1][this.dernierTir.getY()].isCibler())) {
 					tir = new Case(this.dernierTir.getX() - 1, this.dernierTir.getY());
@@ -131,9 +131,9 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 					trouve = true;
 				}
 			}
-			// si on a pas trouv� de case sur lequel on peut tirer autour de la
-			// case bateau qu'on avait d�j� touch�
-			// on r�initialise toucher et dernierTir pour ne pas a nouveau tirer
+			// si on a pas trouve de case sur lequel on peut tirer autour de la
+			// case bateau qu'on avait deja touche
+			// on reinitialise toucher et dernierTir pour ne pas a nouveau tirer
 			// autour
 			if (!trouve) {
 				this.toucher = false;

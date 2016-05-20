@@ -12,7 +12,7 @@ import Modele.Epoque.EpoqueActuelle;
 import Modele.Epoque.EpoqueFutur;
 import Modele.Epoque.FabriqueEpoque;
 /**
- * Classe qui permet la sauvegarde de l'époque au format XML
+ * Classe qui permet la sauvegarde de l'epoque au format XML
  * @author Mathieu
  *
  */
@@ -33,7 +33,7 @@ public class XMLEpoqueDAO extends DAO<Epoque>{
 	
 	/**
 	 * @return NULL
-	 * Méthode qui retourne "NULL", puique l'on applique directement l'époque selon le fichier XML
+	 * Methode qui retourne "NULL", puique l'on applique directement l'epoque selon le fichier XML
 	 */
 	@Override
 	public Epoque find() {
@@ -43,7 +43,7 @@ public class XMLEpoqueDAO extends DAO<Epoque>{
 			fichier = new BufferedReader(new FileReader("save.xml"));
 			String ligne;
 			while ((ligne=fichier.readLine())!=null){
-				//si on trouve une ligne qui commence par époque, on lit la suivante
+				//si on trouve une ligne qui commence par ï¿½poque, on lit la suivante
 				if(ligne.equals("<Epoque>")){
 					ligne=fichier.readLine();
 					if(ligne.equals("Futur")){
@@ -62,7 +62,7 @@ public class XMLEpoqueDAO extends DAO<Epoque>{
 	}
 
 	/** 
-	 * Méthode qui permet d'enregistrer au format xml, l'époque
+	 * Methode qui permet d'enregistrer au format xml, l'epoque
 	 * @see DAO.DAO#save(java.lang.Object)
 	 */
 	@Override

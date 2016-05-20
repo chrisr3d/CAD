@@ -16,7 +16,7 @@ import Modele.Bateau.*;
  */
 public class EpoqueActuelle implements Epoque{
 
-	//volatile pour autoriser l'initialisation � null !
+	//volatile pour autoriser l'initialisation a null !
 	private volatile static EpoqueActuelle unique = null;
 		
 	public static EpoqueActuelle getInstance(){
@@ -45,8 +45,8 @@ public class EpoqueActuelle implements Epoque{
 		return listBateau;
 	}
 	/**
-	 * M�thode qui va donner une image de l'�poque actuelle au bateau pass� en param�tre
-	 * Si le bateau est horizontal, le bateau n'aura pas la m�me texture !
+	 * Methode qui va donner une image de l'epoque actuelle au bateau passe en parametre
+	 * Si le bateau est horizontal, le bateau n'aura pas la meme texture !
 	 * @param b : bateau
 	 * @throws IOException : exeception pour la lecture des images en dur
 	 */
@@ -115,7 +115,7 @@ public class EpoqueActuelle implements Epoque{
 	}
 	
 	/**
-	 * M�thode qui permet l'ajout d'une puissance � un bateau correspondant � l'�poque Actuelle
+	 * Methode qui permet l'ajout d'une puissance a un bateau correspondant a l'epoque Actuelle
 	 * @param b : bateau
 	 */
 	private void ajoutPuissanceEpoque(Bateau b) {
@@ -140,7 +140,7 @@ public class EpoqueActuelle implements Epoque{
 	}
 
 	/**
-	 * M�thode qui permet l'ajout d'un nom correspondant � l'�poque Actuelle
+	 * Methode qui permet l'ajout d'un nom correspondant a l'epoque Actuelle
 	 * Sources : https://fr.wikipedia.org/wiki/Liste_des_types_de_navires
 	 * @param b : bateau
 	 */

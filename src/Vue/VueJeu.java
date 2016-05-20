@@ -204,7 +204,6 @@ public class VueJeu implements Observer {
 				Grille[i][k].addMouseListener(cj);
 
 				if (i != 0 && k != 0) {
-					System.out.println(Partie.getInstance().getIA().getCarte()[i-1][k-1].isCibler());
 					if(Partie.getInstance().getIA().getCarte()[i-1][k-1].isCibler()  ){
 						Grille[i][k].setText("TOUCHE");
 						Grille[i][k].setEnabled(false);

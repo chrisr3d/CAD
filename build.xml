@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<project name="runProject" default="execute" basedir=".">
+	
+   <target name="init">
+      <property name="sourceDir" value="src" />
+      <property name="outputDir" value="bin" />
+   </target>
+	
+   <target name="clean" depends="init">
+      <delete dir="${outputDir}" />
+   </target>
+	
+   <target name="prepare" depends="clean">
+      <mkdir dir="${outputDir}" />
+   </target>
+	
+   <target name="compile" depends="prepare">
+     <javac srcdir="${sourceDir}" destdir="${outputDir}" includeantruntime="true" />
+   </target>
+	
+	<target name="execute" depends="compile">
+		<java classname="Vue/Menu" classpath="./${outputDir}/" fork="true"/>
+	</target>
+	
+</project>

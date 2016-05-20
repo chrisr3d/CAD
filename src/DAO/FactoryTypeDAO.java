@@ -1,7 +1,7 @@
 package DAO;
 
 /**
- * Enumération qui doit/peut contenir les différents type d'enregistrement
+ * Enumeration qui doit/peut contenir les differents type d'enregistrement
  * @author Mathieu
  *
  */
