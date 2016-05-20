@@ -112,7 +112,8 @@ public class EpoqueActuelle implements Epoque{
 			}
 		}
 */
-}
+	}
+	
 	/**
 	 * M�thode qui permet l'ajout d'une puissance � un bateau correspondant � l'�poque Actuelle
 	 * @param b : bateau

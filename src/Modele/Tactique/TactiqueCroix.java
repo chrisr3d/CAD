@@ -81,9 +81,10 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 					for (CaseBateau cb : bat.getEmplacement()) {
 						for (int i = 0; i < Parametre.getLargeurPlateau(); i++) {
 							for (int j = 0; j < Parametre.getHauteurPlateau(); j++) {
-								if (Math.abs(cb.getX() - joueur.getCarte()[i][j].getX())
-										+ Math.abs(cb.getY() - joueur.getCarte()[i][j].getY())
-										+ ((Parametre.getHauteurPlateau() - 1) - cb.getY()) <= bat.getPuissance()) {
+								Case temp = new Case(0,cb.getY());
+								if ((Math.abs(joueur.getCarte()[i][j].getX() - temp.getX())
+										+ Math.abs(temp.getY() - joueur.getCarte()[i][j].getY())
+										+ (Parametre.getHauteurPlateau() - cb.getX())) <= bat.getPuissance()) {
 									// v�rifier qu'on ne les a pas d�j�
 									// ajout�
 									if (!portee.contains(joueur.getCarte()[i][j])
