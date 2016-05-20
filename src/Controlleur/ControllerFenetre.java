@@ -89,46 +89,161 @@ public class ControllerFenetre implements ActionListener, MouseListener, MouseMo
 	private void pressCase(int i, int j) {
 		// TODO Auto-generated method stub
 		if (!placed){
-			place.getGrille()[i][j].setBackground(Color.GRAY);
-			if ((i-nb+1)>0)
+			boolean enoughPlace = false;
+			boolean gray=false;
+			
+			//en haut de la première case du bateau
+			for(int k=i-1;k>(i-nb);k--){
+				if(k>0){
+					if(place.getGrille()[k][j].getBackground()==Color.GRAY){
+						gray=true;
+						break;
+					}
+				}
+				else{
+					break;
+				}
+			}
+			if ((i-nb+1)>0 && !gray){
 				place.getGrille()[i-1][j].setBackground(Color.WHITE);
-			if ((i+nb-1)<(place.getGrille().length))
+				enoughPlace = true;
+			}
+			gray=false;
+			
+			//en bas de la première case du bateau
+			for(int k=i+1;k<(i+nb);k++){
+				if(k<(place.getGrille().length)){
+					if(place.getGrille()[k][j].getBackground()==Color.GRAY){
+						gray=true;
+						break;
+					}
+				}
+				else{
+					break;
+				}
+			}
+			if ((i+nb-1)<(place.getGrille().length) && !gray){
 				place.getGrille()[i+1][j].setBackground(Color.WHITE);
-			if ((j-nb+1)>0)
+				enoughPlace=true;
+			}
+			gray=false;
+			
+			//à gauche de la première case du bateau
+			for(int k=j-1;k>(j-nb);k--){
+				if(k>0){
+					if(place.getGrille()[i][k].getBackground()==Color.GRAY){
+						gray=true;
+						break;
+					}
+				}
+				else{
+					break;
+				}
+			}
+			if ((j-nb+1)>0 && !gray){
 				place.getGrille()[i][j-1].setBackground(Color.WHITE);
-			if ((j+nb-1)<(place.getGrille().length))
+				enoughPlace=true;
+			}
+			gray=false;
+			
+			//à droite de la première case du bateau
+			for(int k=j+1;k<(j+nb);k++){
+				if(k<(place.getGrille().length)){
+					if(place.getGrille()[i][k].getBackground()==Color.GRAY){
+						gray=true;
+						break;
+					}
+				}
+				else{
+					break;
+				}
+			}
+			if ((j+nb-1)<(place.getGrille().length) && !gray){
 				place.getGrille()[i][j+1].setBackground(Color.WHITE);
-			placed=true;
+				enoughPlace=true;
+			}
+			
+			//s'il y a de la place pour le bateau, on place la première case
+			if(enoughPlace){
+				placed=true;
+				place.getGrille()[i][j].setBackground(Color.GRAY);
+				place.getGrille()[i][j].setText(String.valueOf(nb));
+			}
 		}
 		else{
 			if(place.getGrille()[i][j].getBackground()==Color.WHITE){
 				if(i<placeI){
-					for(int k=i;k>(i-nb+1);k--)
+					for(int k=i;k>(i-nb+1);k--){
 						place.getGrille()[k][j].setBackground(Color.GRAY);
-					place.getGrille()[placeI+1][j].setBackground(null);
-					place.getGrille()[placeI][j-1].setBackground(null);
-					place.getGrille()[placeI][j+1].setBackground(null);
+						place.getGrille()[k][j].setText(String.valueOf(nb));
+					}
+					if((placeI+1)<(place.getGrille().length)){
+						if(place.getGrille()[placeI+1][j].getBackground()!=Color.GRAY)
+							place.getGrille()[placeI+1][j].setBackground(null);
+					}
+					if((j-1)>0){
+						if(place.getGrille()[placeI][j-1].getBackground()!=Color.GRAY)
+							place.getGrille()[placeI][j-1].setBackground(null);
+					}
+					if((j+1)<(place.getGrille().length)){
+						if(place.getGrille()[placeI][j+1].getBackground()!=Color.GRAY)
+							place.getGrille()[placeI][j+1].setBackground(null);
+					}
+						
 				}
 				if(j<placeJ){
-					for(int k=j;k>(j-nb+1);k--)
+					for(int k=j;k>(j-nb+1);k--){
 						place.getGrille()[i][k].setBackground(Color.GRAY);
-					place.getGrille()[i][placeJ+1].setBackground(null);
-					place.getGrille()[i-1][placeJ].setBackground(null);
-					place.getGrille()[i+1][placeJ].setBackground(null);
+						place.getGrille()[i][k].setText(String.valueOf(nb));
+					}
+					if((placeJ+1)<(place.getGrille().length)){
+						if(place.getGrille()[i][placeJ+1].getBackground()!=Color.GRAY)
+							place.getGrille()[i][placeJ+1].setBackground(null);
+					}
+					if((i-1)>0){
+						if(place.getGrille()[i-1][placeJ].getBackground()!=Color.GRAY)
+							place.getGrille()[i-1][placeJ].setBackground(null);
+					}
+					if((i+1)<(place.getGrille().length)){
+						if(place.getGrille()[i+1][placeJ].getBackground()!=Color.GRAY)
+							place.getGrille()[i+1][placeJ].setBackground(null);
+					}
 				}
 				if(i>placeI){
-					for(int k=i;k<(i+nb-1);k++)
+					for(int k=i;k<(i+nb-1);k++){
 						place.getGrille()[k][j].setBackground(Color.GRAY);
-					place.getGrille()[placeI-1][j].setBackground(null);
-					place.getGrille()[placeI][j-1].setBackground(null);
-					place.getGrille()[placeI][j+1].setBackground(null);
+						place.getGrille()[k][j].setText(String.valueOf(nb));
+					}
+					if((placeI-1)>0){
+						if(place.getGrille()[placeI-1][j].getBackground()!=Color.GRAY)
+							place.getGrille()[placeI-1][j].setBackground(null);
+					}
+					if((j-1)>0){
+						if(place.getGrille()[placeI][j-1].getBackground()!=Color.GRAY)
+							place.getGrille()[placeI][j-1].setBackground(null);
+					}
+					if((j+1)<(place.getGrille().length)){
+						if(place.getGrille()[placeI][j+1].getBackground()!=Color.GRAY)
+							place.getGrille()[placeI][j+1].setBackground(null);
+					}
 				}
 				if(j>placeJ){
-					for(int k=i;k<(i+nb-1);k++)
+					for(int k=j;k<(j+nb-1);k++){
 						place.getGrille()[i][k].setBackground(Color.GRAY);
-					place.getGrille()[i][placeJ-1].setBackground(null);
-					place.getGrille()[i-1][placeJ].setBackground(null);
-					place.getGrille()[i+1][placeJ].setBackground(null);
+						place.getGrille()[i][k].setText(String.valueOf(nb));
+					}
+					if((placeJ-1)>0){
+						if(place.getGrille()[i][placeJ-1].getBackground()!=Color.GRAY)
+							place.getGrille()[i][placeJ-1].setBackground(null);
+					}
+					if((i-1)>0){
+						if(place.getGrille()[i-1][placeJ].getBackground()!=Color.GRAY)
+							place.getGrille()[i-1][placeJ].setBackground(null);
+					}
+					if((i+1)<(place.getGrille().length)){
+						if(place.getGrille()[i+1][placeJ].getBackground()!=Color.GRAY)
+							place.getGrille()[i+1][placeJ].setBackground(null);
+					}
 				}
 				placed=false;
 				place.getBut3().setEnabled(true);

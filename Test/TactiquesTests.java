@@ -229,4 +229,36 @@ public class TactiquesTests {
 
 		assertEquals(c, null);
 	}
+	
+	/**
+	 * Test normal pour savoir si la tactique aléatoire tir bien au seul endroit possible
+	 * @throws IOException
+	 */
+	@Test
+	public void testTactiqueAleatoireNormal() throws IOException {
+		//De base les parametres de cette classe me donne un plateau sur lequel il n'y a plus de case sur laquelle tirer
+		//Je change une case pour que l'on puisse tirer dessus
+		plateauJ.getCarte()[1][1].setCibler(false);
+		Case c = TactiqueAleatoire.getInstance().appliquerTactique(plateauIA, plateauJ);
+
+		//on doit tirer sur la case que j'ai changé juste au dessus
+		assertEquals(c.getX(), plateauJ.getCarte()[1][1].getX());
+		assertEquals(c.getY(), plateauJ.getCarte()[1][1].getY());
+	}
+	
+	/**
+	 * Test normal pour savoir si la tactique croix tir bien au seul endroit possible
+	 * @throws IOException
+	 */
+	@Test
+	public void testTactiqueCroixNormal() throws IOException {
+		//De base les parametres de cette classe me donne un plateau sur lequel il n'y a plus de case sur laquelle tirer
+		//Je change une case pour que l'on puisse tirer dessus
+		plateauJ.getCarte()[1][1].setCibler(false);
+		Case c = TactiqueCroix.getInstance().appliquerTactique(plateauIA, plateauJ);
+
+		//on doit tirer sur la case que j'ai changé juste au dessus
+		assertEquals(c.getX(), plateauJ.getCarte()[1][1].getX());
+		assertEquals(c.getY(), plateauJ.getCarte()[1][1].getY());
+	}
 }

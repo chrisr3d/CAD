@@ -14,7 +14,12 @@ import Modele.Plateau;
 import Modele.Bateau.Bateau;
 import Modele.Tactique.TactiqueCroix;
 
-public class TestsTactique {
+/**
+ * Classe de tests qui va me permettre de tester les classes liés a l'époque
+ * @author Mathieu
+ *
+ */
+public class EpoqueTests {
 
 	@Before
 	public void setUp() throws IOException{
