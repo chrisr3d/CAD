@@ -69,7 +69,7 @@ public class Main {
 		Plateau plateauIA = new Plateau(Parametre.getLargeurPlateau(),Parametre.getHauteurPlateau());
 		plateauIA.setBateau(listBoat);
 		Plateau plateauJ = new Plateau(Parametre.getLargeurPlateau(),Parametre.getHauteurPlateau());
-		plateauIA.setBateau(listBoatJ);
+		plateauJ.setBateau(listBoatJ);
 		
 		Partie parti = Partie.getInstance();
 		parti.setParam(p);

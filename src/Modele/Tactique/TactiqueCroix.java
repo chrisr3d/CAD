@@ -57,7 +57,7 @@ public class TactiqueCroix implements TactiqueIAStrategie {
 	}
 
 	/** 
-	 * @return la case sur lequel l'IA va tirer
+	 * @return la case sur lequel l'IA va tirer - retourne null si l'IA ne peut plus tirer nul part
 	 * @see Modele.Tactique.TactiqueIAStrategie#appliquerTactique(Modele.Plateau, Modele.Plateau)
 	 */
 	public Case appliquerTactique(Plateau platIA, Plateau joueur) {

@@ -50,8 +50,8 @@ public class TactiqueAleatoire implements TactiqueIAStrategie {
 		// porté
 		for (Bateau bat : platIA.getBateau()) {
 			for (CaseBateau cb : bat.getEmplacement()) {
-				for (int i = 0; i < Parametre.getLargeurPlateau()-1; i++) {
-					for (int j = 0; j < Parametre.getHauteurPlateau()-1; j++) {
+				for (int i = 0; i < Parametre.getLargeurPlateau(); i++) {
+					for (int j = 0; j < Parametre.getHauteurPlateau(); j++) {
 						if (Math.abs(cb.getX() - joueur.getCarte()[i][j].getX()) + Math.abs(cb.getY() - joueur.getCarte()[i][j].getY()) + ((Parametre.getHauteurPlateau()-1)-cb.getY())  <= bat.getPuissance()) {
 							// vï¿½rifier qu'on ne les a pas dï¿½jï¿½ ajoutï¿½
 							if (!portee.contains(joueur.getCarte()[i][j])
@@ -65,6 +65,7 @@ public class TactiqueAleatoire implements TactiqueIAStrategie {
 		}
 		
 		int indiceAuHasard = (int) (Math.random() * (portee.size() - 1));
+		
 		tir = portee.get(indiceAuHasard);
 
 		return tir;
