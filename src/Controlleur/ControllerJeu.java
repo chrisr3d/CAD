@@ -92,7 +92,6 @@ public class ControllerJeu implements ActionListener, MouseListener, MouseMotion
 		// Tour de l'IA
 
 		if (tir) {
-			vue.getInformations().setText("Tour de l'adversaire");
 
 			Case touchIA = Partie.getInstance().JouerIA();
 			if (touchIA != null) {
@@ -108,7 +107,6 @@ public class ControllerJeu implements ActionListener, MouseListener, MouseMotion
 									.caseDonneBateauJoueur(Partie.getInstance().getJoueur().getCarte()[i][j]);
 							vue.getGrille2()[i + 1][j + 1].setBackground(Color.BLUE);
 							if (Partie.getInstance().getJoueur().getCarte()[i][j] instanceof CaseBateau) {
-								vue.getInformations().setText("L'IA vous a touché !");
 								vue.getGrille2()[i + 1][j + 1].setBackground(Color.RED);
 								;
 							}
