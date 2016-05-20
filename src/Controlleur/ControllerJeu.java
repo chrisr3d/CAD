@@ -12,8 +12,7 @@ import javax.swing.JOptionPane;
 import Modele.Case;
 import Modele.CaseBateau;
 import Modele.Partie;
-import Modele.Bateau.Bateau;
-import Modele.Tactique.ContexteTactique;
+
 import Vue.VueJeu;
 
 /**
@@ -26,7 +25,7 @@ public class ControllerJeu implements ActionListener, MouseListener, MouseMotion
 
 	public ControllerJeu(VueJeu vj) {
 		this.vue = vj;
-		
+
 	}
 
 	/*
@@ -34,19 +33,15 @@ public class ControllerJeu implements ActionListener, MouseListener, MouseMotion
 	 * 
 	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
 	 */
-public void mouseClicked(MouseEvent arg0) {
+	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		// Tour du joueur
 
-	
-	
 		for (int i = 1; i < vue.getGrille().length; i++) {
 			for (int j = 1; j < vue.getGrille().length; j++) {
 
 				if (arg0.getSource() == vue.getGrille()[i][j]) {
-					
-					
 
 					if (!vue.getGrille()[i][j].isEnabled()) {
 						tir = false;
@@ -68,9 +63,28 @@ public void mouseClicked(MouseEvent arg0) {
 				}
 			}
 		}
-		
-		//Vérification si un bateau adversaire est mort apres tir
+
+		// Vérification si un bateau adversaire est mort apres tir
 		Partie.getInstance().verificationMort(Partie.getInstance().getIA());
+		if (Partie.getInstance().getNbBateauRestantIA() == 0) {
+			String[] victoire = {" Quitter "};
+		    
+		    int rang = JOptionPane.showOptionDialog(null, 
+		      "Vous avez gagné !!!",
+		      "",
+		      JOptionPane.YES_NO_CANCEL_OPTION,
+		      JOptionPane.QUESTION_MESSAGE,
+		      null,
+		      victoire,
+		      victoire[0]);
+		    
+		    if(rang == JOptionPane.OK_OPTION){
+		    	vue.getFrame().setVisible(false);
+		    	vue.getFrame().setEnabled(false);
+		    	System.exit(0);
+		    }
+		   
+		      }
 
 		// Tour de l'IA
 
@@ -83,7 +97,8 @@ public void mouseClicked(MouseEvent arg0) {
 					for (int j = 0; j < Partie.getInstance().getJoueur().getCarte().length; j++) {
 						if (Partie.getInstance().getJoueur().getCarte()[i][j] == touchIA) {
 							Partie.getInstance().getJoueur().getCarte()[i][j].setCibler(true);
-							Partie.getInstance().caseDonneBateauJoueur(Partie.getInstance().getJoueur().getCarte()[i][j]);
+							Partie.getInstance()
+									.caseDonneBateauJoueur(Partie.getInstance().getJoueur().getCarte()[i][j]);
 							vue.getGrille2()[i + 1][j + 1].setBackground(Color.BLUE);
 							if (Partie.getInstance().getJoueur().getCarte()[i][j] instanceof CaseBateau) {
 								vue.getInformations().setText("L'IA vous a touché !");
@@ -96,15 +111,46 @@ public void mouseClicked(MouseEvent arg0) {
 
 				}
 			} else {
-				System.out.println("IA loose");
+				String[] victoire = {" Quitter "};
+			   
+			    int rang = JOptionPane.showOptionDialog(null, 
+			      "Vous avez gagné, l'IA ne peut plus vous toucher !!!",
+			      "",
+			      JOptionPane.YES_NO_CANCEL_OPTION,
+			      JOptionPane.QUESTION_MESSAGE,
+			      null,
+			      victoire,
+			      victoire[0]);
+			    
+			    if(rang == JOptionPane.OK_OPTION){
+			    	vue.getFrame().setVisible(false);
+			    	vue.getFrame().setEnabled(false);
+			    	System.exit(0);
+			    }
+				
 			}
 			Partie.getInstance().verificationMort(Partie.getInstance().getJoueur());
 		}
-		
-		if(Partie.getInstance().getNbBateauRestantJoueur() == 0) {
 
-		JOptionPane.showMessageDialog(null, "T'as perdu gros connard");
-	}
+		if (Partie.getInstance().getNbBateauRestantJoueur() == 0) {
+			String[] victoire = {" Quitter "};
+		  
+		    int rang = JOptionPane.showOptionDialog(null, 
+		      "Vous avez perdu...",
+		      "",
+		      JOptionPane.YES_NO_CANCEL_OPTION,
+		      JOptionPane.QUESTION_MESSAGE,
+		      null,
+		      victoire,
+		      victoire[0]);
+		    
+		    if(rang == JOptionPane.OK_OPTION){
+		    	vue.getFrame().setVisible(false);
+		    	vue.getFrame().setEnabled(false);
+		    	System.exit(0);
+		    }
+			
+		}
 	}
 
 	public void mouseEntered(MouseEvent arg0) {
